@@ -31,7 +31,7 @@
                                                   <div class="col-md-5">
                                                       <div class="form-group">
                                                           <h5 style="margin-top: 4px; margin-left: 10px;">Enter Type of Asset :</h5>
-
+                                                          <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
                                                       </div>
                                                   </div>
                                                   <div class="col-md-5">

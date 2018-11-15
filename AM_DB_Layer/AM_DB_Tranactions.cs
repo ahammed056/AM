@@ -176,10 +176,10 @@ namespace AM_DB_Layer
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("pro_insert_Asset_type", amon);
+                SqlCommand cmd = new SqlCommand("pro_Update_Asset_type", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@type_id", ai.Asset_id));
                 cmd.Parameters.Add(new SqlParameter("@type_name", ai.AS_TYPE));
-                cmd.Parameters.Add(new SqlParameter("@type_cdby", ai.AS_CREATEDBY));
                 amon.Open();
                 return cmd.ExecuteScalar().ToString();
             }
@@ -192,6 +192,7 @@ namespace AM_DB_Layer
                 amon.Close();
             }
         }
+
 
         public DataTable view_Asset_type_grid()
         {

@@ -104,33 +104,69 @@ namespace AM.Masters
 
         protected void btn_Asset_type_save_amms_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txt_Asset_type_amms.Text.ToString()))
+
+            if (btn_Asset_type_save_amms.Text == "Save")
             {
-                asset_info ais = new asset_info();
-                ais.AS_TYPE = txt_Asset_type_amms.Text.ToString();
-                ais.AS_CREATEDBY = "ahammed";
-                String i = adt.insertAssetType(ais);
-                if (i == "Asset Type Inserted Sucessfully")
+
+                if (!string.IsNullOrWhiteSpace(txt_Asset_type_amms.Text.ToString()))
                 {
-                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                    txt_Asset_type_amms.Text = string.Empty;
-                  //  _load_brand();
+                    asset_info ais = new asset_info();
+                    ais.AS_TYPE = txt_Asset_type_amms.Text.ToString();
+                    ais.AS_CREATEDBY = "ahammed";
+                    String i = adt.insertAssetType(ais);
+                    if (i == "Asset Type Inserted Sucessfully")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        txt_Asset_type_amms.Text = string.Empty;
+                        //  _load_brand();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        // _load_brand();
+                        txt_Asset_type_amms.Text = string.Empty;
+                    }
                 }
                 else
                 {
-                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                   // _load_brand();
-                    txt_Asset_type_amms.Text = string.Empty;
+                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
                 }
             }
-            else
+            if(btn_Asset_type_save_amms.Text == "Update")
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
-            }                   
+                if (!string.IsNullOrWhiteSpace(txt_Asset_type_amms.Text.ToString()))
+                {
+                    asset_info ais = new asset_info();
+                    ais.Asset_id = Convert.ToInt32(lbl_id.Text);
+                    ais.AS_TYPE = txt_Asset_type_amms.Text.TrimEnd(' ');
+                    
+
+                    String i = adt.UpadteAssetType(ais);
+                    if (i == "1")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        txt_Asset_type_amms.Text = string.Empty;
+                        btn_Asset_type_save_amms.Text = "Save";
+                        _load_astype_grid();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        btn_Asset_type_save_amms.Text = "Save";
+                        txt_Asset_type_amms.Text = string.Empty;
+                        _load_astype_grid();
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                }
+            }
         }
 
         protected void ibtn_asttype_asm_Click(object sender, ImageClickEventArgs e)
         {
+            btn_Asset_type_save_amms.Text = "Update";
             ImageButton btn = (ImageButton)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
             HiddenField hiduno = (HiddenField)gvr.FindControl("hf_type_name");
@@ -142,6 +178,8 @@ namespace AM.Masters
             {
                 foreach (DataRow row in dt.Rows)
                 {
+                   
+                    lbl_id.Text = dt.Rows[0]["type_id"].ToString();
                     txt_Asset_type_amms.Text = dt.Rows[0]["type_name"].ToString();
                 }
 

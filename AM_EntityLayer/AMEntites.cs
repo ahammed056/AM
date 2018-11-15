@@ -10,6 +10,7 @@ namespace AM_EntityLayer
 
     public class asset_info
     {
+        public int Asset_id { get; set; }
         private String as_assetcode; public String AS_ASSETCODE { get { return as_assetcode; } set { as_assetcode = value; } }
         private String as_type; public String AS_TYPE { get { return as_type; } set { as_type = value; } }
         private Boolean as_isactive; public Boolean AS_ISACTIVE { get { return as_isactive; } set { as_isactive = value; } }
