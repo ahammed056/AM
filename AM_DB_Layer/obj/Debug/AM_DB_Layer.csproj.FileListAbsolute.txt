@@ -1,0 +1,7 @@
+F:\AM\AM_DB_Layer\bin\Debug\AM_DB_Layer.dll
+F:\AM\AM_DB_Layer\bin\Debug\AM_DB_Layer.pdb
+F:\AM\AM_DB_Layer\bin\Debug\AM_EntityLayer.dll
+F:\AM\AM_DB_Layer\obj\Debug\AM_DB_Layer.csprojResolveAssemblyReference.cache
+F:\AM\AM_DB_Layer\obj\Debug\AM_DB_Layer.dll
+F:\AM\AM_DB_Layer\obj\Debug\AM_DB_Layer.pdb
+F:\AM\AM_DB_Layer\bin\Debug\AM_EntityLayer.pdb

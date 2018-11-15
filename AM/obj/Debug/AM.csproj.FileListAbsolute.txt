@@ -1,0 +1,16 @@
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM\bin\AM.dll.config
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM\bin\AM.dll
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM\bin\AM.pdb
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM\obj\Debug\AM.csprojResolveAssemblyReference.cache
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM\obj\Debug\AM.dll
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM\obj\Debug\AM.pdb
+F:\AM\AM\obj\Debug\AM.csprojResolveAssemblyReference.cache
+F:\AM\AM\bin\AM.dll.config
+F:\AM\AM\bin\AM.dll
+F:\AM\AM\bin\AM.pdb
+F:\AM\AM\bin\AM_DB_Layer.dll
+F:\AM\AM\bin\AM_EntityLayer.dll
+F:\AM\AM\bin\AM_DB_Layer.pdb
+F:\AM\AM\bin\AM_EntityLayer.pdb
+F:\AM\AM\obj\Debug\AM.dll
+F:\AM\AM\obj\Debug\AM.pdb

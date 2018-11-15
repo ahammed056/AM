@@ -1,0 +1,18 @@
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM.Tests\bin\Debug\AM.Tests.dll
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM.Tests\bin\Debug\AM.Tests.pdb
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM.Tests\bin\Debug\AM.dll
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM.Tests\bin\Debug\AM.pdb
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM.Tests\obj\Debug\AM.Tests.csprojResolveAssemblyReference.cache
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM.Tests\obj\Debug\AM.Tests.dll
+c:\users\ahammed.2921\documents\visual studio 2013\Projects\AM\AM.Tests\obj\Debug\AM.Tests.pdb
+F:\AM\AM.Tests\bin\Debug\AM.Tests.dll
+F:\AM\AM.Tests\bin\Debug\AM.Tests.pdb
+F:\AM\AM.Tests\bin\Debug\AM.dll
+F:\AM\AM.Tests\bin\Debug\AM_EntityLayer.dll
+F:\AM\AM.Tests\bin\Debug\AM_DB_Layer.dll
+F:\AM\AM.Tests\bin\Debug\AM.pdb
+F:\AM\AM.Tests\bin\Debug\AM_EntityLayer.pdb
+F:\AM\AM.Tests\bin\Debug\AM_DB_Layer.pdb
+F:\AM\AM.Tests\obj\Debug\AM.Tests.csprojResolveAssemblyReference.cache
+F:\AM\AM.Tests\obj\Debug\AM.Tests.dll
+F:\AM\AM.Tests\obj\Debug\AM.Tests.pdb

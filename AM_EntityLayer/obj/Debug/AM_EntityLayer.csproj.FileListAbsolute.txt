@@ -1,0 +1,4 @@
+F:\AM\AM_EntityLayer\bin\Debug\AM_EntityLayer.pdb
+F:\AM\AM_EntityLayer\obj\Debug\AM_EntityLayer.csprojResolveAssemblyReference.cache
+F:\AM\AM_EntityLayer\obj\Debug\AM_EntityLayer.dll
+F:\AM\AM_EntityLayer\obj\Debug\AM_EntityLayer.pdb
