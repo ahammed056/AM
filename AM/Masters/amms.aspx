@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AssetManage.Master" AutoEventWireup="true" CodeBehind="amms.aspx.cs" Inherits="AM.Masters.amms" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -59,7 +60,7 @@
 
                           <div class="row">
                               <div class="col-sm-12">
-                                  <asp:GridView ID="gv_view_Assettype_grid" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%">
+                                  <asp:GridView ID="gv_view_Assettype_grid" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_view_Assettype_grid_PageIndexChanging">
                                       <Columns>
                                           <asp:TemplateField HeaderText="S.No">
                                               <ItemTemplate>
@@ -79,13 +80,16 @@
                                         </asp:TemplateField>
                                     
                                       </Columns>
-                                      <HeaderStyle CssClass="dataTables_info" />
-                                      <%-- <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />--%>
+                                    
+                                             <HeaderStyle CssClass="dataTables_info" />
+                                            <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                      <PagerStyle Height="8px" HorizontalAlign="Center" />
+
+                                            <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Left" VerticalAlign="Middle"  />
                                       <EmptyDataTemplate>
                                           <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
                                       </EmptyDataTemplate>
-
+                                     
                                   </asp:GridView>
 
                               </div>
