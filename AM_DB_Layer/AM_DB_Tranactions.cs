@@ -192,8 +192,6 @@ namespace AM_DB_Layer
                 amon.Close();
             }
         }
-
-
         public DataTable view_Asset_type_grid()
         {
             try
@@ -232,6 +230,130 @@ namespace AM_DB_Layer
 
 
 
+
+        public String insertbarndName(CPU_Details cu)
+        {
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_insert_barnd_Master", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@bmbrand", cu.CPU_BRAND_MAKE));
+                cmd.Parameters.Add(new SqlParameter("@cdby", cu.CPU_ITEM_CREATEDBY));
+                amon.Open();
+                return cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                amon.Close();
+            }
+
+
+        }
+        public String UpadtebarndName(CPU_Details cu)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_Update_brand_Name", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@bm_id", cu.Cpu_brand_id));
+                cmd.Parameters.Add(new SqlParameter("@brand_name", cu.CPU_BRAND_MAKE));
+                amon.Open();
+                return cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                amon.Close();
+            }
+        }
+        public DataTable view_Cpu_brand()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("select bm_id,bm_brand from tbl_Brand_Master", amon);
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public DataTable view_Cpu_brand_edit_dispaly(CPU_Details cu)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_view_brand_byID", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@bm_id", cu.Cpu_brand_id));
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public String insertbarndModel(CPU_Details cu)
+        {
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_insert_Brand_Model_Master", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@bm_brand_id", cu.Cpu_brand_id));
+                cmd.Parameters.Add(new SqlParameter("@bm_model", cu.CPU_BRAND_MAKE));
+                cmd.Parameters.Add(new SqlParameter("@cdby", cu.CPU_ITEM_CREATEDBY));
+                amon.Open();
+                return cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                amon.Close();
+            }
+
+
+        }
+       
+        public DataTable view_Cpu_model(string bm_model)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("select bm_brand_id, bm_brand,bm_model from [tbl_Brand_master] t1 join [tbl_Brand_model_master] t2 on t1.BM_id = t2.bm_brand_id where bm_brand_id=@bm_brand_id", amon);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new SqlParameter("@bm_brand_id", bm_model));
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public DataTable view_processorModel()
         {
             try
@@ -266,113 +388,6 @@ namespace AM_DB_Layer
                 throw;
             }
         }
-
-
-        public DataTable view_Cpu_brand()
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("select bm_id,bm_brand from tbl_Brand_Master", amon);
-                cmd.CommandType = CommandType.Text;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public DataTable view_Cpu_model(string bm_model)
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("select bm_brand_id, bm_brand,bm_model from [tbl_Brand_master] t1 join [tbl_Brand_model_master] t2 on t1.BM_id = t2.bm_brand_id where bm_brand_id=@bm_brand_id", amon);
-                cmd.CommandType = CommandType.Text;
-                cmd.Parameters.Add(new SqlParameter("@bm_brand_id", bm_model));
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public DataTable view_Cpu_brand_grid()
-        {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("select * from vi_brands", amon);
-                cmd.CommandType = CommandType.Text;
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-
-        public String insertbarndName(CPU_Details cu)
-        {
-
-            try
-            {
-                SqlCommand cmd = new SqlCommand("pro_insert_barnd_Master", amon);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@bmbrand", cu.CPU_BRAND_MAKE));
-                cmd.Parameters.Add(new SqlParameter("@cdby", cu.CPU_ITEM_CREATEDBY));
-                amon.Open();
-                return cmd.ExecuteScalar().ToString();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                amon.Close();
-            }
-
-
-        }
-
-        public String insertbarndModel(CPU_Details cu)
-        {
-
-            try
-            {
-                SqlCommand cmd = new SqlCommand("pro_insert_Brand_Model_Master", amon);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@bm_brand_id", cu.Cpu_brand_id));
-                cmd.Parameters.Add(new SqlParameter("@bm_model", cu.CPU_BRAND_MAKE));
-                cmd.Parameters.Add(new SqlParameter("@cdby", cu.CPU_ITEM_CREATEDBY));
-                amon.Open();
-                return cmd.ExecuteScalar().ToString();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                amon.Close();
-            }
-
-
-        }
-
-
 
         #endregion
 

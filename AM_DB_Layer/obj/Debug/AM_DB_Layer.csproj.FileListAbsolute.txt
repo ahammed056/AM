@@ -8,7 +8,7 @@ F:\AM\AM_DB_Layer\bin\Debug\AM_EntityLayer.pdb
 C:\Users\ahammed.2921\Documents\GitHub\AM\AM_DB_Layer\bin\Debug\AM_DB_Layer.dll
 C:\Users\ahammed.2921\Documents\GitHub\AM\AM_DB_Layer\bin\Debug\AM_DB_Layer.pdb
 C:\Users\ahammed.2921\Documents\GitHub\AM\AM_DB_Layer\bin\Debug\AM_EntityLayer.dll
-C:\Users\ahammed.2921\Documents\GitHub\AM\AM_DB_Layer\bin\Debug\AM_EntityLayer.pdb
 C:\Users\ahammed.2921\Documents\GitHub\AM\AM_DB_Layer\obj\Debug\AM_DB_Layer.csprojResolveAssemblyReference.cache
 C:\Users\ahammed.2921\Documents\GitHub\AM\AM_DB_Layer\obj\Debug\AM_DB_Layer.dll
 C:\Users\ahammed.2921\Documents\GitHub\AM\AM_DB_Layer\obj\Debug\AM_DB_Layer.pdb
+C:\Users\ahammed.2921\Documents\GitHub\AM\AM_DB_Layer\bin\Debug\AM_EntityLayer.pdb

@@ -41,7 +41,7 @@
                                                   </div>
                                                   <div class="col-md-2">
                                                       <div class="form-group">
-                                                          <asp:Button ID="btn_Asset_type_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_Asset_type_save_amms_Click" />
+                                                          <asp:Button ID="btn_Asset_type_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" OnClick="btn_Asset_type_save_amms_Click" />
                                                       </div>
                                                   </div>
 
@@ -128,12 +128,13 @@
                                                   <div class="col-md-5">
                                                       <div class="form-group">
                                                           <h5 style="margin-top: 4px; margin-left: 10px;">Enter New Brand Name :</h5>
+                                                           <asp:Label ID="lbl_brand_id" runat="server" Text="" Visible="false"></asp:Label>
 
                                                       </div>
                                                   </div>
                                                   <div class="col-md-5">
                                                       <div class="form-group">
-                                                          <asp:TextBox ID="txt_Brand_Name" runat="server" class="form-control select2" ValidationGroup="barnd"></asp:TextBox>
+                                                          <asp:TextBox ID="txt_Brand_Name_amms" runat="server" class="form-control select2" ValidationGroup="barnd"></asp:TextBox>
                                                       </div>
                                                   </div>
                                                   <div class="col-md-2">
@@ -152,59 +153,94 @@
                                   </div>
                               </div>
 
-                              <div class="col-md-6">
-                                  <div class="col-md-12">
-                                      <div class="box box-primary">
-                                          <div class="box-body">
-                                              <h3 class="box-title">Add Models</h3>
-                                              <div class="row" style="padding: 0em 3em 2em 0em;">
-                                                  <div class="col-md-5">
-                                                      <div class="form-group">
-                                                          <h5 style="margin-top: 14px; margin-left: 10px;">Choose Brand :</h5>
-                                                      </div>
-                                                      <div class="form-group">
+                                <div class="col-sm-6">
+                              <div class="box box-primary">
+                                  <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%">
+                                      <Columns>
+                                          <asp:TemplateField HeaderText="S.No">
+                                              <ItemTemplate>
+                                                  <%# Container.DataItemIndex + 1 %>
+                                              </ItemTemplate>
+                                          </asp:TemplateField>
+                                          <asp:TemplateField HeaderText="Brand">
+                                              <ItemTemplate>
+                                                  <asp:Label ID="lbl_em_requested_by" runat="server" Text='<%#Eval("bm_brand") %>'></asp:Label>
+                                                  <asp:HiddenField ID="hf_brand_id" runat="server" Value='<%#Eval("bm_id") %>' />
+                                              </ItemTemplate>
+                                          </asp:TemplateField>
+                                          <asp:TemplateField HeaderText="">
+                                              <ItemTemplate>
+                                                 <asp:ImageButton ID="ibtn_brand_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" width="20px" OnClick="ibtn_brand_asm_Click" />
+                                              </ItemTemplate>
+                                          </asp:TemplateField>
+                                      </Columns>
+                                      <HeaderStyle CssClass="dataTables_info" />
+                                      <%-- <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />--%>
+                                      <EmptyDataTemplate>
+                                          <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
+                                      </EmptyDataTemplate>
 
-                                                          <h5 style="margin-top: 28px; margin-left: 10px;">Enter New Model Name :</h5>
-
-                                                      </div>
-                                                  </div>
-                                                  <div class="col-md-5">
-                                                      <div class="form-group">
-                                                          <asp:DropDownList ID="ddl_amms_brand" runat="server" class="form-control select2" ValidationGroup="model"></asp:DropDownList>
-                                                      </div>
-                                                      <div class="form-group">
-                                                          <asp:TextBox ID="txt_Brand_Model" runat="server" class="form-control select2" ValidationGroup="model"></asp:TextBox>
-                                                      </div>
-                                                  </div>
-
-
-                                                  <div class="col-md-2">
-                                                      <div class="form-group" style="margin-top: 50px;">
-
-                                                          <asp:Button ID="btn_Brand_Model_save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="model" OnClick="btn_Brand_Model_save_Click" />
-
-
-                                                      </div>
-                                                  </div>
-
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                                  </asp:GridView>
                               </div>
+
+                          </div>
+                         
                           </div>
 
                       </div>
 
 
 
-                      <div class="box box-primary">
+                     
 
 
 
-                          <div class="row">
-                              <div class="col-sm-12">
-                                  <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="col-md-12">
+                                  <div class="box box-primary">
+                                      <div class="box-body">
+                                          <h3 class="box-title">Add Models</h3>
+                                          <div class="row" style="padding: 0em 3em 2em 0em;">
+                                              <div class="col-md-5">
+                                                  <div class="form-group">
+                                                      <h5 style="margin-top: 14px; margin-left: 10px;">Choose Brand :</h5>
+                                                  </div>
+                                                  <div class="form-group">
+
+                                                      <h5 style="margin-top: 28px; margin-left: 10px;">Enter New Model Name :</h5>
+
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-5">
+                                                  <div class="form-group">
+                                                      <asp:DropDownList ID="ddl_amms_brand" runat="server" class="form-control select2" ValidationGroup="model"></asp:DropDownList>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <asp:TextBox ID="txt_Brand_Model" runat="server" class="form-control select2" ValidationGroup="model"></asp:TextBox>
+                                                  </div>
+                                              </div>
+
+
+                                              <div class="col-md-2">
+                                                  <div class="form-group" style="margin-top: 50px;">
+
+                                                      <asp:Button ID="btn_Brand_Model_save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="model" OnClick="btn_Brand_Model_save_Click" />
+
+
+                                                  </div>
+                                              </div>
+
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="col-sm-6">
+                              <div class="box box-primary">
+                                  <asp:GridView ID="gv_cpu_brand_Model_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%">
                                       <Columns>
                                           <asp:TemplateField HeaderText="S.No">
                                               <ItemTemplate>
@@ -218,7 +254,7 @@
                                           </asp:TemplateField>
                                           <asp:TemplateField HeaderText="Model Number">
                                               <ItemTemplate>
-                                                  <asp:Label ID="lbl_ad_Product_Number" runat="server" Text='<%#Eval("bm_model") %>'></asp:Label>
+                                                
 
                                               </ItemTemplate>
                                           </asp:TemplateField>
@@ -231,14 +267,15 @@
                                       </EmptyDataTemplate>
 
                                   </asp:GridView>
-
                               </div>
+
                           </div>
+                      </div>
                           <div class="row">
                           </div>
 
 
-                      </div>
+                     
 
 
                   </div>

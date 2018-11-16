@@ -58,13 +58,22 @@ namespace AM.Masters {
         protected global::System.Web.UI.WebControls.GridView gv_view_Assettype_grid;
         
         /// <summary>
-        /// txt_Brand_Name control.
+        /// lbl_brand_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Brand_Name;
+        protected global::System.Web.UI.WebControls.Label lbl_brand_id;
+        
+        /// <summary>
+        /// txt_Brand_Name_amms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_Brand_Name_amms;
         
         /// <summary>
         /// btn_Brand_Save control.
@@ -74,6 +83,15 @@ namespace AM.Masters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_Brand_Save;
+        
+        /// <summary>
+        /// gv_cpu_brand_info control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_cpu_brand_info;
         
         /// <summary>
         /// ddl_amms_brand control.
@@ -103,13 +121,13 @@ namespace AM.Masters {
         protected global::System.Web.UI.WebControls.Button btn_Brand_Model_save;
         
         /// <summary>
-        /// gv_cpu_brand_info control.
+        /// gv_cpu_brand_Model_info control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_cpu_brand_info;
+        protected global::System.Web.UI.WebControls.GridView gv_cpu_brand_Model_info;
         
         /// <summary>
         /// TextBox1 control.

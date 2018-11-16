@@ -5,17 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>kpcl</title>
-     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" /> 
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css" />
-    <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css" />
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css" />
+     <link rel="stylesheet" href="~/bower_components/bootstrap/dist/css/bootstrap.min.css" /> 
+    <link rel="stylesheet" href="~/bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/bower_components/Ionicons/css/ionicons.min.css" />
+    <link rel="stylesheet" href="~/bower_components/jvectormap/jquery-jvectormap.css" />
+    <link rel="stylesheet" href="~/dist/css/AdminLTE.min.css" />
 
 
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css" />
+    <link rel="stylesheet" href="~/dist/css/skins/_all-skins.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
-    <link href="ahacssjs/css/x0popup.css" rel="stylesheet" />
-    <link href="ahacssjs/css/x0popup.default.css" rel="stylesheet" />
+    <link href="~/ahacssjs/css/x0popup.css" rel="stylesheet" />
+    <link href="~/ahacssjs/css/x0popup.default.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -31,7 +31,7 @@
                     <b>KPCL</b></span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">
-                    <img src="../dist/img/KPCLlogo.jpg" alt="kpcl" height="35" width="35" />&nbsp;K&nbsp;P&nbsp;C&nbsp;L</span>
+                    <img src="../../dist/img/KPCLlogo.jpg" alt="kpcl" height="35" width="35" />&nbsp;K&nbsp;P&nbsp;C&nbsp;L</span>
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->
@@ -515,26 +515,26 @@
    
 
 
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
     <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
+    <script src="../../dist/js/adminlte.min.js"></script>
     <!-- Sparkline -->
-    <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <script src="../../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
     <!-- jvectormap  -->
-    <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="../../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="../../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <!-- SlimScroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- ChartJS -->
-    <script src="../bower_components/chart.js/Chart.js"></script>
+    <script src="../../bower_components/chart.js/Chart.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../dist/js/pages/dashboard2.js"></script>
+    <script src="../../dist/js/pages/dashboard2.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-     <script src="../ahacssjs/js/x0popup.js"></script>
+    <script src="../../dist/js/demo.js"></script>
+     <script src="../../ahacssjs/js/x0popup.js"></script>
 </body>
 </html>
