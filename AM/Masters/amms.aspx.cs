@@ -275,5 +275,11 @@ namespace AM.Masters
             gv_view_Assettype_grid.PageIndex = e.NewPageIndex;
             _load_astype_grid();
         }
+
+        protected void gv_cpu_brand_info_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv_cpu_brand_info.PageIndex = e.NewPageIndex;
+            _load_brand_grid();
+        }
     }
 }

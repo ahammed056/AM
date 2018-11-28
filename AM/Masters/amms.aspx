@@ -12,7 +12,7 @@
 
                       <div class="box-tools pull-right">
                           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                              <i class="fa fa-plus"></i>
+                              <i class="fa fa-minus"></i>
                           </button>
                           <%--<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
               <i class="fa fa-times"></i></button>--%>
@@ -131,7 +131,7 @@
 
                                                   <div class="col-md-5">
                                                       <div class="form-group">
-                                                          <h5 style="margin-top: 4px; margin-left: 10px;">Enter New Brand Name :</h5>
+                                                          <h5 style="margin-top: 4px; margin-left: 10px;">Enter Brand Name :</h5>
                                                            <asp:Label ID="lbl_brand_id" runat="server" Text="" Visible="false"></asp:Label>
 
                                                       </div>
@@ -144,7 +144,7 @@
                                                   <div class="col-md-2">
                                                       <div class="form-group">
 
-                                                          <asp:Button ID="btn_Brand_Save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="barnd" OnClick="btn_Brand_Save_Click" />
+                                                          <asp:Button ID="btn_Brand_Save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="barnd" Width="56px" OnClick="btn_Brand_Save_Click" />
 
 
                                                       </div>
@@ -159,7 +159,7 @@
 
                                 <div class="col-sm-6">
                               <div class="box box-primary">
-                                  <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%">
+                                  <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_cpu_brand_info_PageIndexChanging" >
                                       <Columns>
                                           <asp:TemplateField HeaderText="S.No">
                                               <ItemTemplate>
@@ -178,9 +178,11 @@
                                               </ItemTemplate>
                                           </asp:TemplateField>
                                       </Columns>
-                                      <HeaderStyle CssClass="dataTables_info" />
-                                      <%-- <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />--%>
+                                     <HeaderStyle CssClass="dataTables_info" />
+                                            <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                      <PagerStyle Height="8px" HorizontalAlign="Center" />
+
+                                            <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Left" VerticalAlign="Middle"  />
                                       <EmptyDataTemplate>
                                           <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
                                       </EmptyDataTemplate>
@@ -230,7 +232,7 @@
                                               <div class="col-md-2">
                                                   <div class="form-group" style="margin-top: 50px;">
 
-                                                      <asp:Button ID="btn_Brand_Model_save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="model" OnClick="btn_Brand_Model_save_Click" />
+                                                      <asp:Button ID="btn_Brand_Model_save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" ValidationGroup="model" OnClick="btn_Brand_Model_save_Click" />
 
 
                                                   </div>
