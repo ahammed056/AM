@@ -60,7 +60,7 @@
 
                           <div class="row">
                               <div class="col-sm-12">
-                                  <asp:GridView ID="gv_view_Assettype_grid" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_view_Assettype_grid_PageIndexChanging">
+                                  <asp:GridView ID="gv_view_Assettype_grid" GridLines="None" runat="server" AutoGenerateColumns="false" Height="175PX" Width="100%" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_view_Assettype_grid_PageIndexChanging">
                                       <Columns>
                                           <asp:TemplateField HeaderText="S.No">
                                               <ItemTemplate>
@@ -159,7 +159,7 @@
 
                                 <div class="col-sm-6">
                               <div class="box box-primary">
-                                  <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_cpu_brand_info_PageIndexChanging" >
+                                  <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX"  AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_cpu_brand_info_PageIndexChanging" >
                                       <Columns>
                                           <asp:TemplateField HeaderText="S.No">
                                               <ItemTemplate>
