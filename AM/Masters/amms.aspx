@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AssetManage.Master" AutoEventWireup="true" CodeBehind="amms.aspx.cs" Inherits="AM.Masters.amms" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <asp:Panel ID="Panel1" runat="server">
@@ -122,6 +123,7 @@
                       <div class="row">
 
                           <div class="col-md-12">
+                              <asp:UpdatePanel ID="UpdatePanel2" runat="server"><ContentTemplate>
                               <div class="col-md-6">
                                   <div class="col-md-12">
                                       <div class="box box-primary">
@@ -159,7 +161,10 @@
 
                                 <div class="col-sm-6">
                               <div class="box box-primary">
-                                  <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX"  AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_cpu_brand_info_PageIndexChanging" >
+                                   <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                                  
+                                     
+                                       <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX"  AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_cpu_brand_info_PageIndexChanging" >
                                       <Columns>
                                           <asp:TemplateField HeaderText="S.No">
                                               <ItemTemplate>
@@ -168,13 +173,14 @@
                                           </asp:TemplateField>
                                           <asp:TemplateField HeaderText="Brand">
                                               <ItemTemplate>
-                                                  <asp:Label ID="lbl_em_requested_by" runat="server" Text='<%#Eval("bm_brand") %>'></asp:Label>
+                                                  <asp:Label ID="lbl_brand_asm" runat="server" Text='<%#Eval("bm_brand") %>'></asp:Label>
                                                   <asp:HiddenField ID="hf_brand_id" runat="server" Value='<%#Eval("bm_id") %>' />
                                               </ItemTemplate>
                                           </asp:TemplateField>
                                           <asp:TemplateField HeaderText="">
                                               <ItemTemplate>
                                                  <asp:ImageButton ID="ibtn_brand_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" width="20px" OnClick="ibtn_brand_asm_Click" />
+                                                  
                                               </ItemTemplate>
                                           </asp:TemplateField>
                                       </Columns>
@@ -188,8 +194,10 @@
                                       </EmptyDataTemplate>
 
                                   </asp:GridView>
+                                     
+                                 
                               </div>
-
+                            </ContentTemplate></asp:UpdatePanel>
                           </div>
                          
                           </div>
@@ -246,22 +254,23 @@
 
                           <div class="col-sm-6">
                               <div class="box box-primary">
-                                  <asp:GridView ID="gv_cpu_brand_Model_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%">
+                                  <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>
+                                  <asp:GridView ID="gv_cpu_brand_Model_info" GridLines="None" runat="server" AutoGenerateColumns="false"  Width="100%" PageSize="5" OnPageIndexChanging="gv_cpu_brand_Model_info_PageIndexChanging" AllowPaging="true">
                                       <Columns>
                                           <asp:TemplateField HeaderText="S.No">
                                               <ItemTemplate>
                                                   <%# Container.DataItemIndex + 1 %>
                                               </ItemTemplate>
                                           </asp:TemplateField>
-                                          <asp:TemplateField HeaderText="Brand">
-                                              <ItemTemplate>
-                                                  <asp:Label ID="lbl_em_requested_by" runat="server" Text='<%#Eval("bm_brand") %>'></asp:Label>
-                                              </ItemTemplate>
-                                          </asp:TemplateField>
                                           <asp:TemplateField HeaderText="Model Number">
                                               <ItemTemplate>
-                                                
-
+                                                  <asp:Label ID="lbl_brand_model_asm" runat="server" Text='<%#Eval("bm_model") %>'></asp:Label>                                                  
+                                                  <asp:HiddenField ID="hf_brand_model_name" runat="server" Value='<%#Eval("bm_model") %>' />
+                                              </ItemTemplate>
+                                          </asp:TemplateField>
+                                          <asp:TemplateField HeaderText="">
+                                              <ItemTemplate>
+                                                    <asp:ImageButton ID="ibtn_brand_model_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" width="20px" OnClick="ibtn_brand_model_asm_Click" />
                                               </ItemTemplate>
                                           </asp:TemplateField>
                                       </Columns>
@@ -273,6 +282,7 @@
                                       </EmptyDataTemplate>
 
                                   </asp:GridView>
+                                      </ContentTemplate></asp:UpdatePanel>
                               </div>
 
                           </div>

@@ -99,7 +99,6 @@ namespace AM.Masters
 
         protected void btn_Brand_Model_save_Click(object sender, EventArgs e)
         {
-            
 
                 if (!string.IsNullOrWhiteSpace(txt_Brand_Model.Text.ToString()))
                 {
@@ -112,13 +111,13 @@ namespace AM.Masters
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
                         txt_Brand_Name_amms.Text = string.Empty;
-                        _load_brand();
+                        _load_brand_model_grid();
                     }
                     else
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        _load_brand();
-                        txt_Brand_Name_amms.Text = string.Empty;
+                        _load_brand_model_grid();
+                        txt_Brand_Model.Text = string.Empty;
                     }
                 }
                 else
@@ -129,8 +128,6 @@ namespace AM.Masters
            
         }
 
-
-
         public void _load_brand_grid()
         {
             DataTable dt = adt.view_Cpu_brand();
@@ -138,17 +135,13 @@ namespace AM.Masters
             gv_cpu_brand_info.DataBind();
         }
 
-
-
-
         public void _load_brand_model_grid()
         {
-            DataTable dt = adt.view_Cpu_brand();
+            DataTable dt = adt.view_Cpu_brand_model();
             gv_cpu_brand_Model_info.DataSource = dt;
             gv_cpu_brand_Model_info.DataBind();
         }
-
-        
+      
         public void _load_astype_grid()
         {
             DataTable dt = adt.view_Asset_type_grid();
@@ -246,6 +239,7 @@ namespace AM.Masters
 
         protected void ibtn_brand_asm_Click(object sender, ImageClickEventArgs e)
         {
+          
             btn_Brand_Save.Text = "Update";
             ImageButton btn = (ImageButton)sender;
             GridViewRow gvr = (GridViewRow)btn.NamingContainer;
@@ -266,8 +260,37 @@ namespace AM.Masters
             {
                 txt_Brand_Name_amms.Text = string.Empty;
             }
+        }
+
+        protected void ibtn_brand_model_asm_Click(object sender, ImageClickEventArgs e)
+        {
+            btn_Brand_Model_save.Text = "Update";
+            ImageButton btn = (ImageButton)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            HiddenField hf_brand_model = (HiddenField)gvr.FindControl("hf_brand_model_name");
+            HiddenField hf_model_value = new HiddenField();
+            hf_brand_model.Value = hf_model_value.Value;
+            CPU_Details cds = new CPU_Details();
+            cds.CPU_MODEL = hf_model_value.Value;
+            AM_DB_Tranactions ad = new AM_DB_Tranactions();
+            DataTable dt = ad.view_Cpu_brand_model_edit_dispaly(cds);
+            if (dt.Rows.Count > 0)
+            {
+               // lbl_brand_id.Text = dt.Rows[0]["bm_id"].ToString();
 
 
+              //  ViewState["bm_brand_model_id"] = dt.Rows[0]["bm_brand_id"].ToString();
+                ddl_amms_brand.SelectedItem.Value = dt.Rows[0]["bm_brand_id"].ToString();
+                txt_Brand_Model.Text = dt.Rows[0]["bm_model"].ToString();
+            }
+            else
+            {
+                txt_Brand_Model.Text = string.Empty;
+            }
+
+           
+
+            
         }
 
         protected void gv_view_Assettype_grid_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -281,5 +304,13 @@ namespace AM.Masters
             gv_cpu_brand_info.PageIndex = e.NewPageIndex;
             _load_brand_grid();
         }
+
+        protected void gv_cpu_brand_Model_info_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv_cpu_brand_Model_info.PageIndex = e.NewPageIndex;
+            _load_brand_model_grid();
+        }
+
+       
     }
 }

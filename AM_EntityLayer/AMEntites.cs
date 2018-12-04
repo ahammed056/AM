@@ -28,6 +28,7 @@ namespace AM_EntityLayer
         private String cpu_pr_number; public String CPU_PR_NUMBER { get { return cpu_pr_number; } set { cpu_pr_number = value; } }
         private String cpu_voucher_number; public String CPU_VOUCHER_NUMBER { get { return cpu_voucher_number; } set { cpu_voucher_number = value; } }
         private String cpu_brand_make; public String CPU_BRAND_MAKE { get { return cpu_brand_make; } set { cpu_brand_make = value; } }
+
         private String cpu_model; public String CPU_MODEL { get { return cpu_model; } set { cpu_model = value; } }
         private DateTime cpu_receive_date; public DateTime CPU_RECEIVE_DATE { get { return cpu_receive_date; } set { cpu_receive_date = value; } }
         private DateTime cpu_warranty_start_date; public DateTime CPU_WARRANTY_START_DATE { get { return cpu_warranty_start_date; } set { cpu_warranty_start_date = value; } }

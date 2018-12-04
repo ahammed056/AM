@@ -229,8 +229,6 @@ namespace AM_DB_Layer
         }
 
 
-
-
         public String insertbarndName(CPU_Details cu)
         {
 
@@ -310,6 +308,7 @@ namespace AM_DB_Layer
             }
         }
 
+       
         public String insertbarndModel(CPU_Details cu)
         {
 
@@ -333,6 +332,41 @@ namespace AM_DB_Layer
             }
 
 
+        }
+        public DataTable view_Cpu_brand_model()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_view_brand_model", amon);         
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public DataTable view_Cpu_brand_model_edit_dispaly(CPU_Details cu)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_view_brand_model_byID", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@bm_model", cu.CPU_MODEL));
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
        
         public DataTable view_Cpu_model(string bm_model)
