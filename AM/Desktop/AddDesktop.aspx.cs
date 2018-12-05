@@ -245,7 +245,7 @@ using System.Data;
 
             public void _load_processorModel()
             {
-                DataTable dt = adt.view_processorModel();
+                DataTable dt = adt.view_processorModel_name();
                 ddl_processorModel.DataSource = dt;
                 ddl_processorModel.DataTextField = "processor_name";
                 ddl_processorModel.DataValueField = "Pro_id";
@@ -254,7 +254,7 @@ using System.Data;
 
              public void _load_processorSpeed()
             {
-                DataTable dt = adt.view_processorSpeed();
+                DataTable dt = adt.view_processor_Speed();
                 ddl_processor_speed.DataSource = dt;
                 ddl_processor_speed.DataTextField = "processor_Speed";
                 ddl_processor_speed.DataValueField = "Pro_id";

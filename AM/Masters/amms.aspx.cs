@@ -21,7 +21,9 @@ namespace AM.Masters
                 _load_brand_grid();
                 _load_astype_grid();
                 _load_brand_model_grid();
-        
+                _load_processorName_grid();
+                _load_processorName_ddl();
+                _load_processor_speed_grid();        
             }
         }
 
@@ -37,7 +39,7 @@ namespace AM.Masters
                     CPU_Details cd = new CPU_Details();
                     cd.CPU_BRAND_MAKE = txt_Brand_Name_amms.Text.ToString();
                     cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.insertbarndName(cd);
+                    String i = adt.insert_brand_Name(cd);
                     if (i == "Brand Name Inserted Sucessfully")
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
@@ -64,7 +66,7 @@ namespace AM.Masters
                     cd.Cpu_brand_id = Convert.ToInt32(ViewState["bm_brand_id"]);
                     cd.CPU_BRAND_MAKE = txt_Brand_Name_amms.Text.ToString();
                     //  cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.UpadtebarndName(cd);
+                    String i = adt.Upadte_brand_Name(cd);
                     if (i == "Select 'Brand Name Has Changed'")
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
@@ -87,7 +89,6 @@ namespace AM.Masters
 
         }
     
-
         public void _load_brand()
         {
             DataTable dt = adt.view_Cpu_brand();
@@ -99,14 +100,13 @@ namespace AM.Masters
 
         protected void btn_Brand_Model_save_Click(object sender, EventArgs e)
         {
-
                 if (!string.IsNullOrWhiteSpace(txt_Brand_Model.Text.ToString()))
                 {
                     CPU_Details cd = new CPU_Details();
                     cd.Cpu_brand_id = Convert.ToInt32(ddl_amms_brand.SelectedItem.Value);
                     cd.CPU_BRAND_MAKE = txt_Brand_Model.Text.ToString();
                     cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.insertbarndModel(cd);
+                    String i = adt.insert_barnd_Model(cd);
                     if (i == "Model Name Inserted Sucessfully")
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
@@ -123,9 +123,7 @@ namespace AM.Masters
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
-                }
-            
-           
+                }                       
         }
 
         public void _load_brand_grid()
@@ -141,6 +139,29 @@ namespace AM.Masters
             gv_cpu_brand_Model_info.DataSource = dt;
             gv_cpu_brand_Model_info.DataBind();
         }
+       // gv_processor_asm
+        public void _load_processorName_grid()
+        {
+            DataTable dt = adt.view_processorModel_name();
+            gv_processor_asm.DataSource = dt;
+            gv_processor_asm.DataBind();
+        }
+        public void _load_processor_speed_grid()
+        {
+            DataTable dt = adt.view_processor_Speed();
+            gv_processor_speed_asm.DataSource = dt;
+            gv_processor_speed_asm.DataBind();
+        }
+
+        public void _load_processorName_ddl()
+        {
+            DataTable dt = adt.view_processorModel_name();
+            ddl_processor_Name_asm.DataSource = dt;
+            ddl_processor_Name_asm.DataTextField = "processor_Name";
+            ddl_processor_Name_asm.DataValueField = "processor_id";
+            ddl_processor_Name_asm.DataBind();           
+        }
+
       
         public void _load_astype_grid()
         {
@@ -148,6 +169,8 @@ namespace AM.Masters
             gv_view_Assettype_grid.DataSource = dt;
             gv_view_Assettype_grid.DataBind();
         }
+
+
 
         protected void btn_Asset_type_save_amms_Click(object sender, EventArgs e)
         {
@@ -160,7 +183,7 @@ namespace AM.Masters
                     asset_info ais = new asset_info();
                     ais.AS_TYPE = txt_Asset_type_amms.Text.ToString();
                     ais.AS_CREATEDBY = "ahammed";
-                    String i = adt.insertAssetType(ais);
+                    String i = adt.insert_AssetType(ais);
                     if (i == "Asset Type Inserted Sucessfully")
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
@@ -188,7 +211,7 @@ namespace AM.Masters
                     ais.AS_TYPE = txt_Asset_type_amms.Text.TrimEnd(' ');
                     
 
-                    String i = adt.UpadteAssetType(ais);
+                    String i = adt.Upadte_AssetType(ais);
                     if (i == "1")
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
@@ -264,22 +287,29 @@ namespace AM.Masters
 
         protected void ibtn_brand_model_asm_Click(object sender, ImageClickEventArgs e)
         {
+            _load_brand_model_grid();
             btn_Brand_Model_save.Text = "Update";
-            ImageButton btn = (ImageButton)sender;
-            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
-            HiddenField hf_brand_model = (HiddenField)gvr.FindControl("hf_brand_model_name");
-            HiddenField hf_model_value = new HiddenField();
-            hf_brand_model.Value = hf_model_value.Value;
+            ImageButton btn1 = (ImageButton)sender;
+            GridViewRow gvr1 = (GridViewRow)btn1.NamingContainer;
+
+            HiddenField hf_brand_model = (HiddenField)gvr1.FindControl("hf_brand_model_name");
+
+         //   Label lb1 = (Label)gvr1.FindControl("lbl_brand_model_asm");
+
+
+
+            HiddenField hf_model = new HiddenField();
+
+
+             hf_model.Value = hf_brand_model.Value;
+
+
             CPU_Details cds = new CPU_Details();
-            cds.CPU_MODEL = hf_model_value.Value;
+            cds.Cpu_model_make = hf_model.Value;
             AM_DB_Tranactions ad = new AM_DB_Tranactions();
             DataTable dt = ad.view_Cpu_brand_model_edit_dispaly(cds);
             if (dt.Rows.Count > 0)
-            {
-               // lbl_brand_id.Text = dt.Rows[0]["bm_id"].ToString();
-
-
-              //  ViewState["bm_brand_model_id"] = dt.Rows[0]["bm_brand_id"].ToString();
+            {              
                 ddl_amms_brand.SelectedItem.Value = dt.Rows[0]["bm_brand_id"].ToString();
                 txt_Brand_Model.Text = dt.Rows[0]["bm_model"].ToString();
             }
@@ -311,6 +341,69 @@ namespace AM.Masters
             _load_brand_model_grid();
         }
 
-       
+        protected void btn_processor_asm_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txt_processor_name_asm.Text.ToString()))
+            {
+                CPU_Details cds = new CPU_Details();
+                cds.CPU_PROCESSOR_MODEL = txt_processor_name_asm.Text.ToString();
+                cds.CPU_ITEM_CREATEDBY = "ahammed";
+                int i = adt.insert_Processor_Name(cds);
+                if (i == 1)
+                {
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('processor Name Saved Sucessfully');</script>", false);
+                    txt_processor_name_asm.Text = string.Empty;
+                    _load_processorName_grid();
+                }
+                else
+                {
+                   
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Try a.... New Processor Name');</script>", false);                   
+                    txt_processor_name_asm.Text = string.Empty;
+                    _load_processorName_grid();
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+            }
+        }
+
+        protected void gv_processor_asm_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gv_processor_asm.PageIndex = e.NewPageIndex;
+            _load_processorName_grid();
+            _load_processorName_ddl();
+        }
+
+        protected void btn_processor_speed_asm_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txt_processor_speed_asm.Text.ToString()))
+            {
+                CPU_Details cds = new CPU_Details();
+                cds.Cpu_brand_id = Convert.ToInt32(ddl_processor_Name_asm.SelectedItem.Value);
+                cds.CPU_PROCESSOR_SPEED = txt_processor_speed_asm.Text.ToString();
+                cds.CPU_ITEM_CREATEDBY = "ahammed";
+                int i = adt.insert_Processor_speed(cds);
+                if (i == 1)
+                {
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('processor Name Saved Sucessfully');</script>", false);
+                    txt_processor_name_asm.Text = string.Empty;
+                    _load_processorName_grid();
+                }
+                else
+                {
+
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Try a.... New Processor Name');</script>", false);
+                    txt_processor_name_asm.Text = string.Empty;
+                    _load_processorName_grid();
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+            }
+
+        }
     }
 }

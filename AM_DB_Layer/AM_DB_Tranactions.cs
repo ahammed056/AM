@@ -152,7 +152,7 @@ namespace AM_DB_Layer
 
         #region Masters
 
-        public String insertAssetType(asset_info ai)
+        public String insert_AssetType(asset_info ai)
         {
             try
             {
@@ -172,7 +172,7 @@ namespace AM_DB_Layer
                 amon.Close();
             }
         }
-        public String UpadteAssetType(asset_info ai)
+        public String Upadte_AssetType(asset_info ai)
         {
             try
             {
@@ -229,7 +229,7 @@ namespace AM_DB_Layer
         }
 
 
-        public String insertbarndName(CPU_Details cu)
+        public String insert_brand_Name(CPU_Details cu)
         {
 
             try
@@ -252,7 +252,7 @@ namespace AM_DB_Layer
 
 
         }
-        public String UpadtebarndName(CPU_Details cu)
+        public String Upadte_brand_Name(CPU_Details cu)
         {
             try
             {
@@ -309,7 +309,7 @@ namespace AM_DB_Layer
         }
 
        
-        public String insertbarndModel(CPU_Details cu)
+        public String insert_barnd_Model(CPU_Details cu)
         {
 
             try
@@ -356,7 +356,7 @@ namespace AM_DB_Layer
             {
                 SqlCommand cmd = new SqlCommand("pro_view_brand_model_byID", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@bm_model", cu.CPU_MODEL));
+                cmd.Parameters.Add(new SqlParameter("@bm_model", cu.Cpu_model_make));
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -388,7 +388,56 @@ namespace AM_DB_Layer
             }
         }
 
-        public DataTable view_processorModel()
+
+        public int insert_Processor_Name(CPU_Details cu)
+        {
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_insert_Processor_Name", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@processor_Name", cu.CPU_PROCESSOR_MODEL));
+                cmd.Parameters.Add(new SqlParameter("@processor_createdby", cu.CPU_ITEM_CREATEDBY));             
+                amon.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                amon.Close();
+            }
+
+
+        }
+
+        public int insert_Processor_speed(CPU_Details cu)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_insert_processor_speed", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@processor_speed", cu.CPU_PROCESSOR_SPEED));
+                cmd.Parameters.Add(new SqlParameter("@processor_speed_createdby", cu.CPU_ITEM_CREATEDBY));
+                cmd.Parameters.Add(new SqlParameter("@processor_speed_id", cu.Cpu_brand_id));
+                amon.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                amon.Close();
+            }
+
+
+        }
+
+        public DataTable view_processorModel_name()
         {
             try
             {
@@ -405,12 +454,12 @@ namespace AM_DB_Layer
                 throw;
             }
         }
-        public DataTable view_processorSpeed()
+        public DataTable view_processor_Speed()
         {
             try
             {
                 SqlCommand cmd = new SqlCommand("pro_view_processorspeed", amon);
-                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;         
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
