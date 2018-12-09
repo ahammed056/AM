@@ -1,0 +1,56 @@
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSTracker.dll
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSTracker.pdb
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSBAL.dll
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSEntity.dll
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSUtility.dll
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\VIKINGV3.dll
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSDAL.dll
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSEntity.pdb
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSUtility.pdb
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSBAL.pdb
+F:\A\25 06 2018\itms\Backup\TSTracker\bin\TSDAL.pdb
+F:\A\25 06 2018\itms\Backup\TSTracker\obj\Debug\ResolveAssemblyReference.cache
+F:\A\25 06 2018\itms\Backup\TSTracker\obj\Debug\TSTracker.dll
+F:\A\25 06 2018\itms\Backup\TSTracker\obj\Debug\TSTracker.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSTracker.dll
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSTracker.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSBAL.dll
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSEntity.dll
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSUtility.dll
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\VIKINGV3.dll
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSEntity.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSUtility.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSBAL.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\obj\Debug\ResolveAssemblyReference.cache
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\obj\Debug\TSTracker.dll
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\obj\Debug\TSTracker.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\MySql.Data.dll
+F:\2008 itms\itms if any errors backup\Backup\TSTracker\bin\TSDAL.pdb
+F:\New folder\TSTracker\bin\TSTracker.dll
+F:\New folder\TSTracker\bin\TSTracker.pdb
+F:\New folder\TSTracker\bin\TSBAL.dll
+F:\New folder\TSTracker\bin\TSEntity.dll
+F:\New folder\TSTracker\bin\TSUtility.dll
+F:\New folder\TSTracker\bin\VIKINGV3.dll
+F:\New folder\TSTracker\bin\MySql.Data.dll
+F:\New folder\TSTracker\bin\TSEntity.pdb
+F:\New folder\TSTracker\bin\TSUtility.pdb
+F:\New folder\TSTracker\bin\TSBAL.pdb
+F:\New folder\TSTracker\bin\TSDAL.pdb
+F:\New folder\TSTracker\obj\Debug\ResolveAssemblyReference.cache
+F:\New folder\TSTracker\obj\Debug\TSTracker.dll
+F:\New folder\TSTracker\obj\Debug\TSTracker.pdb
+F:\TS\TSTracker\bin\TSTracker.dll
+F:\TS\TSTracker\bin\TSTracker.pdb
+F:\TS\TSTracker\bin\TSBAL.dll
+F:\TS\TSTracker\bin\TSEntity.dll
+F:\TS\TSTracker\bin\TSUtility.dll
+F:\TS\TSTracker\bin\VIKINGV3.dll
+F:\TS\TSTracker\bin\TSEntity.pdb
+F:\TS\TSTracker\bin\TSUtility.pdb
+F:\TS\TSTracker\bin\TSBAL.pdb
+F:\TS\TSTracker\obj\Debug\ResolveAssemblyReference.cache
+F:\TS\TSTracker\obj\Debug\TSTracker.dll
+F:\TS\TSTracker\obj\Debug\TSTracker.pdb
+F:\TS\TSTracker\bin\MySql.Data.dll
+F:\TS\TSTracker\bin\TSDAL.pdb

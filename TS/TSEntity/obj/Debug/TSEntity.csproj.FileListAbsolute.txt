@@ -1,0 +1,20 @@
+F:\A\25 06 2018\itms\Backup\TSEntity\bin\Debug\TSEntity.dll
+F:\A\25 06 2018\itms\Backup\TSEntity\bin\Debug\TSEntity.pdb
+F:\A\25 06 2018\itms\Backup\TSEntity\obj\Debug\ResolveAssemblyReference.cache
+F:\A\25 06 2018\itms\Backup\TSEntity\obj\Debug\TSEntity.dll
+F:\A\25 06 2018\itms\Backup\TSEntity\obj\Debug\TSEntity.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSEntity\bin\Debug\TSEntity.dll
+F:\2008 itms\itms if any errors backup\Backup\TSEntity\bin\Debug\TSEntity.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSEntity\obj\Debug\ResolveAssemblyReference.cache
+F:\2008 itms\itms if any errors backup\Backup\TSEntity\obj\Debug\TSEntity.dll
+F:\2008 itms\itms if any errors backup\Backup\TSEntity\obj\Debug\TSEntity.pdb
+F:\New folder\TSEntity\bin\Debug\TSEntity.dll
+F:\New folder\TSEntity\bin\Debug\TSEntity.pdb
+F:\New folder\TSEntity\obj\Debug\ResolveAssemblyReference.cache
+F:\New folder\TSEntity\obj\Debug\TSEntity.dll
+F:\New folder\TSEntity\obj\Debug\TSEntity.pdb
+F:\TS\TSEntity\bin\Debug\TSEntity.dll
+F:\TS\TSEntity\bin\Debug\TSEntity.pdb
+F:\TS\TSEntity\obj\Debug\ResolveAssemblyReference.cache
+F:\TS\TSEntity\obj\Debug\TSEntity.dll
+F:\TS\TSEntity\obj\Debug\TSEntity.pdb

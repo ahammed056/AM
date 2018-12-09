@@ -1,0 +1,28 @@
+F:\A\25 06 2018\itms\Backup\TSUtility\bin\Debug\TSUtility.dll
+F:\A\25 06 2018\itms\Backup\TSUtility\bin\Debug\TSUtility.pdb
+F:\A\25 06 2018\itms\Backup\TSUtility\bin\Debug\TSEntity.dll
+F:\A\25 06 2018\itms\Backup\TSUtility\bin\Debug\TSEntity.pdb
+F:\A\25 06 2018\itms\Backup\TSUtility\obj\Debug\ResolveAssemblyReference.cache
+F:\A\25 06 2018\itms\Backup\TSUtility\obj\Debug\TSUtility.dll
+F:\A\25 06 2018\itms\Backup\TSUtility\obj\Debug\TSUtility.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSUtility\bin\Debug\TSUtility.dll
+F:\2008 itms\itms if any errors backup\Backup\TSUtility\bin\Debug\TSUtility.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSUtility\bin\Debug\TSEntity.dll
+F:\2008 itms\itms if any errors backup\Backup\TSUtility\bin\Debug\TSEntity.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSUtility\obj\Debug\ResolveAssemblyReference.cache
+F:\2008 itms\itms if any errors backup\Backup\TSUtility\obj\Debug\TSUtility.dll
+F:\2008 itms\itms if any errors backup\Backup\TSUtility\obj\Debug\TSUtility.pdb
+F:\New folder\TSUtility\bin\Debug\TSUtility.dll
+F:\New folder\TSUtility\bin\Debug\TSUtility.pdb
+F:\New folder\TSUtility\bin\Debug\TSEntity.dll
+F:\New folder\TSUtility\bin\Debug\TSEntity.pdb
+F:\New folder\TSUtility\obj\Debug\ResolveAssemblyReference.cache
+F:\New folder\TSUtility\obj\Debug\TSUtility.dll
+F:\New folder\TSUtility\obj\Debug\TSUtility.pdb
+F:\TS\TSUtility\bin\Debug\TSUtility.dll
+F:\TS\TSUtility\bin\Debug\TSUtility.pdb
+F:\TS\TSUtility\bin\Debug\TSEntity.dll
+F:\TS\TSUtility\bin\Debug\TSEntity.pdb
+F:\TS\TSUtility\obj\Debug\ResolveAssemblyReference.cache
+F:\TS\TSUtility\obj\Debug\TSUtility.dll
+F:\TS\TSUtility\obj\Debug\TSUtility.pdb

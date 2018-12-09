@@ -1,0 +1,51 @@
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\TSBAL.dll
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\TSBAL.pdb
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\TSDAL.dll
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\TSEntity.dll
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\TSUtility.dll
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\VIKINGV3.dll
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\TSEntity.pdb
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\TSDAL.pdb
+F:\A\25 06 2018\itms\Backup\TSBAL\bin\Debug\TSUtility.pdb
+F:\A\25 06 2018\itms\Backup\TSBAL\obj\Debug\ResolveAssemblyReference.cache
+F:\A\25 06 2018\itms\Backup\TSBAL\obj\Debug\TSBAL.dll
+F:\A\25 06 2018\itms\Backup\TSBAL\obj\Debug\TSBAL.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\TSBAL.dll
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\TSBAL.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\TSDAL.dll
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\TSEntity.dll
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\TSUtility.dll
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\VIKINGV3.dll
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\TSEntity.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\TSDAL.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\TSUtility.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\obj\Debug\ResolveAssemblyReference.cache
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\obj\Debug\TSBAL.dll
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\obj\Debug\TSBAL.pdb
+F:\2008 itms\itms if any errors backup\Backup\TSBAL\bin\Debug\MySql.Data.dll
+F:\New folder\TSBAL\bin\Debug\TSBAL.dll
+F:\New folder\TSBAL\bin\Debug\TSBAL.pdb
+F:\New folder\TSBAL\bin\Debug\TSDAL.dll
+F:\New folder\TSBAL\bin\Debug\TSEntity.dll
+F:\New folder\TSBAL\bin\Debug\TSUtility.dll
+F:\New folder\TSBAL\bin\Debug\VIKINGV3.dll
+F:\New folder\TSBAL\bin\Debug\MySql.Data.dll
+F:\New folder\TSBAL\bin\Debug\TSEntity.pdb
+F:\New folder\TSBAL\bin\Debug\TSUtility.pdb
+F:\New folder\TSBAL\bin\Debug\TSDAL.pdb
+F:\New folder\TSBAL\obj\Debug\ResolveAssemblyReference.cache
+F:\New folder\TSBAL\obj\Debug\TSBAL.dll
+F:\New folder\TSBAL\obj\Debug\TSBAL.pdb
+F:\TS\TSBAL\bin\Debug\TSBAL.dll
+F:\TS\TSBAL\bin\Debug\TSBAL.pdb
+F:\TS\TSBAL\bin\Debug\TSDAL.dll
+F:\TS\TSBAL\bin\Debug\TSEntity.dll
+F:\TS\TSBAL\bin\Debug\TSUtility.dll
+F:\TS\TSBAL\bin\Debug\VIKINGV3.dll
+F:\TS\TSBAL\bin\Debug\MySql.Data.dll
+F:\TS\TSBAL\bin\Debug\TSEntity.pdb
+F:\TS\TSBAL\bin\Debug\TSUtility.pdb
+F:\TS\TSBAL\bin\Debug\TSDAL.pdb
+F:\TS\TSBAL\obj\Debug\ResolveAssemblyReference.cache
+F:\TS\TSBAL\obj\Debug\TSBAL.dll
+F:\TS\TSBAL\obj\Debug\TSBAL.pdb
