@@ -101,6 +101,27 @@ namespace AM_DB_Layer
                 throw;
             }
         }
+
+        public DataTable view_AssetId_for_desktop()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_View_AssetID_for_desktop", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
       
 
         public DataTable view_Cpu_details()
@@ -388,7 +409,6 @@ namespace AM_DB_Layer
             }
         }
 
-
         public int insert_Processor_Name(CPU_Details cu)
         {
 
@@ -412,7 +432,6 @@ namespace AM_DB_Layer
 
 
         }
-
         public int insert_Processor_speed(CPU_Details cu)
         {
             try

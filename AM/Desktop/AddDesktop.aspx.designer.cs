@@ -40,33 +40,6 @@ namespace AM.Desktop {
         protected global::System.Web.UI.WebControls.DropDownList ddl_desktop;
         
         /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
-        /// txt_assetNew_Number control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_assetNew_Number;
-        
-        /// <summary>
-        /// btn_assetNew_Num_Save control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_assetNew_Num_Save;
-        
-        /// <summary>
         /// PanelOs control.
         /// </summary>
         /// <remarks>
@@ -335,23 +308,5 @@ namespace AM.Desktop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddl_processor_speed;
-        
-        /// <summary>
-        /// panel_cpu_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panel_cpu_grid;
-        
-        /// <summary>
-        /// cpuinfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView cpuinfo;
     }
 }

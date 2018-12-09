@@ -293,7 +293,7 @@
             <section class="sidebar">
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">
-                        <center>Asset Management</center>
+                        <center><b style="color:white">Asset Management</b></center>
                     </li>
                    
                     <li class="treeview">
@@ -305,7 +305,7 @@
                         </a>
               <ul class="treeview-menu">
 
-                  <li><a href="Desktop/AddCPU.aspx"><i class="fa fa-circle-o text-red"></i>Add CPU</a></li>
+                  <li><a href="../../Desktop/AddDesktop.aspx"><i class="fa fa-circle-o text-red"></i>Add CPU</a></li>
                   <li class="active"><a href="Desktop/AddMonitor.aspx"><i class="fa fa-circle-o text-red"></i>Add Monitor</a></li>
                   <li class="active"><a href="index2.html"><i class="fa fa-circle-o text-red"></i>Add Keyboard</a></li>
                   <li class="active"><a href="index2.html"><i class="fa fa-circle-o text-red"></i>Add Mouse</a></li>
@@ -509,13 +509,7 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-
-    </form>    
-
-   
-
-
-    <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+         <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3.3.7 -->
     <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
@@ -536,5 +530,11 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
      <script src="../../ahacssjs/js/x0popup.js"></script>
+    </form>    
+
+   
+
+
+   
 </body>
 </html>

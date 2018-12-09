@@ -62,40 +62,7 @@
 
             <section class="content">
 
-                <asp:Panel ID="Panel1" runat="server">
-
-                    <div class="row">
-
-                        <div class="col-md-12">
-
-                            <div class="box box-primary">
-                                <div class="box-body">
-                                    <div class="row" style="padding: 4em 3em 2em 0em;">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <h3 style="margin-top: 4px; margin-left: 60px;">Enter New Asset Number:</h3>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <asp:TextBox ID="txt_assetNew_Number" runat="server" class="form-control select2"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-
-                                                <asp:Button ID="btn_assetNew_Num_Save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_assetNew_Num_Save_Click" />
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </asp:Panel>
+                
 
                 <asp:Panel ID="PanelOs" runat="server" Visible="false">
                     <div class="row" style="margin-top: -25px">
@@ -169,7 +136,6 @@
                     <div class="row">
 
                         <div class="col-md-12">
-
                             <div class="box box-primary">
                                 <div class="box-body">
 
@@ -228,7 +194,7 @@
 
                                             <div class="form-group">
                                                 <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Receive Date</label>
-                                                <asp:TextBox ID="txt_ad_Receive_Date" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;" TextMode="DateTimeLocal"></asp:TextBox>
+                                                <asp:TextBox ID="txt_ad_Receive_Date" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;" TextMode="DateTimeLocal" value="2018-06-12T19:30" min="2018-06-07T00:00" max="2020-06-14T00:00"></asp:TextBox>
                                             </div>
 
                                         </div>
@@ -352,16 +318,7 @@
                                                                     <asp:DropDownList ID="ddl_processorModel" class="form-control select2" runat="server" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:DropDownList>
                                                                     <%--   <asp:TextBox ID="TextBox22" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>--%>
                                                                 </div>
-                                                            </div>
-
-
-                                                            <%--<div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Type</label>
-                                                    <asp:TextBox ID="TextBox26" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
-                                                </div>
-                                            </div>--%>
-
+                                                            </div>                                                           
                                                             <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Speed</label>
@@ -381,163 +338,33 @@
 
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
                 </asp:Panel>
 
-                <asp:Panel ID="panel_cpu_grid" runat="server" Visible="true">
-                    <%--   <div class="row">
+              
 
-                <div class="col-md-12">
-                    <div class="box box-primary">
+            </section>
 
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="dataTables_length" id="example1_length">
-                                            <label style="height: 25px;font-size: 12px;padding: 0 0 0 0; MARGIN-TOP: -10px;margin-top: -10px;">
-                                                Show
-                                    <select name="example1_length" aria-controls="example1" class="form-control input-sm">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select>
-                                                entries</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div id="example1_filter" class="dataTables_filter">
-                                            <label style="height: 25px;font-size: 12px;padding: 0 0 0 0; MARGIN-TOP: -10px;margin-top: -10px;">Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">Rendering engine</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 222px;">Browser</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 198px;">Platform(s)</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 154px;">Engine version</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">CSS grade</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Firefox 1.0</td>
-                                                    <td>Win 98+ / OSX.2+</td>
-                                                    <td>1.7</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="even">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Firefox 1.5</td>
-                                                    <td>Win 98+ / OSX.2+</td>
-                                                    <td>1.8</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Firefox 2.0</td>
-                                                    <td>Win 98+ / OSX.2+</td>
-                                                    <td>1.8</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="even">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Firefox 3.0</td>
-                                                    <td>Win 2k+ / OSX.3+</td>
-                                                    <td>1.9</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Camino 1.0</td>
-                                                    <td>OSX.2+</td>
-                                                    <td>1.8</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="even">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Camino 1.5</td>
-                                                    <td>OSX.3+</td>
-                                                    <td>1.8</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Netscape 7.2</td>
-                                                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                                    <td>1.7</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="even">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Netscape Browser 8</td>
-                                                    <td>Win 98SE+</td>
-                                                    <td>1.7</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="odd">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Netscape Navigator 9</td>
-                                                    <td>Win 98+ / OSX.2+</td>
-                                                    <td>1.8</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr role="row" class="even">
-                                                    <td class="sorting_1">Gecko</td>
-                                                    <td>Mozilla 1.0</td>
-                                                    <td>Win 95+ / OSX.1+</td>
-                                                    <td>1</td>
-                                                    <td>A</td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th rowspan="1" colspan="1">Rendering engine</th>
-                                                    <th rowspan="1" colspan="1">Browser</th>
-                                                    <th rowspan="1" colspan="1">Platform(s)</th>
-                                                    <th rowspan="1" colspan="1">Engine version</th>
-                                                    <th rowspan="1" colspan="1">CSS grade</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                                            <ul class="pagination">
-                                                <li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
-                                                <li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li>
-                                                <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li>
-                                                <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li>
-                                                <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li>
-                                                <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li>
-                                                <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li>
-                                                <li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                </div>
-            </div>--%>
-                    <div class="row">
+        </ContentTemplate>
+
+    </asp:UpdatePanel>
+
+
+</asp:Content>
+
+<%--<complete cpu grid to do--%>
+
+    <%--    //public void _load_cpu_griddata()
+        //{
+        //    DataTable dt = adt.view_Cpu_details();
+        //    cpuinfo.DataSource = dt;
+        //    cpuinfo.DataBind();
+        //}--%>
+
+
+ <%--   <div class="row">
 
                         <div class="col-md-12">
                             <div class="box box-primary">
@@ -611,15 +438,11 @@
                                                         <asp:Label ID="lbl_ad_Cpu_Warranty_Start_Date" runat="server" Text='<%#Eval("Cpu_Warranty_End_Date") %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                             <%--   <asp:TemplateField HeaderText="Host Name">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="lbl_ad_Host_Name" runat="server" Text='<%#Eval("Cpu_Host_Name") %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>--%>
+                                           
                                             </Columns>
                                             <HeaderStyle CssClass="dataTables_info" />
                                             <%-- <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                            <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />--%>
+                                            <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
                                             <EmptyDataTemplate>
                                                 <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
                                             </EmptyDataTemplate>
@@ -634,14 +457,4 @@
 
                             </div>
                         </div>
-                    </div>
-                </asp:Panel>
-
-            </section>
-
-        </ContentTemplate>
-
-    </asp:UpdatePanel>
-
-
-</asp:Content>
+                    </div>--%>

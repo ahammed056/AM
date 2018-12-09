@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AssetManage.Master" />
+    <Content Include="Assets\AddAssets.aspx" />
     <Content Include="bower_components\bootstrap-colorpicker\.bower.json" />
     <Content Include="bower_components\bootstrap-colorpicker\bower.json" />
     <Content Include="bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css.map" />
@@ -751,11 +752,17 @@
     <Content Include="dist\img\user6-128x128.jpg" />
     <Content Include="dist\img\user7-128x128.jpg" />
     <Content Include="dist\img\user8-128x128.jpg" />
+    <Content Include="dist\img\view2.png" />
+    <Content Include="dist\img\view.png" />
+    <Content Include="dist\img\view3.png" />
+    <Content Include="dist\img\view4.png" />
+    <Content Include="dist\img\view5.png" />
     <Content Include="dist\js\adminlte.js" />
     <Content Include="dist\js\adminlte.min.js" />
     <Content Include="dist\js\demo.js" />
     <Content Include="dist\js\pages\dashboard.js" />
     <Content Include="dist\js\pages\dashboard2.js" />
+    <Content Include="dist\view4.png" />
     <Content Include="Masters\amms.aspx" />
     <Content Include="plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="plugins\input-mask\phone-codes\phone-codes.json" />
@@ -7216,6 +7223,13 @@
     </Compile>
     <Compile Include="AssetManage.Master.designer.cs">
       <DependentUpon>AssetManage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Assets\AddAssets.aspx.cs">
+      <DependentUpon>AddAssets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Assets\AddAssets.aspx.designer.cs">
+      <DependentUpon>AddAssets.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

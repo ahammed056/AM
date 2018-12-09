@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AssetManage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AM.Default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+      <script type="text/javascript">
+          function AssetRecinserted() {
+              x0p('<h3>Scucess........!</h3><br>Assert Details are Uploaded<br><br>');
+          }
+          function AssetCodeUsed() {
+              x0p('&nbsp;&nbsp;&nbsp;  <u>Used Asset Code</u>...........  &nbsp;&nbsp;&nbsp;', 'Try a New One');
+          }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="content-header">
@@ -78,20 +85,9 @@
         <!-- /.col -->
       </div>
 
-      <%-- <div class="callout callout-info">
-        <h4>Tip!</h4>
-
-        <p>Add the sidebar-collapse class to the body tag to get this layout. You should combine this option with a
-          fixed layout if you have a long sidebar. Doing that will prevent your page content from getting stretched
-          vertically.</p>
-      </div>--%>
-
-         <!-- Default box -->
-     
-      <!-- /.box -->
    <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Add New Monitor Details</h3>
+          <h3 class="box-title">Add New Asset Code</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -101,51 +97,106 @@
           </div>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+              <div class="container-fluid">
+            <asp:Panel ID="Panel1" runat="server">
 
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!<br />
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!<br />
-            
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!
-            Start creating your amazing application!<br />
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <div class="box box-primary">
+                            <div class="box-body">
+                                <div class="row" style="padding: 4em 3em 2em 0em;">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h3 style="margin-top: 4px; margin-left: 60px;">Enter Asset Number:</h3>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <asp:TextBox ID="txt_assetNew_Number" runat="server" class="form-control select2"></asp:TextBox>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <asp:DropDownList ID="ddl_Asset_type_ad" runat="server" class="form-control select2"></asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+
+                                            <asp:Button ID="btn_assetNew_Num_Save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_assetNew_Num_Save_Click" />
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+            <div class="row">
+                <div class="col-md-12">
+                    <asp:Panel ID="panel_cpu_grid" runat="server" Visible="true">
+                        <div class="col-md-6">
+                            <div class="box box-primary">
+                                <asp:GridView ID="gv_Asset_aa" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Style="margin-left: 10px;">
+                                    <Columns>
+                                        <asp:TemplateField HeaderText="S.No">
+                                            <ItemTemplate>
+                                                <%# Container.DataItemIndex + 1 %>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Asset Code">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbl_em_requested_by" runat="server" Text='<%#Eval("As_AssetCode") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Asset Type">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbl_ad_Product_Number" runat="server" Text='<%#Eval("As_Type") %>'></asp:Label>
+
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Created On">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lbl_ad_PR_Number" runat="server" Text='<%#Eval("As_CreatedTime") %>'></asp:Label>
+
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="">
+                                            <ItemTemplate>
+                                                <asp:ImageButton ID="ibtn_Asset_view_aa" runat="server" ImageUrl="../dist/img/view5.png" Height="20px" Width="25px" ToolTip="View Asset" />
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                    <HeaderStyle CssClass="dataTables_info" />
+                                    <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                    <EmptyDataTemplate>
+                                        <img src="../dist/img/view.png" />
+                                        <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
+                                    </EmptyDataTemplate>
+
+                                </asp:GridView>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box box-primary">
+                            </div>
+                        </div>
+                    </asp:Panel>
+                </div>
+
+            </div>
+
+
+
+        </div>
         </div>
         <!-- /.box-body -->
       

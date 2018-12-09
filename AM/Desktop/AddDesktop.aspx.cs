@@ -23,8 +23,7 @@ using System.Data;
                     _load_Asset_id();
                     _load_processorModel();
                     _load_processorSpeed();
-                    _load_cpu_griddata();
-
+                                 
                 }
             }
         
@@ -37,10 +36,8 @@ using System.Data;
                         try
                         {
                             Label1.Text = "New Asset Code";
-                            p123.Visible = false;
-                            PanMain.Visible = false;
-                            Panel1.Visible = true; PanelOs.Visible = false;                           
-                           
+                            Response.Redirect("~/default.aspx");                     
+                           //C:\Users\ahammed.2921\Documents\GitHub\AM\AM\Assets\AddAssets.aspx
                         }
                         catch (Exception)
                         {
@@ -57,7 +54,8 @@ using System.Data;
                             Label1.Text = "CPU";
                             PanMain.Visible = true;
                             p123.Visible = true;
-                            Panel1.Visible = false; PanelOs.Visible = false;
+                           // Panel1.Visible = false;
+                            PanelOs.Visible = false;
                             if (IsPostBack)
                             {
                                 _load_brand();
@@ -76,7 +74,8 @@ using System.Data;
                             ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Moniview();", true);
                             PanMain.Visible = true;
                             p123.Visible = false;
-                            Panel1.Visible = false; PanelOs.Visible = false;
+                           // Panel1.Visible = false; 
+                            PanelOs.Visible = false;
 
                             Label1.Text = "Monitor";
                         }
@@ -93,7 +92,8 @@ using System.Data;
                             PanMain.Visible = true;
                             p123.Visible = false;
                             Label1.Text = "Mouse";
-                            Panel1.Visible = false; PanelOs.Visible = false;
+                            //Panel1.Visible = false; 
+                            PanelOs.Visible = false;
 
                         }
                         catch (Exception)
@@ -105,7 +105,7 @@ using System.Data;
                     {
                         try
                         {
-                            Panel1.Visible = false;
+                           // Panel1.Visible = false;
                             PanMain.Visible = true;
                             p123.Visible = false; PanelOs.Visible = false;
                             Label1.Text = "KeyBoard";
@@ -121,7 +121,7 @@ using System.Data;
                     {
                         try
                         {
-                            PanMain.Visible = true; Panel1.Visible = false;
+                            PanMain.Visible = true; //Panel1.Visible = false;
                             p123.Visible = false; PanelOs.Visible = false;
                             Label1.Text = "RAM";
                         }
@@ -135,7 +135,7 @@ using System.Data;
                     {
                         try
                         {
-                            PanMain.Visible = true; Panel1.Visible = false;
+                            PanMain.Visible = true;// Panel1.Visible = false;
                             p123.Visible = false; PanelOs.Visible = false;
                             Label1.Text = "HDD";
 
@@ -150,7 +150,7 @@ using System.Data;
                     {
                         try
                         {
-                            PanMain.Visible = false; Panel1.Visible = false;
+                            PanMain.Visible = false;// Panel1.Visible = false;
                             p123.Visible = false;
                             PanelOs.Visible = true;
                             Label1.Text = "Operating System";
@@ -174,7 +174,7 @@ using System.Data;
                             Label1.Text = "New Asset Code";
                             p123.Visible = false;
                             PanMain.Visible = false;
-                            Panel1.Visible = true;
+                          //  Panel1.Visible = true;
                             PanelOs.Visible = false;
                         }
                         catch (Exception)
@@ -193,30 +193,7 @@ using System.Data;
 
             }
 
-            protected void btn_assetNew_Num_Save_Click(object sender, EventArgs e)
-            {
-                if (!string.IsNullOrWhiteSpace(txt_assetNew_Number.Text.ToString()))
-                {
-                    ai.AS_ASSETCODE = txt_assetNew_Number.Text.ToString();
-                    ai.AS_TYPE = "Desktop";
-                    String i = adt.insertAssertid(ai);
-
-                    if (i == "Asset Code already exists")
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "Messagefor();", true);
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "Sucessfor();", true);
-                        txt_assetNew_Number.Text = string.Empty;
-                        _load_Asset_id();
-                    }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
-                }                           
-            }
+       
 
             public void _load_Asset_id()
             {
@@ -236,19 +213,14 @@ using System.Data;
                 ddl_new_Asset_id_os.DataBind();
             }
 
-            public void _load_cpu_griddata()
-            {
-                DataTable dt = adt.view_Cpu_details();
-                cpuinfo.DataSource = dt;
-                cpuinfo.DataBind();              
-            }
+          
 
             public void _load_processorModel()
             {
                 DataTable dt = adt.view_processorModel_name();
                 ddl_processorModel.DataSource = dt;
                 ddl_processorModel.DataTextField = "processor_name";
-                ddl_processorModel.DataValueField = "Pro_id";
+                ddl_processorModel.DataValueField = "processor_id";
                 ddl_processorModel.DataBind();                 
             }
 
@@ -257,13 +229,11 @@ using System.Data;
                 DataTable dt = adt.view_processor_Speed();
                 ddl_processor_speed.DataSource = dt;
                 ddl_processor_speed.DataTextField = "processor_Speed";
-                ddl_processor_speed.DataValueField = "Pro_id";
+                ddl_processor_speed.DataValueField = "processor_speed_id";
                 ddl_processor_speed.DataBind();                 
             }
-
-
             
-
+            
             public void _load_brand()
             {
                 DataTable dt = adt.view_Cpu_brand();
@@ -302,7 +272,15 @@ using System.Data;
                     jcd.CPU_PR_NUMBER= txt_ad_PR_Number.Text.ToString();
                     jcd.CPU_VOUCHER_NUMBER= txt_ad_Voucher_Number.Text.ToString();
                     jcd.CPU_BRAND_MAKE= ddl_ad_barnd.SelectedItem.Value;
-                    jcd.CPU_MODEL= ddl_ad_brandmodel.SelectedItem.Value;
+                    if (ddl_ad_brandmodel.SelectedIndex == -1)
+                    {
+                        ddl_ad_brandmodel.Items.Add(new ListItem("Null", "0"));
+                    }
+                    else
+                    {
+                        jcd.CPU_MODEL = ddl_ad_brandmodel.SelectedItem.Value;
+                    }
+                    
                     jcd.CPU_RECEIVE_DATE= Convert.ToDateTime(txt_ad_Receive_Date.Text);
                     jcd.CPU_WARRANTY_START_DATE= Convert.ToDateTime(txt_ad_Warranty_Start_Date.Text);
                     jcd.CPU_WARRANTY_END_DATE= Convert.ToDateTime(txt_ad_Warranty_End_Date.Text);
@@ -323,7 +301,7 @@ using System.Data;
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);
-                        _load_cpu_griddata();
+                      //  _load_cpu_griddata();
                     }
 
                 }
