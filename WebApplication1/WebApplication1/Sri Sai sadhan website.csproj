@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0D11010A-01AF-412D-9F25-D7D672B09393}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="audiofiles\omsai.ra" />
+    <Content Include="audiofiles\omsai.ram" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="audiofiles\01 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\01 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\01 Track 1.wma" />
+    <Content Include="audiofiles\02 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\02 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\02 Track 2.wma" />
+    <Content Include="audiofiles\03 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\03 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\03 Track 3.wma" />
+    <Content Include="audiofiles\04 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\04 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\04 Track 4.wma" />
+    <Content Include="audiofiles\05 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\05 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\06 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\06 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\06 Track 6.wma" />
+    <Content Include="audiofiles\07 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\07 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\07 Track 7.wma" />
+    <Content Include="audiofiles\08 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\08 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\09 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\09 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\10 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\10 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\11 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\11 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\12 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\12 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\13 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\13 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\14 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\14 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\15 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\15 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\16 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\16 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\17 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\17 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\18 Sree GuruCharithra.wma" />
+    <Content Include="audiofiles\18 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\19 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\20 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\21 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\22 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\23 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\24 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\25 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\26 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\27 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="audiofiles\28 Sri Shirdisai Charitamrutamu.wma" />
+    <Content Include="Event.aspx" />
+    <Content Include="images\20.jpg" />
+    <Content Include="images\2010sriramanavami.jpg" />
+    <Content Include="images\2012sriramanavami.jpg" />
+    <Content Include="images\6.jpg" />
+    <Content Include="images\abhishakam.jpg" />
+    <Content Include="images\anniversary2011.jpg" />
+    <Content Include="images\ayyappabhajan2010.jpg" />
+    <Content Include="images\bgm.jpg" />
+    <Content Include="images\ch1.jpg" />
+    <Content Include="images\ch2.jpg" />
+    <Content Include="images\chm.jpg" />
+    <Content Include="images\gudi.jpg" />
+    <Content Include="images\gurupoornima2011.jpg" />
+    <Content Include="images\header.jpg" />
+    <Content Include="images\home.jpg" />
+    <Content Include="images\img6.jpg" />
+    <Content Include="images\jee2.jpg" />
+    <Content Include="images\karthikapoornima2010.jpg" />
+    <Content Include="images\max.jpg" />
+    <Content Include="images\mm1.jpg" />
+    <Content Include="images\mm10.jpg" />
+    <Content Include="images\mm11.jpg" />
+    <Content Include="images\mm12.jpg" />
+    <Content Include="images\mm13.jpg" />
+    <Content Include="images\mm14.jpg" />
+    <Content Include="images\mm15.jpg" />
+    <Content Include="images\mm16.jpg" />
+    <Content Include="images\mm17.jpg" />
+    <Content Include="images\mm18.jpg" />
+    <Content Include="images\mm19.jpg" />
+    <Content Include="images\mm2.jpg" />
+    <Content Include="images\mm20.jpg" />
+    <Content Include="images\mm21.jpg" />
+    <Content Include="images\mm22.jpg" />
+    <Content Include="images\mm23.jpg" />
+    <Content Include="images\mm25.jpg" />
+    <Content Include="images\mm26.jpg" />
+    <Content Include="images\mm27.jpg" />
+    <Content Include="images\mm28.jpg" />
+    <Content Include="images\mm3.jpg" />
+    <Content Include="images\mm31.jpg" />
+    <Content Include="images\mm32.jpg" />
+    <Content Include="images\mm33.jpg" />
+    <Content Include="images\mm34.jpg" />
+    <Content Include="images\mm35.jpg" />
+    <Content Include="images\mm36.jpg" />
+    <Content Include="images\mm37.jpg" />
+    <Content Include="images\mm38.jpg" />
+    <Content Include="images\mm39.jpg" />
+    <Content Include="images\mm4.jpg" />
+    <Content Include="images\mm41.jpg" />
+    <Content Include="images\mm5.jpg" />
+    <Content Include="images\mm6.jpg" />
+    <Content Include="images\mm7.jpg" />
+    <Content Include="images\mm8.jpg" />
+    <Content Include="images\mm9.jpg" />
+    <Content Include="images\mmb.jpg" />
+    <Content Include="images\mmb1.jpg" />
+    <Content Include="images\mmb2.jpg" />
+    <Content Include="images\MMD1.png" />
+    <Content Include="images\MMD3.jpg" />
+    <Content Include="images\mmg.jpg" />
+    <Content Include="images\mmgh.jpg" />
+    <Content Include="images\mmh.jpg" />
+    <Content Include="images\mmh1.jpg" />
+    <Content Include="images\mmh10.jpg" />
+    <Content Include="images\mmh11.jpg" />
+    <Content Include="images\mmh12.jpg" />
+    <Content Include="images\mmh14.png" />
+    <Content Include="images\mmh15.jpg" />
+    <Content Include="images\mmh16.jpg" />
+    <Content Include="images\mmh3.jpg" />
+    <Content Include="images\mmh4.jpg" />
+    <Content Include="images\mmh8.jpg" />
+    <Content Include="images\mmh9.jpg" />
+    <Content Include="images\mmu.jpg" />
+    <Content Include="images\namasapthaham2011.jpg" />
+    <Content Include="images\puja.jpg" />
+    <Content Include="images\rajendraprasad.jpg" />
+    <Content Include="images\sai.jpg" />
+    <Content Include="images\saibaba.jpg" />
+    <Content Include="images\said baba.jpg" />
+    <Content Include="images\saivisvachaitanya.jpg" />
+    <Content Include="images\shiridi-sai-abhishekam.jpg" />
+    <Content Include="images\sriramanavami2011.jpg" />
+    <Content Include="images\ss1.jpg" />
+    <Content Include="images\ss10.jpg" />
+    <Content Include="images\ss11.jpg" />
+    <Content Include="images\ss12.jpg" />
+    <Content Include="images\ss13.jpg" />
+    <Content Include="images\ss14.jpg" />
+    <Content Include="images\ss2.jpg" />
+    <Content Include="images\ss3.jpg" />
+    <Content Include="images\ss4.jpg" />
+    <Content Include="images\ss5.jpg" />
+    <Content Include="images\ss6.jpg" />
+    <Content Include="images\ss7.jpg" />
+    <Content Include="images\ss8.jpg" />
+    <Content Include="images\ss9.jpg" />
+    <Content Include="images\vijayadasami2010.jpg" />
+    <Content Include="images\vitalananda.jpg" />
+    <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.woff" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.eot" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.eot" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="about.html" />
+    <Content Include="contact.html" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\fontawesome-all.css" />
+    <Content Include="css\jquery.desoslide.css" />
+    <Content Include="css\prettyPhoto.css" />
+    <Content Include="css\style.css" />
+    <Content Include="images\about.jpg" />
+    <Content Include="images\mm.jpg" />
+    <Content Include="images\map.jpg" />
+    <Content Include="images\middle.jpg" />
+    <Content Include="images\move-top.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="images\t1.jpg" />
+    <Content Include="images\t2.jpg" />
+    <Content Include="images\t3.jpg" />
+    <Content Include="images\t4.jpg" />
+    <Content Include="images\te1.jpg" />
+    <Content Include="images\te2.jpg" />
+    <Content Include="images\te3.jpg" />
+    <Content Include="index.html" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\district.js" />
+    <Content Include="js\easing.js" />
+    <Content Include="js\jquery-1.7.2.js" />
+    <Content Include="js\jquery-2.2.3.min.js" />
+    <Content Include="js\jquery.countup.js" />
+    <Content Include="js\jquery.desoslide.js" />
+    <Content Include="js\jquery.flexslider.js" />
+    <Content Include="js\jquery.prettyPhoto.js" />
+    <Content Include="js\jquery.quicksand.js" />
+    <Content Include="js\jquery.waypoints.min.js" />
+    <Content Include="js\move-top.js" />
+    <Content Include="js\script.js" />
+    <Content Include="js\SmoothScroll.min.js" />
+    <Content Include="Gallery.html" />
+    <Content Include="SCHEDULE.html" />
+    <Content Include="w3layouts-License.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Event.aspx.cs">
+      <DependentUpon>Event.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Event.aspx.designer.cs">
+      <DependentUpon>Event.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="videoevents\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60074</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60074/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
