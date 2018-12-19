@@ -182,7 +182,7 @@ namespace AM_DB_Layer
 
         #endregion
 
-
+        
         #region Masters
 
         public String insert_AssetType(asset_info ai)
