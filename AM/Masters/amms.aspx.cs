@@ -39,7 +39,7 @@ namespace AM.Masters
                     CPU_Details cd = new CPU_Details();
                     cd.CPU_BRAND_MAKE = txt_Brand_Name_amms.Text.ToString();
                     cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.insert_brand_Name(cd);
+                    String i = adt.insert_brand_Name_cpu(cd);
                     if (i == "Brand Name Inserted Sucessfully")
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
@@ -66,7 +66,7 @@ namespace AM.Masters
                     cd.Cpu_brand_id = Convert.ToInt32(ViewState["bm_brand_id"]);
                     cd.CPU_BRAND_MAKE = txt_Brand_Name_amms.Text.ToString();
                     //  cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.Upadte_brand_Name(cd);
+                    String i = adt.Upadte_brand_Name_cpu(cd);
                     if (i == "Select 'Brand Name Has Changed'")
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
@@ -106,7 +106,7 @@ namespace AM.Masters
                     cd.Cpu_brand_id = Convert.ToInt32(ddl_amms_brand.SelectedItem.Value);
                     cd.CPU_BRAND_MAKE = txt_Brand_Model.Text.ToString();
                     cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.insert_barnd_Model(cd);
+                    String i = adt.insert_barnd_Model_cpu(cd);
                     if (i == "Model Name Inserted Sucessfully")
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
@@ -202,14 +202,14 @@ namespace AM.Masters
                     ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
                 }
             }
-            if(btn_Asset_type_save_amms.Text == "Update")
+            if (btn_Asset_type_save_amms.Text == "Update")
             {
                 if (!string.IsNullOrWhiteSpace(txt_Asset_type_amms.Text.ToString()))
                 {
                     asset_info ais = new asset_info();
                     ais.Asset_id = Convert.ToInt32(lbl_id.Text);
                     ais.AS_TYPE = txt_Asset_type_amms.Text.TrimEnd(' ');
-                    
+
 
                     String i = adt.Upadte_AssetType(ais);
                     if (i == "1")
@@ -310,8 +310,8 @@ namespace AM.Masters
             DataTable dt = ad.view_Cpu_brand_model_edit_dispaly(cds);
             if (dt.Rows.Count > 0)
             {              
-                ddl_amms_brand.SelectedItem.Value = dt.Rows[0]["bm_brand_id"].ToString();
-                txt_Brand_Model.Text = dt.Rows[0]["bm_model"].ToString();
+                ddl_amms_brand.SelectedItem.Value = dt.Rows[0]["bbm_brand_id"].ToString();
+                txt_Brand_Model.Text = dt.Rows[0]["bbm_model"].ToString();
             }
             else
             {
@@ -403,6 +403,72 @@ namespace AM.Masters
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
             }
+
+        }
+
+        protected void btn_Monitor_asm_Click(object sender, EventArgs e)
+        {
+            if (btn_Monitor_asm.Text == "Save")
+            {
+
+                if (!string.IsNullOrWhiteSpace(txt_Monitor_name_asm.Text.ToString()))
+                {
+                    Monitor_Details md = new Monitor_Details();
+                    md.MO_MAKE = txt_Monitor_name_asm.Text.ToString();
+                    md.MO_CREATEDBY = "ahammed";
+                    String i = adt.insert_brand_Name_monitor(md);
+                    if (i == "Brand Name Inserted Sucessfully")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        txt_Monitor_name_asm.Text = string.Empty;
+                        //  _load_brand();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        // _load_brand();
+                        txt_Monitor_name_asm.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                }
+            }
+            if (btn_Monitor_asm.Text == "Update")
+            {
+                if (!string.IsNullOrWhiteSpace(txt_Asset_type_amms.Text.ToString()))
+                {
+                    asset_info ais = new asset_info();
+                    ais.Asset_id = Convert.ToInt32(lbl_id.Text);
+                    ais.AS_TYPE = txt_Asset_type_amms.Text.TrimEnd(' ');
+
+
+                    String i = adt.Upadte_AssetType(ais);
+                    if (i == "1")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        txt_Asset_type_amms.Text = string.Empty;
+                        btn_Asset_type_save_amms.Text = "Save";
+                        _load_astype_grid();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        btn_Asset_type_save_amms.Text = "Save";
+                        txt_Asset_type_amms.Text = string.Empty;
+                        _load_astype_grid();
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                }
+            }
+        }
+
+        protected void btn_Monitor_Model_asm_Click(object sender, EventArgs e)
+        {
 
         }
     }

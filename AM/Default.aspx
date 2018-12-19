@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AssetManage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AM.Default" %>
+﻿<%@ Page Title="KPCL " Language="C#" MasterPageFile="~/AssetManage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="AM.Default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
       <script type="text/javascript">
           function AssetRecinserted() {

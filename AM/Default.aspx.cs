@@ -8,7 +8,6 @@ using AM_EntityLayer;
 using AM_DB_Layer;
 using System.Data;
        
-
 namespace AM
 {
     public partial class Default : System.Web.UI.Page
@@ -21,6 +20,7 @@ namespace AM
             {
                 _load_astype_ddl();
                 _load_assets_grid();
+                Page.Title = "Ahammed";
             }
         }
         public void _load_assets_grid()
