@@ -265,6 +265,15 @@ namespace AM.Masters {
         protected global::System.Web.UI.WebControls.Button btn_Monitor_asm;
         
         /// <summary>
+        /// gv_Monitor_barnd_asm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_Monitor_barnd_asm;
+        
+        /// <summary>
         /// UpdatePanelm5 control.
         /// </summary>
         /// <remarks>
@@ -299,5 +308,14 @@ namespace AM.Masters {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_Monitor_Model_asm;
+        
+        /// <summary>
+        /// gv_Monitor_barnd_model_asm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_Monitor_barnd_model_asm;
     }
 }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using AM_EntityLayer;
+using AM_DB_Layer;
 
 
 namespace AM_DB_Layer
@@ -14,6 +15,10 @@ namespace AM_DB_Layer
     
     public class AM_DB_Tranactions
     {
+
+
+
+
         SqlConnection amon = new SqlConnection(ConfigurationManager.ConnectionStrings["am"].ConnectionString.ToString());
 
         #region cpu area
@@ -22,6 +27,8 @@ namespace AM_DB_Layer
 
             try
             {
+               
+              //  amon = new SqlConnection(amsql.getcon());
                 SqlCommand cmd = new SqlCommand("pro_insert_Asset_id", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@As_AssetCode", ai.AS_ASSETCODE));
@@ -181,7 +188,6 @@ namespace AM_DB_Layer
 
 
         #endregion
-
         
         #region Masters
 
@@ -547,23 +553,43 @@ namespace AM_DB_Layer
         //        amon.Close();
         //    }
         //}
-        //public DataTable view_Cpu_brand()
-        //{
-        //    try
-        //    {
-        //        SqlCommand cmd = new SqlCommand("select bm_id,bm_brand from tbl_Brand_Master", amon);
-        //        cmd.CommandType = CommandType.Text;
-        //        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //        DataTable dt = new DataTable();
-        //        da.Fill(dt);
-        //        return dt;
-        //    }
-        //    catch (Exception)
-        //    {
 
-        //        throw;
-        //    }
-        //}
+      //  [pro_view_Monitor_brand_model]
+        public DataTable view_Monitor_brand()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_view_Monitor_brand", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public DataTable view_Monitor_brand_model()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_view_Monitor_brand_model", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         //public DataTable view_Cpu_brand_edit_dispaly(CPU_Details cu)
         //{
         //    try
@@ -583,6 +609,7 @@ namespace AM_DB_Layer
         //    }
         //}
         #endregion
+
 
 
     }

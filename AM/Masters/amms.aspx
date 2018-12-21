@@ -77,25 +77,17 @@
                                                                     <asp:ImageButton ID="ibtn_asttype_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" OnClick="ibtn_asttype_asm_Click" />
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
-
                                                         </Columns>
-
                                                         <HeaderStyle CssClass="dataTables_info" />
                                                         <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
                                                         <PagerStyle Height="8px" HorizontalAlign="Center" />
-
                                                         <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Left" VerticalAlign="Middle" />
                                                         <EmptyDataTemplate>
                                                             <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
                                                         </EmptyDataTemplate>
-
                                                     </asp:GridView>
-
                                                 </div>
                                             </div>
-
-
-
                                         </div>
                                     </div>
                                 </ContentTemplate>
@@ -499,10 +491,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                  <%--  <div class="col-sm-6">
+                                    <div class="col-sm-6">
                                         <div class="box box-primary">
 
-                                            <asp:GridView ID="gv_Monitor_asm" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_processor_asm_PageIndexChanging" AllowPaging="true">
+                                            <asp:GridView ID="gv_Monitor_barnd_asm" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_processor_asm_PageIndexChanging" AllowPaging="true">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="S.No">
                                                         <ItemTemplate>
@@ -511,13 +503,13 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Model Number">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="lbl_brand_model_asm" runat="server" Text='<%#Eval("processor_Name") %>'></asp:Label>
-                                                            <asp:HiddenField ID="hf_brand_model_name" runat="server" Value='<%#Eval("processor_Name") %>' />
+                                                            <asp:Label ID="lbl_moniter_brand_asm" runat="server" Text='<%#Eval("bm_brand") %>'></asp:Label>
+                                                            <asp:HiddenField ID="hf_moniter_brand_asm" runat="server" Value='<%#Eval("bm_brand") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ibtn_brand_model_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" />
+                                                            <asp:ImageButton ID="ibtn_moniter_brand_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
@@ -534,7 +526,7 @@
 
                                         </div>
 
-                                    </div>--%>
+                                    </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
 
@@ -584,10 +576,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                  <%--  <div class="col-sm-6">
+                                    <div class="col-sm-6">
                                         <div class="box box-primary">
 
-                                            <asp:GridView ID="gv_processor_speed_asm" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_cpu_brand_Model_info_PageIndexChanging" AllowPaging="true">
+                                            <asp:GridView ID="gv_Monitor_barnd_model_asm" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_Monitor_barnd_model_asm_PageIndexChanging" AllowPaging="true">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="S.No">
                                                         <ItemTemplate>
@@ -596,13 +588,13 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Model Number">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="lbl_brand_model_asm" runat="server" Text='<%#Eval("processor_speed") %>'></asp:Label>
-                                                            <asp:HiddenField ID="hf_brand_model_name" runat="server" Value='<%#Eval("processor_speed") %>' />
+                                                            <asp:Label ID="lbl_moniter_brand_model_asm" runat="server" Text='<%#Eval("bbm_brand") %>'></asp:Label>
+                                                            <asp:HiddenField ID="hf_moniter_brand_model_name" runat="server" Value='<%#Eval("bbm_brand") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="">
                                                         <ItemTemplate>
-                                                            <asp:ImageButton ID="ibtn_brand_model_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" />
+                                                            <asp:ImageButton ID="ibtn_moniter_brand_model_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
@@ -619,7 +611,7 @@
 
                                         </div>
 
-                                    </div>--%>
+                                    </div>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>

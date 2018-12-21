@@ -23,7 +23,10 @@ namespace AM.Masters
                 _load_brand_model_grid();
                 _load_processorName_grid();
                 _load_processorName_ddl();
-                _load_processor_speed_grid();        
+                _load_processor_speed_grid();
+                _load_Monitor_brand();
+                _ddl_load_Monitor_brand();
+                _load_Monitor_brand_Model();
             }
         }
 
@@ -139,7 +142,7 @@ namespace AM.Masters
             gv_cpu_brand_Model_info.DataSource = dt;
             gv_cpu_brand_Model_info.DataBind();
         }
-       // gv_processor_asm
+     
         public void _load_processorName_grid()
         {
             DataTable dt = adt.view_processorModel_name();
@@ -170,6 +173,28 @@ namespace AM.Masters
             gv_view_Assettype_grid.DataBind();
         }
 
+        public void _load_Monitor_brand()
+        {
+            DataTable dt = adt.view_Monitor_brand();
+            gv_Monitor_barnd_asm.DataSource = dt;
+            gv_Monitor_barnd_asm.DataBind();
+        }
+        public void _ddl_load_Monitor_brand()
+        {
+            DataTable dt = adt.view_Monitor_brand();
+            ddl_MonitorModel_asm.DataSource = dt;
+            ddl_MonitorModel_asm.DataTextField = "bm_brand";
+            ddl_MonitorModel_asm.DataValueField = "bm_id";
+            ddl_MonitorModel_asm.DataBind();
+        }
+
+
+        public void _load_Monitor_brand_Model()
+        {
+            DataTable dt = adt.view_Monitor_brand_model();
+            gv_Monitor_barnd_model_asm.DataSource = dt;
+            gv_Monitor_barnd_model_asm.DataBind();
+        }
 
 
         protected void btn_Asset_type_save_amms_Click(object sender, EventArgs e)
@@ -421,12 +446,12 @@ namespace AM.Masters
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
                         txt_Monitor_name_asm.Text = string.Empty;
-                        //  _load_brand();
+                          _load_Monitor_brand();
                     }
                     else
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        // _load_brand();
+                        _load_Monitor_brand();
                         txt_Monitor_name_asm.Text = string.Empty;
                     }
                 }
@@ -468,6 +493,11 @@ namespace AM.Masters
         }
 
         protected void btn_Monitor_Model_asm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void gv_Monitor_barnd_model_asm_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
         }
