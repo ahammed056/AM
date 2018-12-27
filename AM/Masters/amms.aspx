@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AssetManage.Master" AutoEventWireup="true" CodeBehind="amms.aspx.cs" Inherits="AM.Masters.amms" %>
+﻿<%@ Page Title="Asset Master" Language="C#" MasterPageFile="~/AssetManage.Master" AutoEventWireup="true" CodeBehind="amms.aspx.cs" Inherits="AM.Masters.amms" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -288,8 +288,8 @@
 
                     </div>
                 </div>
-                <div class="box-body">
-                    <div class="row">
+                <div class="box-body" >
+                    <div class="row" style="background-image:url(../dist/img/CPU-Intel-icon.png);background-repeat: no-repeat;    background-size: 412px 259px;" >
 
                         <div class="col-md-12">
                             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
@@ -301,9 +301,10 @@
                                                     <h3 class="box-title">Add Processor</h3>
                                                     <div class="row" style="padding: 0em 3em 2em 0em;">
 
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Processor Name :</h5>
+                                                        <div class="col-md-4" style="background-image:url(../dist/img/CPU-Intel-icon.png)">
+                                                            <div class="form-group" >
+                                                                
+                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Name :</h5>
 
                                                             </div>
                                                         </div>
@@ -314,7 +315,7 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
-                                                                <asp:Button ID="btn_processor_asm" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_processor_asm_Click" />
+                                                                <asp:Button ID="btn_processor_asm" runat="server" Width="56px" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_processor_asm_Click" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -398,7 +399,7 @@
 
                                                         <div class="col-md-2">
                                                             <div class="form-group" style="margin-top: 50px;">
-                                                                <asp:Button ID="btn_processor_speed_asm" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_processor_speed_asm_Click" />
+                                                                <asp:Button ID="btn_processor_speed_asm" runat="server"  Width="56px" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_processor_speed_asm_Click" />
                                                             </div>
                                                         </div>
 
@@ -483,7 +484,7 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
-                                                                <asp:Button ID="btn_Monitor_asm" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_Monitor_asm_Click"   />
+                                                                <asp:Button ID="btn_Monitor_asm" runat="server" Text="Save" Width="56px" class="btn btn-block btn-info btn-sm" OnClick="btn_Monitor_asm_Click"   />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -494,7 +495,7 @@
                                     <div class="col-sm-6">
                                         <div class="box box-primary">
 
-                                            <asp:GridView ID="gv_Monitor_barnd_asm" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_processor_asm_PageIndexChanging" AllowPaging="true">
+                                            <asp:GridView ID="gv_Monitor_barnd_asm" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_Monitor_barnd_asm_PageIndexChanging" AllowPaging="true">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="S.No">
                                                         <ItemTemplate>
@@ -567,7 +568,7 @@
 
                                                         <div class="col-md-2">
                                                             <div class="form-group" style="margin-top: 50px;">
-                                                                <asp:Button ID="btn_Monitor_Model_asm" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_Monitor_Model_asm_Click" />
+                                                                <asp:Button ID="btn_Monitor_Model_asm" runat="server" Width="56px" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_Monitor_Model_asm_Click" />
                                                             </div>
                                                         </div>
 
@@ -588,8 +589,8 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Model Number">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="lbl_moniter_brand_model_asm" runat="server" Text='<%#Eval("bbm_brand") %>'></asp:Label>
-                                                            <asp:HiddenField ID="hf_moniter_brand_model_name" runat="server" Value='<%#Eval("bbm_brand") %>' />
+                                                            <asp:Label ID="lbl_moniter_brand_model_asm" runat="server" Text='<%#Eval("bbm_model") %>'></asp:Label>
+                                                            <asp:HiddenField ID="hf_moniter_brand_model_name" runat="server" Value='<%#Eval("bbm_model") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="">

@@ -26,7 +26,8 @@ namespace AM.Masters
                 _load_processor_speed_grid();
                 _load_Monitor_brand();
                 _ddl_load_Monitor_brand();
-                _load_Monitor_brand_Model();
+                _load_Monitor_brand_Model_grid();
+                _load_Monitor_brand_Model_ddl();
             }
         }
 
@@ -58,7 +59,8 @@ namespace AM.Masters
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
                 }
             }
             else if (btn_Brand_Save.Text == "Update")
@@ -85,7 +87,8 @@ namespace AM.Masters
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
                 }
             }
 
@@ -189,12 +192,22 @@ namespace AM.Masters
         }
 
 
-        public void _load_Monitor_brand_Model()
+        public void _load_Monitor_brand_Model_grid()
         {
             DataTable dt = adt.view_Monitor_brand_model();
             gv_Monitor_barnd_model_asm.DataSource = dt;
             gv_Monitor_barnd_model_asm.DataBind();
         }
+
+        public void _load_Monitor_brand_Model_ddl()
+        {
+            DataTable dt = adt.view_Monitor_brand();
+           ddl_MonitorModel_asm.DataSource = dt;
+           ddl_MonitorModel_asm.DataTextField = "bm_brand";
+           ddl_MonitorModel_asm.DataValueField = "BM_id";
+          ddl_MonitorModel_asm.DataBind();
+        }
+
 
 
         protected void btn_Asset_type_save_amms_Click(object sender, EventArgs e)
@@ -224,7 +237,8 @@ namespace AM.Masters
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
                 }
             }
             if (btn_Asset_type_save_amms.Text == "Update")
@@ -254,7 +268,8 @@ namespace AM.Masters
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
                 }
             }
         }
@@ -457,47 +472,111 @@ namespace AM.Masters
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
                 }
             }
             if (btn_Monitor_asm.Text == "Update")
             {
-                if (!string.IsNullOrWhiteSpace(txt_Asset_type_amms.Text.ToString()))
-                {
-                    asset_info ais = new asset_info();
-                    ais.Asset_id = Convert.ToInt32(lbl_id.Text);
-                    ais.AS_TYPE = txt_Asset_type_amms.Text.TrimEnd(' ');
+                //if (!string.IsNullOrWhiteSpace(txt_Asset_type_amms.Text.ToString()))
+                //{
+                //    asset_info ais = new asset_info();
+                //    ais.Asset_id = Convert.ToInt32(lbl_id.Text);
+                //    ais.AS_TYPE = txt_Asset_type_amms.Text.TrimEnd(' ');
 
 
-                    String i = adt.Upadte_AssetType(ais);
-                    if (i == "1")
-                    {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        txt_Asset_type_amms.Text = string.Empty;
-                        btn_Asset_type_save_amms.Text = "Save";
-                        _load_astype_grid();
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        btn_Asset_type_save_amms.Text = "Save";
-                        txt_Asset_type_amms.Text = string.Empty;
-                        _load_astype_grid();
-                    }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
-                }
+                //    String i = adt.Upadte_AssetType(ais);
+                //    if (i == "1")
+                //    {
+                //        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                //        txt_Asset_type_amms.Text = string.Empty;
+                //        btn_Asset_type_save_amms.Text = "Save";
+                //        _load_astype_grid();
+                //    }
+                //    else
+                //    {
+                //        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                //        btn_Asset_type_save_amms.Text = "Save";
+                //        txt_Asset_type_amms.Text = string.Empty;
+                //        _load_astype_grid();
+                //    }
+                //}
+                //else
+                //{
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                //}
             }
         }
 
         protected void btn_Monitor_Model_asm_Click(object sender, EventArgs e)
         {
+            if (btn_Monitor_Model_asm.Text == "Save")
+            {
 
+                if (!string.IsNullOrWhiteSpace(txt_Monitor_Model_asm.Text.ToString()))
+                {
+                    Monitor_Details md = new Monitor_Details();
+                    md.MO_ID = Convert.ToInt32(ddl_MonitorModel_asm.SelectedValue);
+                    md.MO_MAKE = txt_Monitor_Model_asm.Text.ToString();
+                    md.MO_CREATEDBY = "ahammed";
+                    String i = adt.insert_brand_Model_monitor(md);
+                    if (i == "Brand Name Inserted Sucessfully")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        txt_Monitor_Model_asm.Text = string.Empty;
+                        _load_Monitor_brand_Model_grid();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        _load_Monitor_brand_Model_grid();
+                        txt_Monitor_Model_asm.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
+                }
+            }
+            if (btn_Monitor_asm.Text == "Update")
+            {
+                //if (!string.IsNullOrWhiteSpace(txt_Asset_type_amms.Text.ToString()))
+                //{
+                //    asset_info ais = new asset_info();
+                //    ais.Asset_id = Convert.ToInt32(lbl_id.Text);
+                //    ais.AS_TYPE = txt_Asset_type_amms.Text.TrimEnd(' ');
+
+
+                //    String i = adt.Upadte_AssetType(ais);
+                //    if (i == "1")
+                //    {
+                //        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                //        txt_Asset_type_amms.Text = string.Empty;
+                //        btn_Asset_type_save_amms.Text = "Save";
+                //        _load_astype_grid();
+                //    }
+                //    else
+                //    {
+                //        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                //        btn_Asset_type_save_amms.Text = "Save";
+                //        txt_Asset_type_amms.Text = string.Empty;
+                //        _load_astype_grid();
+                //    }
+                //}
+                //else
+                //{
+                //    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+                //}
+            }
         }
 
         protected void gv_Monitor_barnd_model_asm_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gv_Monitor_barnd_asm_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
         }

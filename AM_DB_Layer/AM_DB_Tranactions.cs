@@ -8,18 +8,30 @@ using System.Data.SqlClient;
 using System.Configuration;
 using AM_EntityLayer;
 using AM_DB_Layer;
+using System.IO;
 
 
 namespace AM_DB_Layer
 {
     
     public class AM_DB_Tranactions
-    {
-
-
-
-
-        SqlConnection amon = new SqlConnection(ConfigurationManager.ConnectionStrings["am"].ConnectionString.ToString());
+    {      
+       SqlConnection amon = new SqlConnection(ConfigurationManager.ConnectionStrings["am"].ConnectionString.ToString());
+       // public static string conect = getcon();
+       ////SqlConnection amon = new SqlConnection(conect);
+       // public static string getcon()
+       // {
+       //     string connectee = string.Empty;
+       //     string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ahammed.2921\Documents\GitHub\AM\AM\database.txt");
+       //    // string[] le = File.ReadLines(-Path)
+       //     foreach (string line in lines)
+       //     {
+       //         string[] linesa = lines;
+       //         connectee = linesa[0].ToString();
+                
+       //     }
+       //     return connectee;
+       // }
 
         #region cpu area
         public String insertAssertid(asset_info ai)
@@ -346,8 +358,6 @@ namespace AM_DB_Layer
                 throw;
             }
         }
-
-       
         public String insert_barnd_Model_cpu(CPU_Details cu)
         {
 
@@ -406,8 +416,7 @@ namespace AM_DB_Layer
             {
                 throw;
             }
-        }
-       
+        }     
         public DataTable view_Cpu_model(string bm_model)
         {
             try
@@ -426,6 +435,8 @@ namespace AM_DB_Layer
                 throw;
             }
         }
+
+
 
         public int insert_Processor_Name(CPU_Details cu)
         {
@@ -473,7 +484,6 @@ namespace AM_DB_Layer
 
 
         }
-
         public DataTable view_processorModel_name()
         {
             try
@@ -533,6 +543,30 @@ namespace AM_DB_Layer
                 amon.Close();
             }
         }
+
+
+        public String insert_brand_Model_monitor(Monitor_Details mu)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_insert_Brand_Model_Master_monitor", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@bm_brand_id", mu.MO_ID));
+                cmd.Parameters.Add(new SqlParameter("@bm_model", mu.MO_MAKE));
+                cmd.Parameters.Add(new SqlParameter("@cdby", mu.MO_CREATEDBY));
+                amon.Open();
+                return cmd.ExecuteScalar().ToString();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                amon.Close();
+            }
+        }
+
         //public String Upadte_brand_Name_cpu(CPU_Details cu)
         //{
         //    try

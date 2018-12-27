@@ -683,6 +683,7 @@
     <Content Include="build\less\users-list.less" />
     <Content Include="build\less\variables.less" />
     <Content Include="build\scss\_variables.scss" />
+    <Content Include="database.txt" />
     <Content Include="Desktop\AddDesktop.aspx" />
     <Content Include="Desktop\AddMonitor.aspx" />
     <Content Include="dist\css\AdminLTE.css" />
@@ -728,6 +729,7 @@
     <Content Include="dist\img\avatar3.png" />
     <Content Include="dist\img\avatar5.png" />
     <Content Include="dist\img\Cancelkp.png" />
+    <Content Include="dist\img\CPU-Intel-icon.png" />
     <Content Include="dist\img\credit\american-express.png" />
     <Content Include="dist\img\credit\cirrus.png" />
     <Content Include="dist\img\credit\logo.jpg" />
@@ -771,6 +773,7 @@
     <Content Include="ahacssjs\js\x0popup.js" />
     <Content Include="dist\css\adminlte.css.map" />
     <Content Include="dist\css\adminlte.min.css.map" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -7260,6 +7263,13 @@
       <DependentUpon>amms.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
