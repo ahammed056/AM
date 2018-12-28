@@ -17,7 +17,8 @@ namespace AM.Masters
         {
             if(!IsPostBack)
             {
-                _load_brand();
+                _load_Asset_brand();
+                _load_brand_ddl();
                 _load_brand_grid();
                 _load_astype_grid();
                 _load_brand_model_grid();
@@ -30,72 +31,16 @@ namespace AM.Masters
                 _load_Monitor_brand_Model_ddl();
             }
         }
-
-        protected void btn_Brand_Save_Click(object sender, EventArgs e)
-        {
-
-
-            if (btn_Brand_Save.Text == "Save")
-            {
-
-                if (!string.IsNullOrWhiteSpace(txt_Brand_Name_amms.Text.ToString()))
-                {
-                    CPU_Details cd = new CPU_Details();
-                    cd.CPU_BRAND_MAKE = txt_Brand_Name_amms.Text.ToString();
-                    cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.insert_brand_Name_cpu(cd);
-                    if (i == "Brand Name Inserted Sucessfully")
-                    {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        txt_Brand_Name_amms.Text = string.Empty;
-                        _load_brand();
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        _load_brand();
-                        txt_Brand_Name_amms.Text = string.Empty;
-                    }
-                }
-                else
-                {
-                    string textmess = "Please Enter Text";
-                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
-                }
-            }
-            else if (btn_Brand_Save.Text == "Update")
-            {
-                if (!string.IsNullOrWhiteSpace(txt_Brand_Name_amms.Text.ToString()))
-                {
-                    CPU_Details cd = new CPU_Details();
-                    cd.Cpu_brand_id = Convert.ToInt32(ViewState["bm_brand_id"]);
-                    cd.CPU_BRAND_MAKE = txt_Brand_Name_amms.Text.ToString();
-                    //  cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.Upadte_brand_Name_cpu(cd);
-                    if (i == "Select 'Brand Name Has Changed'")
-                    {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        txt_Brand_Name_amms.Text = string.Empty;
-                        _load_brand();
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('No chages has Done');</script>", false);
-                        _load_brand();
-                        txt_Brand_Name_amms.Text = string.Empty;
-                    }
-                }
-                else
-                {
-                    string textmess = "Please Enter Text";
-                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
-                }
-            }
-
-
+      
+        public void _load_Asset_brand()
+        {      
+            DataTable dt = adt.view_Asset_type_grid();
+            ddl_brands_asm.DataSource = dt;
+            ddl_brands_asm.DataTextField = "type_name";
+            ddl_brands_asm.DataValueField = "type_id";
+            ddl_brands_asm.DataBind();
         }
-    
-        public void _load_brand()
+        public void _load_brand_ddl()
         {
             DataTable dt = adt.view_Cpu_brand();
             ddl_amms_brand.DataSource = dt;
@@ -104,33 +49,7 @@ namespace AM.Masters
             ddl_amms_brand.DataBind();
         }
 
-        protected void btn_Brand_Model_save_Click(object sender, EventArgs e)
-        {
-                if (!string.IsNullOrWhiteSpace(txt_Brand_Model.Text.ToString()))
-                {
-                    CPU_Details cd = new CPU_Details();
-                    cd.Cpu_brand_id = Convert.ToInt32(ddl_amms_brand.SelectedItem.Value);
-                    cd.CPU_BRAND_MAKE = txt_Brand_Model.Text.ToString();
-                    cd.CPU_ITEM_CREATEDBY = "ahammed";
-                    String i = adt.insert_barnd_Model_cpu(cd);
-                    if (i == "Model Name Inserted Sucessfully")
-                    {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        txt_Brand_Name_amms.Text = string.Empty;
-                        _load_brand_model_grid();
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        _load_brand_model_grid();
-                        txt_Brand_Model.Text = string.Empty;
-                    }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
-                }                       
-        }
+    
 
         public void _load_brand_grid()
         {
@@ -208,11 +127,8 @@ namespace AM.Masters
           ddl_MonitorModel_asm.DataBind();
         }
 
-
-
         protected void btn_Asset_type_save_amms_Click(object sender, EventArgs e)
         {
-
             if (btn_Asset_type_save_amms.Text == "Save")
             {
 
@@ -222,17 +138,30 @@ namespace AM.Masters
                     ais.AS_TYPE = txt_Asset_type_amms.Text.ToString();
                     ais.AS_CREATEDBY = "ahammed";
                     String i = adt.insert_AssetType(ais);
-                    if (i == "Asset Type Inserted Sucessfully")
+                    string strmessage = "";
+                    if (i == "1")
                     {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        strmessage = "New  "+txt_Asset_type_amms.Text +"     Was Inserted";
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('"+strmessage+"');</script>", false);
                         txt_Asset_type_amms.Text = string.Empty;
-                        //  _load_brand();
+                        _load_astype_grid();
+                        _load_Asset_brand();
+                        
+                    }
+                    else if(i == "0")
+                    {
+                        strmessage = txt_Asset_type_amms.Text + "  " + "  ---- Already we have -- Try a New One";
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('"+strmessage+"');</script>", false);
+                        _load_astype_grid();
+                        txt_Asset_type_amms.Text = string.Empty;
+                        _load_Asset_brand();
                     }
                     else
                     {
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
-                        // _load_brand();
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Some Thing Went Wrong');</script>", false);
+                        _load_astype_grid();
                         txt_Asset_type_amms.Text = string.Empty;
+                        _load_Asset_brand();
                     }
                 }
                 else
@@ -257,6 +186,7 @@ namespace AM.Masters
                         txt_Asset_type_amms.Text = string.Empty;
                         btn_Asset_type_save_amms.Text = "Save";
                         _load_astype_grid();
+                        _load_Asset_brand();
                     }
                     else
                     {
@@ -264,6 +194,7 @@ namespace AM.Masters
                         btn_Asset_type_save_amms.Text = "Save";
                         txt_Asset_type_amms.Text = string.Empty;
                         _load_astype_grid();
+                        _load_Asset_brand();
                     }
                 }
                 else
@@ -273,6 +204,120 @@ namespace AM.Masters
                 }
             }
         }
+
+
+        protected void btn_Brand_Save_Click(object sender, EventArgs e)
+        {
+             string strbrandmessage = "";
+            if (btn_Brand_Save.Text == "Save")
+            {
+                if (!string.IsNullOrWhiteSpace(txt_Brand_Name_amms.Text.ToString()))
+                {
+                    CPU_Details cd = new CPU_Details();
+                    cd.Cpu_am_id2 = ddl_brands_asm.SelectedValue;
+                    cd.CPU_BRAND_MAKE = txt_Brand_Name_amms.Text.ToString();
+                    cd.CPU_ITEM_CREATEDBY = "ahammed";
+                    String i = adt.insert_brand_Name_cpu(cd);
+                    if (i == "1")
+                    {
+                        strbrandmessage ="Brand Name  "+txt_Brand_Name_amms.Text+"  Inserted Sucessfully";
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('"+strbrandmessage+"');</script>", false);
+                        txt_Brand_Name_amms.Text = string.Empty;
+                        _load_brand_ddl();
+                        _load_brand_grid();
+                    }
+                    else if (i == "0")
+                    {
+
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('!---!-----Try Again-----');</script>", false);
+                        _load_brand_ddl();
+                        _load_brand_grid();
+                        txt_Brand_Name_amms.Text = string.Empty;
+                    }
+                     else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Some Thing was Wrong');</script>", false);
+                        _load_brand_ddl();
+                        txt_Brand_Name_amms.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    string textmess = "Please Enter Text"+ lbl_brand_Name.InnerText;
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
+                }
+            }
+            else if (btn_Brand_Save.Text == "Update")
+            {
+                if (!string.IsNullOrWhiteSpace(txt_Brand_Name_amms.Text.ToString()))
+                {
+                    CPU_Details cd = new CPU_Details();
+                    cd.Cpu_brand_id = Convert.ToInt32(ViewState["bm_brand_id"]);
+                    cd.CPU_BRAND_MAKE = txt_Brand_Name_amms.Text.ToString();
+                    //  cd.CPU_ITEM_CREATEDBY = "ahammed";
+                    String i = adt.Upadte_brand_Name_cpu(cd);
+                    
+                    if (i == "1")
+                    {
+                        strbrandmessage = "Brand Name  " + txt_Brand_Name_amms.Text + "  Updated Sucessfully";
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strbrandmessage + "');</script>", false);
+                        txt_Brand_Name_amms.Text = string.Empty;
+                        btn_Brand_Save.Text = "Save";
+                        _load_brand_ddl();
+                        _load_brand_grid();                        
+                    }
+                    else if(i == "0")
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('No chages has Done');</script>", false);
+                        _load_brand_ddl(); _load_brand_grid(); 
+                        txt_Brand_Name_amms.Text = string.Empty;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Some Thing went Wrong');</script>", false);
+                        _load_brand_ddl();
+                        txt_Brand_Name_amms.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
+                }
+            }
+
+
+        }
+
+        protected void btn_Brand_Model_save_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txt_Brand_Model.Text.ToString()))
+            {
+                CPU_Details cd = new CPU_Details();
+                cd.Cpu_brand_id = Convert.ToInt32(ddl_amms_brand.SelectedItem.Value);
+                cd.CPU_BRAND_MAKE = txt_Brand_Model.Text.ToString();
+                cd.CPU_ITEM_CREATEDBY = "ahammed";
+                String i = adt.insert_barnd_Model_cpu(cd);
+                if (i == "Model Name Inserted Sucessfully")
+                {
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                    txt_Brand_Name_amms.Text = string.Empty;
+                    _load_brand_model_grid();
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                    _load_brand_model_grid();
+                    txt_Brand_Model.Text = string.Empty;
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething();", true);
+            }
+        }
+
+        
 
         protected void ibtn_asttype_asm_Click(object sender, ImageClickEventArgs e)
         {

@@ -207,8 +207,8 @@ namespace AM_DB_Layer
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("pro_insert_Asset_type", amon);
-                cmd.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmd = new SqlCommand("pro_insert_Asset_Brand", amon);
+                cmd.CommandType = CommandType.StoredProcedure;              
                 cmd.Parameters.Add(new SqlParameter("@type_name", ai.AS_TYPE));
                 cmd.Parameters.Add(new SqlParameter("@type_cdby", ai.AS_CREATEDBY));
                 amon.Open();
@@ -247,8 +247,8 @@ namespace AM_DB_Layer
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("select * from [tbl_M_Asset_type]", amon);
-                cmd.CommandType = CommandType.Text;
+                SqlCommand cmd = new SqlCommand("pro_View_Asset_brands01", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -264,8 +264,8 @@ namespace AM_DB_Layer
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("select * from [tbl_M_Asset_type] where type_name = @type_name", amon);
-                cmd.CommandType = CommandType.Text;
+                SqlCommand cmd = new SqlCommand("pro_view_Asset_Brand", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 cmd.Parameters.Add(new SqlParameter("@type_name", txt_dis));
                 DataTable dt = new DataTable();
@@ -282,11 +282,11 @@ namespace AM_DB_Layer
 
         public String insert_brand_Name_cpu(CPU_Details cu)
         {
-
             try
             {
                 SqlCommand cmd = new SqlCommand("pro_insert_barnd_Master_cpu", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@brandtype", cu.Cpu_am_id2));
                 cmd.Parameters.Add(new SqlParameter("@bmbrand", cu.CPU_BRAND_MAKE));
                 cmd.Parameters.Add(new SqlParameter("@cdby", cu.CPU_ITEM_CREATEDBY));
                 amon.Open();

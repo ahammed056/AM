@@ -8,7 +8,7 @@
         <section class="content">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Asset Types</h3>
+                    <h3 class="box-title">Asset Brands</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i>
@@ -25,12 +25,11 @@
                                         <div class="col-md-12">
                                             <div class="box box-primary">
                                                 <div class="box-body">
-                                                    <h3 class="box-title">Add Asset Types</h3>
+                                                    <h4 class="box-title">Add Asset Brands</h4>
                                                     <div class="row" style="padding: 0em 3em 2em 0em;">
-
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Type of Asset :</h5>
+                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Asset Brand:</h5>
                                                                 <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
                                                             </div>
                                                         </div>
@@ -50,12 +49,11 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="box box-primary">
-
-
 
                                             <div class="row">
                                                 <div class="col-sm-12">
@@ -66,7 +64,7 @@
                                                                     <%# Container.DataItemIndex + 1 %>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
-                                                            <asp:TemplateField HeaderText="Asset Type">
+                                                            <asp:TemplateField HeaderText="Asset Brand">
                                                                 <ItemTemplate>
                                                                     <asp:Label ID="lbl_asttype_asm" runat="server" Text='<%#Eval("type_name") %>'></asp:Label>
                                                                     <asp:HiddenField ID="hf_type_name" runat="server" Value='<%#Eval("type_name") %>' />
@@ -119,12 +117,27 @@
                                         <div class="col-md-12">
                                             <div class="box box-primary">
                                                 <div class="box-body">
-                                                    <h3 class="box-title">Add Brands</h3>
+                                                    <h4 class="box-title">Add Brands</h4>
                                                     <div class="row" style="padding: 0em 3em 2em 0em;">
 
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Brand Name :</h5>
+
+                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Choose Asset:</h5>
+                                                                <asp:Label ID="Label1" runat="server" Text="" Visible="false"></asp:Label>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+                                                                <asp:DropDownList ID="ddl_brands_asm" runat="server" class="form-control select2"></asp:DropDownList>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-5">
+                                                            <div class="form-group">
+
+                                                                <h5 style="margin-top: 4px; margin-left: 10px;"><label runat="server" id="lbl_brand_Name" title="Name"></label> Name :</h5>
                                                                 <asp:Label ID="lbl_brand_id" runat="server" Text="" Visible="false"></asp:Label>
 
                                                             </div>
@@ -134,6 +147,8 @@
                                                                 <asp:TextBox ID="txt_Brand_Name_amms" runat="server" class="form-control select2" ValidationGroup="barnd"></asp:TextBox>
                                                             </div>
                                                         </div>
+
+
                                                         <div class="col-md-2">
                                                             <div class="form-group">
 
@@ -222,13 +237,9 @@
 
                                                     <div class="col-md-2">
                                                         <div class="form-group" style="margin-top: 50px;">
-
                                                             <asp:Button ID="btn_Brand_Model_save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" ValidationGroup="model" OnClick="btn_Brand_Model_save_Click" />
-
-
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -237,7 +248,6 @@
 
                                 <div class="col-sm-6">
                                     <div class="box box-primary">
-
                                         <asp:GridView ID="gv_cpu_brand_Model_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_cpu_brand_Model_info_PageIndexChanging" AllowPaging="true">
                                             <Columns>
                                                 <asp:TemplateField HeaderText="S.No">
@@ -265,9 +275,7 @@
                                             <EmptyDataTemplate>
                                                 <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
                                             </EmptyDataTemplate>
-
                                         </asp:GridView>
-
                                     </div>
 
                                 </div>
@@ -278,8 +286,8 @@
             </div>
 
             <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Processor</h3>
+                <div class="box-header with-border">                    
+                    <h3 class="box-title"><img src="../../dist/img/processor_icon.png" alt="Processor" style="width:20px;height:20px;margin-top:-4px;" />&nbsp;&nbsp;<b>Processor</b></h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -288,8 +296,8 @@
 
                     </div>
                 </div>
-                <div class="box-body" >
-                    <div class="row" style="background-image:url(../dist/img/CPU-Intel-icon.png);background-repeat: no-repeat;    background-size: 412px 259px;" >
+                <div class="box-body">
+                    <div class="row"><%--style="background-image:url(../dist/img/CPU-Intel-icon.png);background-repeat: no-repeat;    background-size: 412px 259px;"--%>
 
                         <div class="col-md-12">
                             <asp:UpdatePanel ID="UpdatePanel3" runat="server">

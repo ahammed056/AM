@@ -696,6 +696,7 @@
     <Content Include="dist\css\alt\AdminLTE-select2.min.css" />
     <Content Include="dist\css\alt\AdminLTE-without-plugins.css" />
     <Content Include="dist\css\alt\AdminLTE-without-plugins.min.css" />
+    <Content Include="ahacssjs\css\ffafa.css" />
     <Content Include="dist\css\skins\skin-black-light.css" />
     <Content Include="dist\css\skins\skin-black-light.min.css" />
     <Content Include="dist\css\skins\skin-black.css" />
@@ -746,6 +747,7 @@
     <Content Include="dist\img\photo2.png" />
     <Content Include="dist\img\photo3.jpg" />
     <Content Include="dist\img\photo4.jpg" />
+    <Content Include="dist\img\processor_icon.png" />
     <Content Include="dist\img\user1-128x128.jpg" />
     <Content Include="dist\img\user2-160x160.jpg" />
     <Content Include="dist\img\user3-128x128.jpg" />

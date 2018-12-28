@@ -109,7 +109,7 @@
                                 <div class="row" style="padding: 4em 3em 2em 0em;">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <h3 style="margin-top: 4px; margin-left: 60px;">Enter Asset Number:</h3>
+                                            <h3 style="margin-top: 4px; margin-left: 60px;">Asset Code:</h3>
 
                                         </div>
                                     </div>
