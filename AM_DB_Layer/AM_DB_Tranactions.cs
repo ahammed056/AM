@@ -13,25 +13,25 @@ using System.IO;
 
 namespace AM_DB_Layer
 {
-    
+
     public class AM_DB_Tranactions
-    {      
-       SqlConnection amon = new SqlConnection(ConfigurationManager.ConnectionStrings["am"].ConnectionString.ToString());
-       // public static string conect = getcon();
-       ////SqlConnection amon = new SqlConnection(conect);
-       // public static string getcon()
-       // {
-       //     string connectee = string.Empty;
-       //     string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ahammed.2921\Documents\GitHub\AM\AM\database.txt");
-       //    // string[] le = File.ReadLines(-Path)
-       //     foreach (string line in lines)
-       //     {
-       //         string[] linesa = lines;
-       //         connectee = linesa[0].ToString();
-                
-       //     }
-       //     return connectee;
-       // }
+    {
+        SqlConnection amon = new SqlConnection(ConfigurationManager.ConnectionStrings["am"].ConnectionString.ToString());
+        // public static string conect = getcon();
+        ////SqlConnection amon = new SqlConnection(conect);
+        // public static string getcon()
+        // {
+        //     string connectee = string.Empty;
+        //     string[] lines = System.IO.File.ReadAllLines(@"C:\Users\ahammed.2921\Documents\GitHub\AM\AM\database.txt");
+        //    // string[] le = File.ReadLines(-Path)
+        //     foreach (string line in lines)
+        //     {
+        //         string[] linesa = lines;
+        //         connectee = linesa[0].ToString();
+
+        //     }
+        //     return connectee;
+        // }
 
         #region cpu area
         public String insertAssertid(asset_info ai)
@@ -39,8 +39,8 @@ namespace AM_DB_Layer
 
             try
             {
-               
-              //  amon = new SqlConnection(amsql.getcon());
+
+                //  amon = new SqlConnection(amsql.getcon());
                 SqlCommand cmd = new SqlCommand("pro_insert_Asset_id", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@As_AssetCode", ai.AS_ASSETCODE));
@@ -200,7 +200,7 @@ namespace AM_DB_Layer
 
 
         #endregion
-        
+
         #region Masters
 
         public String insert_AssetType(asset_info ai)
@@ -208,7 +208,7 @@ namespace AM_DB_Layer
             try
             {
                 SqlCommand cmd = new SqlCommand("pro_insert_Asset_Brand", amon);
-                cmd.CommandType = CommandType.StoredProcedure;              
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@type_name", ai.AS_TYPE));
                 cmd.Parameters.Add(new SqlParameter("@type_cdby", ai.AS_CREATEDBY));
                 amon.Open();
@@ -311,6 +311,7 @@ namespace AM_DB_Layer
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@bm_id", cu.Cpu_brand_id));
                 cmd.Parameters.Add(new SqlParameter("@brand_name", cu.CPU_BRAND_MAKE));
+
                 amon.Open();
                 return cmd.ExecuteScalar().ToString();
             }
@@ -323,12 +324,32 @@ namespace AM_DB_Layer
                 amon.Close();
             }
         }
-        public DataTable view_Cpu_brand()
+        public DataTable view_brand_models_byid_dll(CPU_Details cu)
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("select bm_id,bm_brand from tbl_Brand_Master", amon);
-                cmd.CommandType = CommandType.Text;
+                SqlCommand cmd = new SqlCommand("pro_view_brand_model", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@modelinc3", cu.Cpu_am_id3));
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public DataTable view_brands_byid(CPU_Details cu)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_view_Brands_byID", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@brandinc", cu.Brandidinc));
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -340,6 +361,25 @@ namespace AM_DB_Layer
                 throw;
             }
         }
+        public DataTable view_brands_by_grids()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("select * from tbl_Brand_Master", amon);
+                cmd.CommandType = CommandType.Text;               
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
         public DataTable view_Cpu_brand_edit_dispaly(CPU_Details cu)
         {
             try
@@ -363,11 +403,12 @@ namespace AM_DB_Layer
 
             try
             {
-                SqlCommand cmd = new SqlCommand("pro_insert_Brand_Model_Master_cpu", amon);
+                SqlCommand cmd = new SqlCommand("pro_insert_Brand_Model_Master", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@bm_brand_id", cu.Cpu_brand_id));
                 cmd.Parameters.Add(new SqlParameter("@bm_model", cu.CPU_BRAND_MAKE));
                 cmd.Parameters.Add(new SqlParameter("@cdby", cu.CPU_ITEM_CREATEDBY));
+                cmd.Parameters.Add(new SqlParameter("@brandninc", cu.Brandidinc));
                 amon.Open();
                 return cmd.ExecuteScalar().ToString();
             }
@@ -382,13 +423,14 @@ namespace AM_DB_Layer
 
 
         }
-        public DataTable view_Cpu_brand_model()
-       {
+        public DataTable view_brand_model(CPU_Details cu)
+        {
 
             try
             {
-                SqlCommand cmd = new SqlCommand("pro_view_brand_model", amon);         
+                SqlCommand cmd = new SqlCommand("pro_view_brand_model", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@modelinc3", cu.Cpu_am_id3));
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -400,6 +442,8 @@ namespace AM_DB_Layer
                 throw;
             }
         }
+
+
         public DataTable view_Cpu_brand_model_edit_dispaly(CPU_Details cu)
         {
             try
@@ -416,7 +460,7 @@ namespace AM_DB_Layer
             {
                 throw;
             }
-        }     
+        }
         public DataTable view_Cpu_model(string bm_model)
         {
             try
@@ -446,7 +490,7 @@ namespace AM_DB_Layer
                 SqlCommand cmd = new SqlCommand("pro_insert_Processor_Name", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@processor_Name", cu.CPU_PROCESSOR_MODEL));
-                cmd.Parameters.Add(new SqlParameter("@processor_createdby", cu.CPU_ITEM_CREATEDBY));             
+                cmd.Parameters.Add(new SqlParameter("@processor_createdby", cu.CPU_ITEM_CREATEDBY));
                 amon.Open();
                 return (int)cmd.ExecuteScalar();
             }
@@ -506,7 +550,7 @@ namespace AM_DB_Layer
             try
             {
                 SqlCommand cmd = new SqlCommand("pro_view_processorspeed", amon);
-                cmd.CommandType = CommandType.StoredProcedure;         
+                cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -521,7 +565,7 @@ namespace AM_DB_Layer
 
 
 
-       // [pro_insert_barnd_Master_monitor]
+        // [pro_insert_barnd_Master_monitor]
 
         public String insert_brand_Name_monitor(Monitor_Details mu)
         {
@@ -588,7 +632,7 @@ namespace AM_DB_Layer
         //    }
         //}
 
-      //  [pro_view_Monitor_brand_model]
+        //  [pro_view_Monitor_brand_model]
         public DataTable view_Monitor_brand()
         {
             try

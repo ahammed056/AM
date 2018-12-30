@@ -236,7 +236,8 @@ namespace AM.Desktop
 
         public void _load_brand()
         {
-            DataTable dt = adt.view_Cpu_brand();
+            CPU_Details cu = new CPU_Details();
+            DataTable dt = adt.view_brands_by_grids();
             ddl_ad_barnd.DataSource = dt;
             ddl_ad_barnd.DataTextField = "bm_brand";
             ddl_ad_barnd.DataValueField = "bm_id";

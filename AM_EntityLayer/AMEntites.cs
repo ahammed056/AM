@@ -22,6 +22,7 @@ namespace AM_EntityLayer
 
     public class CPU_Details
     {
+        
         private Int32 cpu_am_id; public Int32 CPU_AM_ID { get { return cpu_am_id; } set { cpu_am_id = value; } }
         private Int32 cpu_brand_id; public Int32 Cpu_brand_id{ get { return cpu_brand_id; }  set { cpu_brand_id = value; }}
 
@@ -32,8 +33,23 @@ namespace AM_EntityLayer
             get { return cpu_am_id2; }
             set { cpu_am_id2 = value; }
         }
-        
-        
+
+        private string cpu_am_id3;
+
+        public string Cpu_am_id3
+        {
+            get { return cpu_am_id3; }
+            set { cpu_am_id3 = value; }
+        }
+
+        private string brandidinc;
+
+        public string Brandidinc
+        {
+            get { return brandidinc; }
+            set { brandidinc = value; }
+        }
+
         private String cpu_assetcode; public String CPU_ASSETCODE { get { return cpu_assetcode; } set { cpu_assetcode = value; } }
         private String cpu_product_number; public String CPU_PRODUCT_NUMBER { get { return cpu_product_number; } set { cpu_product_number = value; } }
         private String cpu_serial_number; public String CPU_SERIAL_NUMBER { get { return cpu_serial_number; } set { cpu_serial_number = value; } }

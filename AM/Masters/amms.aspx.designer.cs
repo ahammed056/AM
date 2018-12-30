@@ -148,13 +148,13 @@ namespace AM.Masters {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// ddl_amms_brand control.
+        /// ddl_brand_model_asm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_amms_brand;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_brand_model_asm;
         
         /// <summary>
         /// txt_Brand_Model control.

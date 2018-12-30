@@ -686,6 +686,20 @@
     <Content Include="database.txt" />
     <Content Include="Desktop\AddDesktop.aspx" />
     <Content Include="Desktop\AddMonitor.aspx" />
+    <Content Include="dist\ahaimages\1.png" />
+    <Content Include="dist\ahaimages\10.png" />
+    <Content Include="dist\ahaimages\11.png" />
+    <Content Include="dist\ahaimages\2.png" />
+    <Content Include="dist\ahaimages\3.png" />
+    <Content Include="dist\ahaimages\4.jpg" />
+    <Content Include="dist\ahaimages\5.jpg" />
+    <Content Include="dist\ahaimages\6.png" />
+    <Content Include="dist\ahaimages\7.png" />
+    <Content Include="dist\ahaimages\8.png" />
+    <Content Include="dist\ahaimages\9.png" />
+    <Content Include="dist\ahaimages\asset-512.png" />
+    <Content Include="dist\ahaimages\images %281%29.png" />
+    <Content Include="dist\ahaimages\mature-asset-classes-icon.png" />
     <Content Include="dist\css\AdminLTE.css" />
     <Content Include="dist\css\AdminLTE.min.css" />
     <Content Include="dist\css\alt\AdminLTE-bootstrap-social.css" />
@@ -7273,6 +7287,7 @@
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -7,8 +7,8 @@
     <asp:Panel ID="Panel1" runat="server">
         <section class="content">
             <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Asset Brands</h3>
+                <div class="box-header with-border">                    
+                    <h3 class="box-title"><img src="../../dist/ahaimages/9.png" alt="Processor" style="width:29px;height:20px;margin-top:-4px;" />&nbsp;&nbsp;Asset Brands</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i>
@@ -130,16 +130,14 @@
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <asp:DropDownList ID="ddl_brands_asm" runat="server" class="form-control select2"></asp:DropDownList>
+                                                                <asp:DropDownList ID="ddl_brands_asm" runat="server" class="form-control select2" AutoPostBack="true" OnSelectedIndexChanged="ddl_brands_asm_SelectedIndexChanged"></asp:DropDownList>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-
                                                                 <h5 style="margin-top: 4px; margin-left: 10px;"><label runat="server" id="lbl_brand_Name" title="Name"></label> Name :</h5>
                                                                 <asp:Label ID="lbl_brand_id" runat="server" Text="" Visible="false"></asp:Label>
-
                                                             </div>
                                                         </div>
                                                         <div class="col-md-5">
@@ -147,14 +145,9 @@
                                                                 <asp:TextBox ID="txt_Brand_Name_amms" runat="server" class="form-control select2" ValidationGroup="barnd"></asp:TextBox>
                                                             </div>
                                                         </div>
-
-
                                                         <div class="col-md-2">
                                                             <div class="form-group">
-
                                                                 <asp:Button ID="btn_Brand_Save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="barnd" Width="56px" OnClick="btn_Brand_Save_Click" />
-
-
                                                             </div>
                                                         </div>
 
@@ -183,7 +176,6 @@
                                                     <asp:TemplateField HeaderText="">
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="ibtn_brand_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" OnClick="ibtn_brand_asm_Click" />
-
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
@@ -227,7 +219,7 @@
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <asp:DropDownList ID="ddl_amms_brand" runat="server" class="form-control select2" ValidationGroup="model"></asp:DropDownList>
+                                                            <asp:DropDownList ID="ddl_brand_model_asm" runat="server" class="form-control select2" ValidationGroup="model" AutoPostBack="true"></asp:DropDownList>
                                                         </div>
                                                         <div class="form-group">
                                                             <asp:TextBox ID="txt_Brand_Model" runat="server" class="form-control select2" ValidationGroup="model"></asp:TextBox>
