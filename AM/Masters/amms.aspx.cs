@@ -24,7 +24,7 @@ namespace AM.Masters
 
 
                 _load_brand_model_grid();
-                _load_brand_model_ddl();
+               // _load_brand_model_ddl();
 
                 _load_processorName_grid();
                 _load_processorName_ddl();
@@ -40,12 +40,14 @@ namespace AM.Masters
         }      
 
         public void _load_brand_ddl()
-        {      
+        {
+           
             DataTable dt = adt.view_Asset_type_grid();
             ddl_brands_asm.DataSource = dt;
             ddl_brands_asm.DataTextField = "type_name";
             ddl_brands_asm.DataValueField = "type_id";
             ddl_brands_asm.DataBind();
+                  
         }
         public void _load_brand_model_ddl()
         {
@@ -53,9 +55,10 @@ namespace AM.Masters
             cu1.Brandidinc = ddl_brands_asm.SelectedItem.Value;
             DataTable dt = adt.view_brands_byid(cu1);
             ddl_brand_model_asm.DataSource = dt;
-            ddl_brand_model_asm.DataTextField = "type_name";
+            ddl_brand_model_asm.DataTextField = "bm_brand";
             ddl_brand_model_asm.DataValueField = "type_id";
             ddl_brand_model_asm.DataBind();
+        
         }
         public void _load_brand_grid()
         {
@@ -67,11 +70,11 @@ namespace AM.Masters
         }
         public void _load_brand_model_grid()
         {
-            //CPU_Details cu1 = new CPU_Details();
-            //cu1.Cpu_am_id3 = ddl_brands_asm.SelectedItem.Value;
-            //DataTable dt = adt.view_brand_model(cu1);
-            //gv_cpu_brand_Model_info.DataSource = dt;
-            //gv_cpu_brand_Model_info.DataBind();
+            CPU_Details cu1 = new CPU_Details();
+            cu1.Cpu_am_id3 = ddl_brands_asm.SelectedItem.Value;
+            DataTable dt = adt.view_brand_model(cu1);
+            gv_cpu_brand_Model_info.DataSource = dt;
+            gv_cpu_brand_Model_info.DataBind();
         }    
         public void _load_processorName_grid()
         {
@@ -625,7 +628,7 @@ namespace AM.Masters
         protected void ddl_brands_asm_SelectedIndexChanged(object sender, EventArgs e)
         {            
             _load_brand_grid();
-            _load_brand_model_ddl();
+           _load_brand_model_ddl();
             _load_brand_model_grid();
             
         }

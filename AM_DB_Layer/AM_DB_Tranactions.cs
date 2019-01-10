@@ -361,6 +361,7 @@ namespace AM_DB_Layer
                 throw;
             }
         }
+
         public DataTable view_brands_by_grids()
         {
             try
@@ -374,10 +375,63 @@ namespace AM_DB_Layer
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
+
+        public List<CPU_Details> hia()
+        {
+            try
+            {
+                List<CPU_Details> obj = new List<CPU_Details>();
+                
+                SqlCommand cmd = new SqlCommand("select * from tbl_Brand_Master", amon);
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                foreach (DataRow  item in dt.Rows)
+                {
+                    CPU_Details clsobj = new CPU_Details();
+                    clsobj.Cpu_brand_id = Convert.ToInt32(item["BM_id"]);
+                    clsobj.CPU_IP_ADDRESS = item["bm_brand"].ToString();
+                    obj.Add(clsobj);
+                }
+                return obj;
+                //return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<string> view_brands_by_gridsforsingh()
+        {
+            try
+            {
+                List<string> obj = new List<string>();
+                SqlCommand cmd = new SqlCommand("select * from tbl_Brand_Master", amon);
+                cmd.CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                while (0==0)
+                {
+                    obj.Add("jij");
+
+                }
+                return obj;
+                //return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+       
 
 
         public DataTable view_Cpu_brand_edit_dispaly(CPU_Details cu)

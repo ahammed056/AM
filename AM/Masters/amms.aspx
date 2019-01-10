@@ -130,7 +130,9 @@
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <asp:DropDownList ID="ddl_brands_asm" runat="server" class="form-control select2" AutoPostBack="true" OnSelectedIndexChanged="ddl_brands_asm_SelectedIndexChanged"></asp:DropDownList>
+                                                                <asp:DropDownList ID="ddl_brands_asm" runat="server" class="form-control select2" AutoPostBack="true" OnSelectedIndexChanged="ddl_brands_asm_SelectedIndexChanged">
+                                                                   
+                                                                </asp:DropDownList>
                                                             </div>
                                                         </div>
 
@@ -219,7 +221,7 @@
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <asp:DropDownList ID="ddl_brand_model_asm" runat="server" class="form-control select2" ValidationGroup="model" AutoPostBack="true"></asp:DropDownList>
+                                                            <asp:DropDownList ID="ddl_brand_model_asm" runat="server" class="form-control select2" ValidationGroup="model" ></asp:DropDownList>
                                                         </div>
                                                         <div class="form-group">
                                                             <asp:TextBox ID="txt_Brand_Model" runat="server" class="form-control select2" ValidationGroup="model"></asp:TextBox>

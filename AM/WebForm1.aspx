@@ -11,6 +11,9 @@
     <div>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
          <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+
+
+        <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
     </div>
     </form>
 </body>

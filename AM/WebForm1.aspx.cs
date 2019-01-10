@@ -4,14 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AM_EntityLayer;
+using AM_DB_Layer;
 
 namespace AM
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
+        {         
+            loadddl();
+        }
+
+        private void loadddl()
         {
-            Main();
+            AM_DB_Tranactions ad = new AM_DB_Tranactions();
+            List<CPU_Details> aha = new List<CPU_Details>();
+            aha = ad.hia();
+            DropDownList1.DataSource = aha;
+            DropDownList1.DataTextField = "CPU_IP_ADDRESS";
+            DropDownList1.DataValueField = "Cpu_brand_id";
+            DropDownList1.DataBind();
         }
         void Main()
         {
