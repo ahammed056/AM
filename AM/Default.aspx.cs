@@ -25,7 +25,7 @@ namespace AM
         }
         public void _load_assets_grid()
         {
-            DataTable dt = adt.view_AssetId();
+            DataTable dt = adt.view_Asset_grid();
             gv_Asset_aa.DataSource = dt;
             gv_Asset_aa.DataBind();
         }

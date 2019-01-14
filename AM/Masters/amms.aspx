@@ -40,8 +40,10 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
+                                                                <asp:UpdatePanel ID="UpdatePanel6" runat="server"><ContentTemplate>
                                                                 <asp:Button ID="btn_Asset_type_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" OnClick="btn_Asset_type_save_amms_Click" />
-                                                            </div>
+                                                           </ContentTemplate></asp:UpdatePanel>
+                                                           </div>
                                                         </div>
 
                                                     </div>

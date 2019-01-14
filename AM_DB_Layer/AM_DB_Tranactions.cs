@@ -9,6 +9,10 @@ using System.Configuration;
 using AM_EntityLayer;
 using AM_DB_Layer;
 using System.IO;
+using Microsoft.Win32;
+using System.Management;
+using System.Management.Instrumentation;
+using System.Security.Policy;
 
 
 namespace AM_DB_Layer
@@ -36,10 +40,8 @@ namespace AM_DB_Layer
         #region cpu area
         public String insertAssertid(asset_info ai)
         {
-
             try
             {
-
                 //  amon = new SqlConnection(amsql.getcon());
                 SqlCommand cmd = new SqlCommand("pro_insert_Asset_id", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -122,6 +124,24 @@ namespace AM_DB_Layer
             }
         }
 
+        public DataTable view_Asset_grid()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("pro_View_Asset_grid", amon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public DataTable view_AssetId_for_desktop()
         {
             try
@@ -177,7 +197,6 @@ namespace AM_DB_Layer
         }
         #endregion
         #endregion
-
         #region Monitor
         public DataTable view_moitor_brand_details()
         {
@@ -200,7 +219,6 @@ namespace AM_DB_Layer
 
 
         #endregion
-
         #region Masters
 
         public String insert_AssetType(asset_info ai)
@@ -741,8 +759,94 @@ namespace AM_DB_Layer
         //    }
         //}
         #endregion
+        #region systeminformation
+        //public class SystemInfo
+        //{
+        //    public void getOperatingSystemInfo()
+        //    {
+        //        Console.WriteLine("Displaying operating system info....\n");
+        //        //Create an object of ManagementObjectSearcher class and pass query as parameter.
+        //         ManagementObjectSearcher mos = new ManagementObjectSearcher("select * from Win32_OperatingSystem");
+                
+        //        foreach (ManagementObject managementObject in mos.Get())
+        //        {
+        //            if (managementObject["Caption"] != null)
+        //            {
+        //                Console.WriteLine("Operating System Name  :  " + managementObject["Caption"].ToString());   //Display operating system caption
+        //            }
+        //            if (managementObject["OSArchitecture"] != null)
+        //            {
+        //                Console.WriteLine("Operating System Architecture  :  " + managementObject["OSArchitecture"].ToString());   //Display operating system architecture.
+        //            }
+        //            if (managementObject["CSDVersion"] != null)
+        //            {
+        //                Console.WriteLine("Operating System Service Pack   :  " + managementObject["CSDVersion"].ToString());     //Display operating system version.
+        //            }
+        //        }
+        //    }
 
+        //    public void getOSInfo()
+        //    {
+        //        //Get Operating system information.
+        //        OperatingSystem os = Environment.OSVersion;
+        //        //Get version information about the os.
+        //        Version vs = os.Version;
 
+        //        //Variable to hold our return value
+        //        string operatingSystem = "";
+
+        //        if (os.Platform == PlatformID.Win32Windows)
+        //        {
+        //            //This is a pre-NT version of Windows
+        //            switch (vs.Minor)
+        //            {
+        //                case 0:
+        //                    operatingSystem = "95";
+        //                    break;
+        //                case 10:
+        //                    if (vs.Revision.ToString() == "2222A")
+        //                        operatingSystem = "98SE";
+        //                    else
+        //                        operatingSystem = "98";
+        //                    break;
+        //                case 90:
+        //                    operatingSystem = "Me";
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
+        //        else if (os.Platform == PlatformID.Win32NT)
+        //        {
+        //            switch (vs.Major)
+        //            {
+        //                case 3:
+        //                    operatingSystem = "NT 3.51";
+        //                    break;
+        //                case 4:
+        //                    operatingSystem = "NT 4.0";
+        //                    break;
+        //                case 5:
+        //                    if (vs.Minor == 0)
+        //                        operatingSystem = "Windows 2000";
+        //                    else
+        //                        operatingSystem = "Windows XP";
+        //                    break;
+        //                case 6:
+        //                    if (vs.Minor == 0)
+        //                        operatingSystem = "Windows Vista";
+        //                    else
+        //                        operatingSystem = "Windows 7 or Above";
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+        //        }
+        //    }
+
+        //}
+
+        #endregion
 
     }
 }

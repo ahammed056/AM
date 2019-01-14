@@ -49,6 +49,15 @@ namespace AM.Masters {
         protected global::System.Web.UI.WebControls.TextBox txt_Asset_type_amms;
         
         /// <summary>
+        /// UpdatePanel6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel6;
+        
+        /// <summary>
         /// btn_Asset_type_save_amms control.
         /// </summary>
         /// <remarks>

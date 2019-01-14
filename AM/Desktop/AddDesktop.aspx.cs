@@ -7,6 +7,11 @@ using System.Web.UI.WebControls;
 using AM_EntityLayer;
 using AM_DB_Layer;
 using System.Data;
+using System.Management;
+using System.Management.Instrumentation;
+using Microsoft.Win32;
+
+
 
 namespace AM.Desktop
 {
@@ -23,6 +28,8 @@ namespace AM.Desktop
                 _load_Asset_id();
                 _load_processorModel();
                 _load_processorSpeed();
+               // txt_ad_Serial_Number.Text = GetServiceTag();
+                _loadevents();
 
             }
         }
@@ -213,7 +220,17 @@ namespace AM.Desktop
             ddl_new_Asset_id_os.DataBind();
         }
 
-
+        public void _loadevents()
+        {
+            GetProcessorId();
+            GetHDDSerialNo();
+            GetAccountName();
+            txt_ad_mac_address.Text = GetMACAddress();
+            GetCPUManufacturer();
+            Getcomplteprocessor();
+            GetModel();
+            txt_ad_Product_Number.Text = GetServiceTag();
+        }
 
         public void _load_processorModel()
         {
@@ -262,12 +279,137 @@ namespace AM.Desktop
             ddl_ad_brandmodel.DataBind();
         }
 
+
+        public static String GetProcessorId()
+        {
+
+            ManagementClass mc = new ManagementClass("win32_processor");
+            ManagementObjectCollection moc = mc.GetInstances();
+            String Id = String.Empty;
+            foreach (ManagementObject mo in moc)
+            {
+
+                Id = mo.Properties["processorID"].Value.ToString();
+                break;
+            }
+            return Id;
+
+        }
+
+
+        public static String GetHDDSerialNo()
+        {
+            ManagementClass mangnmt = new ManagementClass("Win32_LogicalDisk");
+            ManagementObjectCollection mcol = mangnmt.GetInstances();
+            string result = "";
+            foreach (ManagementObject strt in mcol)
+            {
+                result += Convert.ToString(strt["VolumeSerialNumber"]);
+            }
+            return result;
+        }
+
+        public static string GetAccountName()
+        {
+
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_UserAccount");
+
+            foreach (ManagementObject wmi in searcher.Get())
+            {
+                try
+                {
+
+                    return wmi.GetPropertyValue("Name").ToString();
+                }
+                catch { }
+            }
+            return "User Account Name: Unknown";
+
+        }
+
+        public static string GetMACAddress()
+        {
+            ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            ManagementObjectCollection moc = mc.GetInstances();
+            string MACAddress = String.Empty;
+            foreach (ManagementObject mo in moc)
+            {
+                if (MACAddress == String.Empty)
+                {
+                    if ((bool)mo["IPEnabled"] == true) MACAddress = mo["MacAddress"].ToString();
+                }
+                mo.Dispose();
+            }
+
+            MACAddress = MACAddress.Replace(":", "");
+            return MACAddress;
+        }
+        public static string GetCPUManufacturer()
+        {
+            string cpuMan = String.Empty;
+            //create an instance of the Managemnet class with the
+            //Win32_Processor class
+            ManagementClass mgmt = new ManagementClass("Win32_Processor");
+            //create a ManagementObjectCollection to loop through
+            ManagementObjectCollection objCol = mgmt.GetInstances();
+            //start our loop for all processors found
+            foreach (ManagementObject obj in objCol)
+            {
+                if (cpuMan == String.Empty)
+                {
+                    // only return manufacturer from first CPU
+                    cpuMan = obj.Properties["Manufacturer"].Value.ToString();
+                }
+            }
+            return cpuMan;
+        }
+        public static string Getcomplteprocessor()
+        {
+            string ComputerName = "localhost";
+            ManagementScope Scope;
+            Scope = new ManagementScope(String.Format("\\\\{0}\\root\\CIMV2", ComputerName), null);
+            Scope.Connect();
+            ObjectQuery Query = new ObjectQuery("SELECT Name FROM Win32_Processor");
+            ManagementObjectSearcher Searcher = new ManagementObjectSearcher(Scope, Query);
+            foreach (ManagementObject WmiObject in Searcher.Get())
+            {
+                ComputerName = WmiObject["Name"].ToString();
+            }
+            return ComputerName;
+        }
+
+        static private string GetModel()
+        {
+            string model = "UNKNOWN";
+
+            ManagementClass wmi = new ManagementClass("Win32_ComputerSystem");
+            foreach (ManagementObject computer in wmi.GetInstances())
+            {
+                model = computer.Properties["Model"].Value.ToString().Trim();
+            }
+            return model;
+        }
+
+        static private string GetServiceTag()
+        {
+            string servicetag = "UNKNOWN";
+
+            ManagementClass wmi = new ManagementClass("Win32_Bios");
+            foreach (ManagementObject bios in wmi.GetInstances())
+            {
+                servicetag = bios.Properties["Serialnumber"].Value.ToString().Trim();
+            }
+            return servicetag;
+        }
+
         protected void btn_ad_save_Click(object sender, EventArgs e)
         {
             if (ddl_desktop.SelectedIndex == 1)
             {
+
                 CPU_Details jcd = new CPU_Details();
                 jcd.CPU_ASSETCODE = ddl_new_Asset_id.SelectedItem.Text.ToString();
+
                 jcd.CPU_PRODUCT_NUMBER = txt_ad_Product_Number.Text.ToString();
                 jcd.CPU_SERIAL_NUMBER = txt_ad_Serial_Number.Text.ToString();
                 jcd.CPU_PR_NUMBER = txt_ad_PR_Number.Text.ToString();

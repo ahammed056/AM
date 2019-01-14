@@ -17,8 +17,7 @@ namespace AM.Masters
         {
             if(!IsPostBack)
             {
-                _load_brand_ddl();
-                _load_brand_ddl();
+                _load_brand_ddl();            
                 _load_brand_grid();
                 _load_astype_grid();
 
@@ -41,13 +40,13 @@ namespace AM.Masters
 
         public void _load_brand_ddl()
         {
-           
+
             DataTable dt = adt.view_Asset_type_grid();
             ddl_brands_asm.DataSource = dt;
             ddl_brands_asm.DataTextField = "type_name";
             ddl_brands_asm.DataValueField = "type_id";
             ddl_brands_asm.DataBind();
-                  
+            ddl_brands_asm.Items.Insert(0, new ListItem("-- Select One --", "0"));       
         }
         public void _load_brand_model_ddl()
         {
@@ -164,6 +163,7 @@ namespace AM.Masters
                         _load_astype_grid();
                         txt_Asset_type_amms.Text = string.Empty;
                         _load_brand_ddl();
+                        _load_astype_grid();
                     }
                     else
                     {
@@ -171,6 +171,7 @@ namespace AM.Masters
                         _load_astype_grid();
                         txt_Asset_type_amms.Text = string.Empty;
                         _load_brand_ddl();
+                        _load_astype_grid();
                     }
                 }
                 else
