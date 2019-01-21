@@ -10,6 +10,8 @@ using System.Data;
 using System.Management;
 using System.Management.Instrumentation;
 using Microsoft.Win32;
+using System.Net.NetworkInformation;
+using System.Collections;
 
 
 
@@ -17,34 +19,57 @@ namespace AM.Desktop
 {
     public partial class AddCPU : System.Web.UI.Page
     {
-        asset_info ai = new asset_info();
-        AM_DB_Tranactions adt = new AM_DB_Tranactions();
-
+        cpu_insertions cui = new cpu_insertions();    
+        public void loaddates()
+        {
+            txt_ad_Receive_Date.Text = DateTime.Now.ToString("yyyy-MM-ddThh:mm");
+            txt_ad_Warranty_Start_Date.Text = DateTime.Now.ToString("yyyy-MM-ddThh:mm");
+            DateTime dts = DateTime.Now.AddYears(1);
+            txt_ad_Warranty_End_Date.Text = dts.ToString("yyyy-MM-ddThh:mm");
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
-                _load_dng();
-                _load_Asset_id();
-                _load_processorModel();
-                _load_processorSpeed();
-               // txt_ad_Serial_Number.Text = GetServiceTag();
-                _loadevents();
-
+                _load_view_desktop_ddl();
+               
             }
         }
+
+        public void _load_brand()
+        {
+            AM_DB_Tranactions adt = new AM_DB_Tranactions();
+            CPU_Details cu = new CPU_Details();
+            DataTable dt = adt.view_brands_by_grids();
+            ddl_ad_brand.DataSource = dt;
+            ddl_ad_brand.DataTextField = "bm_brand";
+            ddl_ad_brand.DataValueField = "bm_id";
+            ddl_ad_brand.DataBind();
+        }
+        protected void ddl_ad_brand_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AM_DB_Tranactions adt = new AM_DB_Tranactions();
+            DataTable dt = adt.view_Cpu_model(ddl_ad_brand.SelectedItem.Value);
+            ddl_ad_brand_model.DataSource = dt;
+            ddl_ad_brand_model.DataTextField = "bbm_model";
+            ddl_ad_brand_model.DataValueField = "bbm_brand_id";
+            ddl_ad_brand_model.DataBind();
+        }
+
+       
 
         protected void ddl_desktop_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
+                loaddates();
                 if (ddl_desktop.SelectedIndex == 0)
                 {
                     try
                     {
                         Label1.Text = "New Asset Code";
                         Response.Redirect("~/default.aspx");
-                        //C:\Users\ahammed.2921\Documents\GitHub\AM\AM\Assets\AddAssets.aspx
                     }
                     catch (Exception)
                     {
@@ -63,9 +88,40 @@ namespace AM.Desktop
                         p123.Visible = true;
                         // Panel1.Visible = false;
                         PanelOs.Visible = false;
+                       
+                       // ddl_new_Asset_id.DataSource = dt;
+                       // ddl_new_Asset_id.DataTextField = "As_AssetCode";
+                       // ddl_new_Asset_id.DataValueField = "As_Id";
+                       // ddl_new_Asset_id.DataBind();
+                       // ddl_desktop.Items.Insert(0, new ListItem("Choose Asset Code", "0"));
                         if (IsPostBack)
                         {
-                            _load_brand();
+                            if (ddl_desktop.SelectedIndex != 0)
+                            {
+                                _load_Asset_code();
+                            }
+
+                           //// txt_ad_mac_address.Text = String.IsNullOrEmpty(txt_ad_mac_address.Text) ? cpu_transactions.getIP() : "";
+                           // txt_ad_mac_address.Text = String.IsNullOrEmpty(txt_ad_mac_address.Text) ? cpu_transactions.GetMACAddress() : "";
+                           // txt_ad_ip_address.Text = cpu_transactions.GetAllLocalIPv4(NetworkInterfaceType.Ethernet).FirstOrDefault().ToString();
+                           // txt_ad_brand.Text = cpu_transactions.Getbarnd();
+                           // txt_ad_model.Text = cpu_transactions.GetModel();
+                           // txt_ad_Product_Number.Text = cpu_transactions.GetServiceTag();
+                           // txt_ad_HostName.Text = System.Environment.MachineName;
+                           // txt_ad_processor.Text = cpu_transactions.Getprocessor();
+                           // txt_ad_hdd_model.Text = cpu_transactions.gethddmodel();
+                           // txt_ad_hdd_serial.Text = cpu_transactions.gethddSerial();
+                           // ArrayList items = cpu_transactions.GetRamInformation();
+                        
+                           // GridView1.DataSource = items;
+                          //  GridView1.DataBind();
+
+                            //foreach (var i in items)
+                            //{
+                                
+                            //   // txt_ad_ram_model.Text = Items.Values[0];
+                            //   // txt_ad_ram_size.Text = i[1].ToString();
+                            //}
                         }
                     }
                     catch (Exception)
@@ -83,8 +139,11 @@ namespace AM.Desktop
                         p123.Visible = false;
                         // Panel1.Visible = false; 
                         PanelOs.Visible = false;
-
                         Label1.Text = "Monitor";
+                        if (ddl_desktop.SelectedIndex != 0)
+                        {
+                            _load_Asset_code();
+                        }
                     }
                     catch (Exception)
                     {
@@ -163,7 +222,7 @@ namespace AM.Desktop
                         Label1.Text = "Operating System";
                         if (!IsPostBack)
                         {
-                            _load_Asset_id_os();
+                           // _load_Asset_id_os();
                         }
 
 
@@ -200,256 +259,87 @@ namespace AM.Desktop
 
         }
 
-
-
-        public void _load_Asset_id()
+        public void _load_view_desktop_ddl()
         {
-            DataTable dt = adt.view_AssetId();
+            DataTable dt = cui.loaddesktopdataddl();
+            ddl_desktop.DataSource = dt;
+            ddl_desktop.DataTextField = "bm_brand";
+            ddl_desktop.DataValueField = "BM_id";
+            ddl_desktop.DataBind(); 
+            ddl_desktop.Items.Insert(0, new ListItem("Add New Asset", "0"));
+        }
+
+
+        public void _load_Asset_code()
+        {
+            assets_info ass = new assets_info();
+            ass.AS_TYPE = ddl_desktop.SelectedItem.Text.ToString();
+            cpu_insertions cs = new cpu_insertions();
+            DataTable dt = cs.load_Assetcode_by_type(ass);
             ddl_new_Asset_id.DataSource = dt;
             ddl_new_Asset_id.DataTextField = "As_AssetCode";
             ddl_new_Asset_id.DataValueField = "As_Id";
             ddl_new_Asset_id.DataBind();
+            ddl_new_Asset_id.Items.Insert(0, new ListItem("Asset Code", "0"));
         }
-
-        public void _load_Asset_id_os()
-        {
-            DataTable dt = adt.view_AssetId();
-            ddl_new_Asset_id_os.DataSource = dt;
-            ddl_new_Asset_id_os.DataTextField = "As_AssetCode";
-            ddl_new_Asset_id_os.DataValueField = "As_Id";
-            ddl_new_Asset_id_os.DataBind();
-        }
-
-        public void _loadevents()
-        {
-            GetProcessorId();
-            GetHDDSerialNo();
-            GetAccountName();
-            txt_ad_mac_address.Text = GetMACAddress();
-            GetCPUManufacturer();
-            Getcomplteprocessor();
-            GetModel();
-            txt_ad_Product_Number.Text = GetServiceTag();
-        }
-
-        public void _load_processorModel()
-        {
-            DataTable dt = adt.view_processorModel_name();
-            ddl_processorModel.DataSource = dt;
-            ddl_processorModel.DataTextField = "processor_name";
-            ddl_processorModel.DataValueField = "processor_id";
-            ddl_processorModel.DataBind();
-        }
-
-        public void _load_processorSpeed()
-        {
-            DataTable dt = adt.view_processor_Speed();
-            ddl_processor_speed.DataSource = dt;
-            ddl_processor_speed.DataTextField = "processor_Speed";
-            ddl_processor_speed.DataValueField = "processor_speed_id";
-            ddl_processor_speed.DataBind();
-        }
-
-
-        public void _load_brand()
-        {
-            CPU_Details cu = new CPU_Details();
-            DataTable dt = adt.view_brands_by_grids();
-            ddl_ad_barnd.DataSource = dt;
-            ddl_ad_barnd.DataTextField = "bm_brand";
-            ddl_ad_barnd.DataValueField = "bm_id";
-            ddl_ad_barnd.DataBind();
-        }
-
-        public void _load_dng()
-        {
-            DataTable dt = adt.view_dng_details();
-            ddl_ad_DNG.DataSource = dt;
-            ddl_ad_DNG.DataTextField = "dng_name";
-            ddl_ad_DNG.DataValueField = "dng_id";
-            ddl_ad_DNG.DataBind();
-        }
-
-        protected void ddl_ad_barnd_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DataTable dt = adt.view_Cpu_model(ddl_ad_barnd.SelectedItem.Value);
-            ddl_ad_brandmodel.DataSource = dt;
-            ddl_ad_brandmodel.DataTextField = "bbm_model";
-            ddl_ad_brandmodel.DataValueField = "bbm_brand_id";
-            ddl_ad_brandmodel.DataBind();
-        }
-
-
-        public static String GetProcessorId()
-        {
-
-            ManagementClass mc = new ManagementClass("win32_processor");
-            ManagementObjectCollection moc = mc.GetInstances();
-            String Id = String.Empty;
-            foreach (ManagementObject mo in moc)
-            {
-
-                Id = mo.Properties["processorID"].Value.ToString();
-                break;
-            }
-            return Id;
-
-        }
-
-
-        public static String GetHDDSerialNo()
-        {
-            ManagementClass mangnmt = new ManagementClass("Win32_LogicalDisk");
-            ManagementObjectCollection mcol = mangnmt.GetInstances();
-            string result = "";
-            foreach (ManagementObject strt in mcol)
-            {
-                result += Convert.ToString(strt["VolumeSerialNumber"]);
-            }
-            return result;
-        }
-
-        public static string GetAccountName()
-        {
-
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_UserAccount");
-
-            foreach (ManagementObject wmi in searcher.Get())
-            {
-                try
-                {
-
-                    return wmi.GetPropertyValue("Name").ToString();
-                }
-                catch { }
-            }
-            return "User Account Name: Unknown";
-
-        }
-
-        public static string GetMACAddress()
-        {
-            ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
-            ManagementObjectCollection moc = mc.GetInstances();
-            string MACAddress = String.Empty;
-            foreach (ManagementObject mo in moc)
-            {
-                if (MACAddress == String.Empty)
-                {
-                    if ((bool)mo["IPEnabled"] == true) MACAddress = mo["MacAddress"].ToString();
-                }
-                mo.Dispose();
-            }
-
-            MACAddress = MACAddress.Replace(":", "");
-            return MACAddress;
-        }
-        public static string GetCPUManufacturer()
-        {
-            string cpuMan = String.Empty;
-            //create an instance of the Managemnet class with the
-            //Win32_Processor class
-            ManagementClass mgmt = new ManagementClass("Win32_Processor");
-            //create a ManagementObjectCollection to loop through
-            ManagementObjectCollection objCol = mgmt.GetInstances();
-            //start our loop for all processors found
-            foreach (ManagementObject obj in objCol)
-            {
-                if (cpuMan == String.Empty)
-                {
-                    // only return manufacturer from first CPU
-                    cpuMan = obj.Properties["Manufacturer"].Value.ToString();
-                }
-            }
-            return cpuMan;
-        }
-        public static string Getcomplteprocessor()
-        {
-            string ComputerName = "localhost";
-            ManagementScope Scope;
-            Scope = new ManagementScope(String.Format("\\\\{0}\\root\\CIMV2", ComputerName), null);
-            Scope.Connect();
-            ObjectQuery Query = new ObjectQuery("SELECT Name FROM Win32_Processor");
-            ManagementObjectSearcher Searcher = new ManagementObjectSearcher(Scope, Query);
-            foreach (ManagementObject WmiObject in Searcher.Get())
-            {
-                ComputerName = WmiObject["Name"].ToString();
-            }
-            return ComputerName;
-        }
-
-        static private string GetModel()
-        {
-            string model = "UNKNOWN";
-
-            ManagementClass wmi = new ManagementClass("Win32_ComputerSystem");
-            foreach (ManagementObject computer in wmi.GetInstances())
-            {
-                model = computer.Properties["Model"].Value.ToString().Trim();
-            }
-            return model;
-        }
-
-        static private string GetServiceTag()
-        {
-            string servicetag = "UNKNOWN";
-
-            ManagementClass wmi = new ManagementClass("Win32_Bios");
-            foreach (ManagementObject bios in wmi.GetInstances())
-            {
-                servicetag = bios.Properties["Serialnumber"].Value.ToString().Trim();
-            }
-            return servicetag;
-        }
+   
 
         protected void btn_ad_save_Click(object sender, EventArgs e)
         {
             if (ddl_desktop.SelectedIndex == 1)
             {
-
-                CPU_Details jcd = new CPU_Details();
-                jcd.CPU_ASSETCODE = ddl_new_Asset_id.SelectedItem.Text.ToString();
-
-                jcd.CPU_PRODUCT_NUMBER = txt_ad_Product_Number.Text.ToString();
-                jcd.CPU_SERIAL_NUMBER = txt_ad_Serial_Number.Text.ToString();
-                jcd.CPU_PR_NUMBER = txt_ad_PR_Number.Text.ToString();
-                jcd.CPU_VOUCHER_NUMBER = txt_ad_Voucher_Number.Text.ToString();
-                jcd.CPU_BRAND_MAKE = ddl_ad_barnd.SelectedItem.Value;
-                if (ddl_ad_brandmodel.SelectedIndex == -1)
+                _load_brand();
+                if (ddl_new_Asset_id.SelectedIndex == 0)
                 {
-                    ddl_ad_brandmodel.Items.Add(new ListItem("Null", "0"));
+                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething()();", true);
+
                 }
                 else
                 {
-                    jcd.CPU_MODEL = ddl_ad_brandmodel.SelectedItem.Value;
-                }
+                    
+                    amcpu amct = new amcpu();
+                    amct.CU_ASSETCODE = ddl_new_Asset_id.SelectedItem.Text.ToString();
+                    amct.CU_MAKE = ddl_ad_brand.SelectedValue;
+                    amct.CU_MODEL = ddl_ad_brand_model.SelectedValue;
+                    amct.CU_SERVICETAG = txt_ad_Product_Number.Text.ToString();
+                    amct.CU_EXPRESS_SERVICETAG = txt_ad_Serial_Number.Text.ToString();
+                    amct.CU_PURCHASE_NUMBER = txt_ad_PR_Number.Text.ToString();
+                    amct.CU_VOUCHER_NUMBER = txt_ad_Voucher_Number.Text.ToString();
+                    amct.CU_RECIEVED_DATE = Convert.ToDateTime(txt_ad_Receive_Date.Text);
+                    amct.CU_WARRANTY_STARTDATE = Convert.ToDateTime(txt_ad_Warranty_Start_Date.Text);
+                    amct.CU_WARRANTY_ENDDATE = Convert.ToDateTime(txt_ad_Warranty_End_Date.Text);
 
-                jcd.CPU_RECEIVE_DATE = Convert.ToDateTime(txt_ad_Receive_Date.Text);
-                jcd.CPU_WARRANTY_START_DATE = Convert.ToDateTime(txt_ad_Warranty_Start_Date.Text);
-                jcd.CPU_WARRANTY_END_DATE = Convert.ToDateTime(txt_ad_Warranty_End_Date.Text);
-                jcd.CPU_IP_ADDRESS = txt_ad_ip_address.Text.ToString();
-                jcd.CPU_MAC_ID = txt_ad_mac_address.Text.ToString();
-                jcd.CPU_HOST_NAME = txt_ad_HostName.Text.ToString();
-                jcd.CPU_DOMAIN_NAME_GROUP = ddl_ad_DNG.SelectedItem.Value;
-                jcd.CPU_PROCESSOR_SERIALNUMBER = txt_ad_Serial_Number.Text.ToString();
-                jcd.CPU_PROCESSOR_MODEL = ddl_processorModel.SelectedItem.Value;
-                jcd.CPU_PROCESSOR_SPEED = ddl_processor_speed.SelectedItem.Value;
-                jcd.CPU_ITEM_CREATEDBY = "ahammed";
-                AM_DB_Tranactions adt = new AM_DB_Tranactions();
-                string cpu = adt.insertCpuDetails(jcd);
-                if (cpu == "Asset Code already exists")
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecninserted();", true);
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);
-                    //  _load_cpu_griddata();
+
+                    // below transaction differ to different load options
+                    amct.CU_PROCESSOR = txt_ad_processor.Text;
+                    amct.CU_IPADDRESS = txt_ad_ip_address.Text;
+                    amct.CU_MAC = txt_ad_mac_address.Text;
+                    amct.CU_HOST = txt_ad_HostName.Text;
+                    amct.CU_HDD_MODEL = txt_ad_hdd_model.Text;
+                    amct.CU_HDD_SERIAL = txt_ad_hdd_serial.Text;
+                    amct.CU_HDD_SIZE = txt_ad_hdd_size.Text;
+                    amct.Createdby = "";
+                    amct.Createdtime = DateTime.Now;
+                    cpu_insertions ci = new cpu_insertions();
+
+                    int cpu = ci.insertCpuDetails(amct);
+                    if (cpu == 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "Messagefor();", true);
+                    }
+                    else if (cpu == 1)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecninserted();", true);
+                    }
                 }
             }
             else if (ddl_desktop.SelectedIndex == 2)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);             
+                ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);
             }
             else
             {
@@ -457,23 +347,85 @@ namespace AM.Desktop
 
         }
 
+     
 
 
         #region Monitor_Details_laoads
 
-        void load_monitor_brands()
-        {
-            DataTable dt = adt.view_dng_details();
-            ddl_ad_DNG.DataSource = dt;
-            ddl_ad_DNG.DataTextField = "dng_name";
-            ddl_ad_DNG.DataValueField = "dng_id";
-            ddl_ad_DNG.DataBind();
-        }
+       // void load_monitor_brands()
+       // {
+           // DataTable dt = adt.view_dng_details();
+          //  ddl_ad_DNG.DataSource = dt;
+          //  ddl_ad_DNG.DataTextField = "dng_name";
+          //  ddl_ad_DNG.DataValueField = "dng_id";
+         //   ddl_ad_DNG.DataBind();
+      //  }
 
 
 	    #endregion
     }
 
-
+  
 }
 
+//protected void ddl_ad_barnd_SelectedIndexChanged(object sender, EventArgs e)
+//{
+//    DataTable dt = adt.view_Cpu_model(ddl_ad_barnd.SelectedItem.Value);
+//    ddl_ad_brandmodel.DataSource = dt;
+//    ddl_ad_brandmodel.DataTextField = "bbm_model";
+//    ddl_ad_brandmodel.DataValueField = "bbm_brand_id";
+//    ddl_ad_brandmodel.DataBind();
+//}
+
+
+
+//if (ddl_ad_brandmodel.SelectedIndex == -1)
+//{
+//    ddl_ad_brandmodel.Items.Add(new ListItem("Null", "0"));
+//}
+//else
+//{
+//    jcd.CPU_MODEL = ddl_ad_brandmodel.SelectedItem.Value;
+//}
+
+
+
+    //public void _load_Asset_id_os()
+    //    {
+    //        DataTable dt = adt.view_AssetId();
+    //        ddl_new_Asset_id_os.DataSource = dt;
+    //        ddl_new_Asset_id_os.DataTextField = "As_AssetCode";
+    //        ddl_new_Asset_id_os.DataValueField = "As_Id";
+    //        ddl_new_Asset_id_os.DataBind();
+    //    }
+
+
+    //    public void _load_processorModel()
+    //    {
+    //        DataTable dt = adt.view_processorModel_name();
+    //        ddl_processorModel.DataSource = dt;
+    //        ddl_processorModel.DataTextField = "processor_name";
+    //        ddl_processorModel.DataValueField = "processor_id";
+    //        ddl_processorModel.DataBind();
+    //    }
+
+    //    public void _load_processorSpeed()
+    //    {
+    //        DataTable dt = adt.view_processor_Speed();
+    //        ddl_processor_speed.DataSource = dt;
+    //        ddl_processor_speed.DataTextField = "processor_Speed";
+    //        ddl_processor_speed.DataValueField = "processor_speed_id";
+    //        ddl_processor_speed.DataBind();
+    //    }
+
+
+        
+
+    //    public void _load_dng()
+    //    {
+    //        DataTable dt = adt.view_dng_details();
+    //        ddl_ad_DNG.DataSource = dt;
+    //        ddl_ad_DNG.DataTextField = "dng_name";
+    //        ddl_ad_DNG.DataValueField = "dng_id";
+    //        ddl_ad_DNG.DataBind();
+    //    }

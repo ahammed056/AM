@@ -121,58 +121,40 @@ namespace AM.Desktop {
         protected global::System.Web.UI.WebControls.DropDownList ddl_new_Asset_id;
         
         /// <summary>
-        /// raj_brand control.
+        /// txt_ad_PR_Number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel raj_brand;
+        protected global::System.Web.UI.WebControls.TextBox txt_ad_PR_Number;
         
         /// <summary>
-        /// ddl_ad_barnd control.
+        /// ddl_ad_brand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_ad_barnd;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_ad_brand;
         
         /// <summary>
-        /// txt_ad_Product_Number control.
+        /// txt_ad_Voucher_Number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_ad_Product_Number;
+        protected global::System.Web.UI.WebControls.TextBox txt_ad_Voucher_Number;
         
         /// <summary>
-        /// raj_model control.
+        /// ddl_ad_brand_model control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel raj_model;
-        
-        /// <summary>
-        /// ddl_ad_brandmodel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_ad_brandmodel;
-        
-        /// <summary>
-        /// txt_ad_Serial_Number control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_ad_Serial_Number;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_ad_brand_model;
         
         /// <summary>
         /// txt_ad_Receive_Date control.
@@ -184,13 +166,13 @@ namespace AM.Desktop {
         protected global::System.Web.UI.WebControls.TextBox txt_ad_Receive_Date;
         
         /// <summary>
-        /// txt_ad_PR_Number control.
+        /// txt_ad_Product_Number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_ad_PR_Number;
+        protected global::System.Web.UI.WebControls.TextBox txt_ad_Product_Number;
         
         /// <summary>
         /// txt_ad_Warranty_Start_Date control.
@@ -202,13 +184,13 @@ namespace AM.Desktop {
         protected global::System.Web.UI.WebControls.TextBox txt_ad_Warranty_Start_Date;
         
         /// <summary>
-        /// txt_ad_Voucher_Number control.
+        /// txt_ad_Serial_Number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_ad_Voucher_Number;
+        protected global::System.Web.UI.WebControls.TextBox txt_ad_Serial_Number;
         
         /// <summary>
         /// txt_ad_Warranty_End_Date control.
@@ -247,6 +229,15 @@ namespace AM.Desktop {
         protected global::System.Web.UI.WebControls.Panel p123;
         
         /// <summary>
+        /// txt_ad_processor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_ad_processor;
+        
+        /// <summary>
         /// txt_ad_ip_address control.
         /// </summary>
         /// <remarks>
@@ -274,39 +265,30 @@ namespace AM.Desktop {
         protected global::System.Web.UI.WebControls.TextBox txt_ad_HostName;
         
         /// <summary>
-        /// ddl_ad_DNG control.
+        /// txt_ad_hdd_model control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_ad_DNG;
+        protected global::System.Web.UI.WebControls.TextBox txt_ad_hdd_model;
         
         /// <summary>
-        /// TextBox6 control.
+        /// txt_ad_hdd_serial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox txt_ad_hdd_serial;
         
         /// <summary>
-        /// ddl_processorModel control.
+        /// txt_ad_hdd_size control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_processorModel;
-        
-        /// <summary>
-        /// ddl_processor_speed control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_processor_speed;
+        protected global::System.Web.UI.WebControls.TextBox txt_ad_hdd_size;
     }
 }

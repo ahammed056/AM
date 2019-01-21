@@ -1,0 +1,1 @@
+﻿Data Source=KPCL9243\KPCLSQL;Initial Catalog=AM;Integrated Security=True

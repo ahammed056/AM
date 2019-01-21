@@ -21,7 +21,7 @@
         x0p('<h1>Great........!</h1><br><br>Asset Code Inserted<br><br>');
     }
     function typething() {
-        x0p('<h3>Hey........!</h3><br>Enter Asset Code<br><br>');
+        x0p('<h3>Hey........!</h3><br>Choose Asset Code<br><br>');
     }
 
     function cpuRecinserted() {
@@ -47,14 +47,14 @@
                     Add &nbsp;&nbsp;
            
             <asp:DropDownList ID="ddl_desktop" runat="server" OnSelectedIndexChanged="ddl_desktop_SelectedIndexChanged" AutoPostBack="true" Width="200px">
-                <asp:ListItem Value="0">New Asset</asp:ListItem>
+             <%--   <asp:ListItem Value="0">New Asset</asp:ListItem>
                 <asp:ListItem Value="1">C P U</asp:ListItem>
                 <asp:ListItem Value="2">Monitor</asp:ListItem>
                 <asp:ListItem Value="3">Mouse</asp:ListItem>
                 <asp:ListItem Value="4">Key Board</asp:ListItem>
                 <asp:ListItem Value="5">R A M</asp:ListItem>
                 <asp:ListItem Value="6">H D D</asp:ListItem>
-                <asp:ListItem Value="7">O S</asp:ListItem>
+                <asp:ListItem Value="7">O S</asp:ListItem>--%>
             </asp:DropDownList>
                 </p>
                 <%--  <asp:LinkButton ID="lbtn_Add_viewPanel" runat="server" CssClass="fa fa-plus-circle" aria-hidden="true" OnClick="lbtn_Add_viewPanel_OnClick" style="float:right;height:20px;width:20px;margin-top:-1em;font-size: 20px;"  />--%>
@@ -114,7 +114,7 @@
                                             <div class="form-group">
                                                 <p>
                                                     <label>Is New OS</label>
-                                                    <input id="Checkbox1" type="checkbox" title="Is Os New" text="haell" style="height: 24px; width: 24px; margin-top: 20px; padding: 0PX 0PX 0PX 10PX;" />
+                                                    <input id="Checkbox1" type="checkbox" title="Is Os New" style="height: 24px; width: 24px; margin-top: 20px; padding: 0PX 0PX 0PX 10PX;" />
                                                 </p>
                                             </div>
                                         </div>
@@ -149,38 +149,25 @@
                                                         <asp:DropDownList ID="ddl_new_Asset_id" class="form-control select2" runat="server" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:DropDownList>
                                                     </ContentTemplate>
                                                 </asp:UpdatePanel>
-                                            </div>
-
-
-                                            <%---------------------------------------------------------------------------------------------------------181--%>
+                                            </div> 
                                             <div class="form-group">
-                                                <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Brand Make</label>
-                                                <asp:UpdatePanel ID="raj_brand" runat="server">
-                                                    <ContentTemplate>
-                                                        <asp:DropDownList ID="ddl_ad_barnd" runat="server" class="form-control select2" AutoPostBack="true" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; width: 100%;" OnSelectedIndexChanged="ddl_ad_barnd_SelectedIndexChanged">
-                                                        </asp:DropDownList>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
+                                                  <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Purchase Number</label>
+                                              <asp:TextBox ID="txt_ad_PR_Number" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
                                             </div>
 
                                         </div>
 
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Product Number</label>
-                                                <asp:TextBox ID="txt_ad_Product_Number" runat="server" class="form-control" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                                 <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Brand Make</label>                                            
+                                                <asp:DropDownList ID="ddl_ad_brand" runat="server" class="form-control" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;" AutoPostBack="true" OnSelectedIndexChanged="ddl_ad_brand_SelectedIndexChanged" ></asp:DropDownList>
                                             </div>
 
 
 
                                             <div class="form-group">
-                                                <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Model</label>
-                                                <asp:UpdatePanel ID="raj_model" runat="server">
-                                                    <ContentTemplate>
-                                                        <asp:DropDownList ID="ddl_ad_brandmodel" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; width: 100%;">
-                                                        </asp:DropDownList>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
+                                                  <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Voucher Number</label>
+                                                <asp:TextBox ID="txt_ad_Voucher_Number" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
                                             </div>
 
 
@@ -188,8 +175,8 @@
 
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Serial Number</label>
-                                                <asp:TextBox ID="txt_ad_Serial_Number" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                                 <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Model</label>
+                                                  <asp:DropDownList ID="ddl_ad_brand_model" runat="server" class="form-control" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;" AutoPostBack="true" ></asp:DropDownList>
                                             </div>
 
                                             <div class="form-group">
@@ -202,8 +189,12 @@
                                         <div class="col-md-2">
 
                                             <div class="form-group">
-                                                <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">PR Number</label>
-                                                <asp:TextBox ID="txt_ad_PR_Number" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                                 
+                                              <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">
+                                                                        Product Number</label>
+
+                                                                     <asp:TextBox ID="txt_ad_Product_Number" runat="server" class="form-control" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                               
                                             </div>
 
 
@@ -217,8 +208,9 @@
 
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Voucher Number</label>
-                                                <asp:TextBox ID="txt_ad_Voucher_Number" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                              <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Serial Number</label>
+                                                <asp:TextBox ID="txt_ad_Serial_Number" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                              
                                             </div>
                                             <div class="form-group">
                                                 <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Warranty End Date</label>
@@ -253,18 +245,27 @@
                                     <asp:Panel ID="p123" runat="server" Visible="false">
                                         <div class="row" style="margin-top: -25px;">
                                             <section class="content-header">
-                                                <h4>Domain Entry</h4>
+                                                <h4>Cpu History</h4>
                                             </section>
                                             <div class="col-md-12">
 
                                                 <div class="box box-primary">
                                                     <div class="box-body">
+                                                     
                                                         <div class="row">
+                                                              <div class="col-md-12">
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">
+                                                                        Processor</label>
+
+                                                                    <asp:TextBox ID="txt_ad_processor" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                                                </div>
+                                                            </div>
                                                             <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">
                                                                         IP Address</label>
-
 
                                                                     <asp:TextBox ID="txt_ad_ip_address" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
                                                                 </div>
@@ -274,6 +275,7 @@
                                                                     <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">MAC ID</label>
                                                                     <asp:TextBox ID="txt_ad_mac_address" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
                                                                 </div>
+
                                                             </div>
                                                             <div class="col-md-2">
                                                                 <div class="form-group">
@@ -281,22 +283,52 @@
                                                                     <asp:TextBox ID="txt_ad_HostName" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-2">
-                                                                <div class="form-group">
-                                                                    <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">&nbsp;Domain Name group</label>
-                                                                    <%-- <asp:TextBox ID="txt_ad_Dng" runat="server" class="form-control select2" style="height: 23px;font-size: 12px;padding: 0 0 0 0; MARGIN-TOP: -10px;" ></asp:TextBox>--%>
-                                                                    <asp:DropDownList ID="ddl_ad_DNG" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:DropDownList>
-                                                                </div>
+                                                            
+                                                            </div>
                                                             </div>
 
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                               
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">
+                                                                                Hard Disk Model</label>
+
+                                                                            <asp:TextBox ID="txt_ad_hdd_model" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                                                        </div>
+
+                                                                      
+                                                                        
+                                                                    </div>
+                                                                   <div class="col-md-2">
+                                                                       <div class="form-group">
+                                                                            <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">
+                                                                                HardDisk serial No.</label>
+                                                                            <asp:TextBox ID="txt_ad_hdd_serial" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                                                        </div>                                                                        
+                                                                    </div>
+
+                                                                <div class="col-md-2">
+                                                                       <div class="form-group">
+                                                                            <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">
+                                                                                HardDisk size.</label>
+                                                                            <asp:TextBox ID="txt_ad_hdd_size" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>
+                                                                        </div>
+                                                                                                                                               
+                                                                    </div>
+                                                           
+                                                            </div>
                                                         </div>
+
+                                                        
                                                     </div>
-                                                    <%--  --%>
+                                                 
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="row" style="margin-top: -25px;">
+                                      <%--  <div class="row" style="margin-top: -25px;">
                                             <section class="content-header">
                                                 <h4>Processor Entry</h4>
                                             </section>
@@ -316,14 +348,14 @@
                                                                 <div class="form-group">
                                                                     <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Processor Model</label>
                                                                     <asp:DropDownList ID="ddl_processorModel" class="form-control select2" runat="server" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:DropDownList>
-                                                                    <%--   <asp:TextBox ID="TextBox22" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>--%>
+                                                                   
                                                                 </div>
                                                             </div>                                                           
                                                             <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Speed</label>
                                                                     <asp:DropDownList ID="ddl_processor_speed" runat="server" class="form-control select2" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:DropDownList>
-                                                                    <%-- <asp:TextBox ID="TextBox25" runat="server"  Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:TextBox>--%>
+                                                                  
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -332,7 +364,7 @@
                                                 </div>
 
                                             </div>
-                                        </div>
+                                        </div>--%>
                                     </asp:Panel>
 
 

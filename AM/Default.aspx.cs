@@ -35,19 +35,20 @@ namespace AM
             ddl_Asset_type_ad.DataSource = dt;
             ddl_Asset_type_ad.DataTextField = "type_name";
             ddl_Asset_type_ad.DataValueField = "type_id";
-            ddl_Asset_type_ad.DataBind();
+            ddl_Asset_type_ad.DataBind();          
         }
         protected void btn_assetNew_Num_Save_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txt_assetNew_Number.Text.ToString()))
             {
+               // asset_info ai = new asset_info();
                 ai.AS_ASSETCODE = txt_assetNew_Number.Text.ToString();
                 ai.AS_TYPE = ddl_Asset_type_ad.SelectedItem.Text;
                 String i = adt.insertAssertid(ai);
 
                 if (i == "Asset Code already exists")
                 {
-                //    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Cpuview();", true);
+                    //    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Cpuview();", true);
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "AssetCodeUsed();", true);
                 }
                 else

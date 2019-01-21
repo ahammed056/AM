@@ -790,7 +790,9 @@
     <Content Include="ahacssjs\js\x0popup.js" />
     <Content Include="dist\css\adminlte.css.map" />
     <Content Include="dist\css\adminlte.min.css.map" />
+    <Content Include="printers.aspx" />
     <Content Include="WebForm1.aspx" />
+    <None Include="Properties\PublishProfiles\hardware.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -7251,6 +7253,7 @@
     <Compile Include="Assets\AddAssets.aspx.designer.cs">
       <DependentUpon>AddAssets.aspx</DependentUpon>
     </Compile>
+    <Compile Include="cpu.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7279,6 +7282,14 @@
     <Compile Include="Masters\amms.aspx.designer.cs">
       <DependentUpon>amms.aspx</DependentUpon>
     </Compile>
+    <Compile Include="printers.aspx.cs">
+      <DependentUpon>printers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="printers.aspx.designer.cs">
+      <DependentUpon>printers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="printers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

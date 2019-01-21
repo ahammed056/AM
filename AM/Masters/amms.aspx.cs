@@ -149,17 +149,17 @@ namespace AM.Masters
                     string strmessage = "";
                     if (i == "1")
                     {
-                        strmessage = "New  "+txt_Asset_type_amms.Text +"     Was Inserted";
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('"+strmessage+"');</script>", false);
+                        strmessage = "New  " + txt_Asset_type_amms.Text + "     Was Inserted";
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
                         txt_Asset_type_amms.Text = string.Empty;
                         _load_astype_grid();
                         _load_brand_ddl();
-                        
+
                     }
-                    else if(i == "0")
+                    else if (i == "0")
                     {
                         strmessage = txt_Asset_type_amms.Text + "  " + "  ---- Already we have -- Try a New One";
-                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('"+strmessage+"');</script>", false);
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
                         _load_astype_grid();
                         txt_Asset_type_amms.Text = string.Empty;
                         _load_brand_ddl();
@@ -193,8 +193,8 @@ namespace AM.Masters
                     if (i == "1")
                     {
 
-                       string str1message = "New  " + txt_Asset_type_amms.Text + "     Was Updated";
-                       ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + str1message + "');</script>", false);
+                        string str1message = "New  " + txt_Asset_type_amms.Text + "     Was Updated";
+                        ScriptManager.RegisterClientScriptBlock(btn_Brand_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + str1message + "');</script>", false);
                         btn_Asset_type_save_amms.Text = "Save";
                         _load_astype_grid();
                         _load_brand_ddl();
