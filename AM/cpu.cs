@@ -291,6 +291,13 @@ namespace AM
 
          public string Model1 { get; set; }
      }
+
+
+
+
+    /// <summary>
+    /// ram information getting the data
+    /// </summary>
      public class raminfo
      {
          private string capacity;
@@ -396,10 +403,12 @@ namespace AM
              }
              catch (Exception)
              {
-
                  throw;
              }
          }
+
+
+
        
 
      }

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using AM_EntityLayer;
 using AM_DB_Layer;
+using System.Net;
 
 namespace AM
 {
@@ -14,6 +15,7 @@ namespace AM
         protected void Page_Load(object sender, EventArgs e)
         {         
             loadddl();
+           
         }
 
         private void loadddl()
@@ -26,6 +28,10 @@ namespace AM
             DropDownList1.DataValueField = "Cpu_brand_id";
             DropDownList1.DataBind();
         }
+
+
+       
+        
         void Main()
         {
             // The files used in this example are created in the topic
