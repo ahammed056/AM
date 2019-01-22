@@ -25,11 +25,11 @@
                                         <div class="col-md-12">
                                             <div class="box box-primary">
                                                 <div class="box-body">
-                                                    <h4 class="box-title">Add Asset Brands</h4>
+                                                    <h4 class="box-title">Add Asset Types</h4>
                                                     <div class="row" style="padding: 0em 3em 2em 0em;">
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Asset Brand:</h5>
+                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Asset Type:</h5>
                                                                 <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
                                                             </div>
                                                         </div>
@@ -101,7 +101,7 @@
 
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Desktop Brands and Models</h3>
+                    <h3 class="box-title"><img src="../../dist/ahaimages/9.png" alt="Processor" style="width:29px;height:20px;margin-top:-4px;" />&nbsp;&nbsp;Asset Types and Properties</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -119,7 +119,7 @@
                                         <div class="col-md-12">
                                             <div class="box box-primary">
                                                 <div class="box-body">
-                                                    <h4 class="box-title">Add Brands</h4>
+                                                    <h4 class="box-title">Add Types</h4>
                                                     <div class="row" style="padding: 0em 3em 2em 0em;">
 
                                                         <div class="col-md-5">
@@ -209,7 +209,7 @@
                                     <div class="col-md-12">
                                         <div class="box box-primary">
                                             <div class="box-body">
-                                                <h3 class="box-title">Add Models</h3>
+                                                <h3 class="box-title">Add Properties</h3>
                                                 <div class="row" style="padding: 0em 3em 2em 0em;">
                                                     <div class="col-md-5">
                                                         <div class="form-group">
