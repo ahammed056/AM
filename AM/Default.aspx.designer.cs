@@ -13,6 +13,42 @@ namespace AM {
     public partial class Default {
         
         /// <summary>
+        /// dektop_hidden_value control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField dektop_hidden_value;
+        
+        /// <summary>
+        /// Laptop_hidden_value control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Laptop_hidden_value;
+        
+        /// <summary>
+        /// Printers_hidden_value control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Printers_hidden_value;
+        
+        /// <summary>
+        /// Scanner_hidden_value control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Scanner_hidden_value;
+        
+        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>

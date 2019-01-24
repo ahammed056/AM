@@ -19,7 +19,16 @@ namespace AM.Desktop
 {
     public partial class AddCPU : System.Web.UI.Page
     {
-        cpu_insertions cui = new cpu_insertions();    
+        cpu_insertions cui = new cpu_insertions();
+
+        protected void Page_PreLoad(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+
         public void loaddates()
         {
             txt_ad_Receive_Date.Text = DateTime.Now.ToString("yyyy-MM-ddThh:mm");
@@ -28,8 +37,7 @@ namespace AM.Desktop
             txt_ad_Warranty_End_Date.Text = dts.ToString("yyyy-MM-ddThh:mm");
         }
         protected void Page_Load(object sender, EventArgs e)
-        {
-            
+        {            
             if (!IsPostBack)
             {
                 _load_view_desktop_ddl();
@@ -259,14 +267,16 @@ namespace AM.Desktop
 
         }
 
-        public void _load_view_desktop_ddl()
+        public int _load_view_desktop_ddl()
         {
-            DataTable dt = cui.loaddesktopdataddl();
+            int ji = 105;
+            DataTable dt = cui.loaddesktopdataddl(ji);
             ddl_desktop.DataSource = dt;
             ddl_desktop.DataTextField = "bm_brand";
             ddl_desktop.DataValueField = "BM_id";
             ddl_desktop.DataBind(); 
             ddl_desktop.Items.Insert(0, new ListItem("Add New Asset", "0"));
+            return ji;
         }
 
 

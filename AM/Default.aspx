@@ -33,6 +33,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Desktop</span>
               <span class="info-box-number">700</span>
+                <asp:HiddenField ID="dektop_hidden_value" runat="server" />
             </div>
                     
             <!-- /.info-box-content -->
@@ -47,6 +48,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Laptops</span>
               <span class="info-box-number">410</span>
+                 <asp:HiddenField ID="Laptop_hidden_value" runat="server" />
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -64,6 +66,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Printers</span>
               <span class="info-box-number">160</span>
+                 <asp:HiddenField ID="Printers_hidden_value" runat="server" />
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -77,6 +80,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Scanners</span>
               <span class="info-box-number">5</span>
+               <asp:HiddenField ID="Scanner_hidden_value" runat="server" />
             </div>
             <!-- /.info-box-content -->
           </div>

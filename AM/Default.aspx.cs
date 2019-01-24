@@ -18,9 +18,10 @@ namespace AM
         {
             if (!IsPostBack)
             {
+                Page.Title = "Ahammed";
                 _load_astype_ddl();
                 _load_assets_grid();
-                Page.Title = "Ahammed";
+               
             }
         }
         public void _load_assets_grid()
@@ -35,7 +36,15 @@ namespace AM
             ddl_Asset_type_ad.DataSource = dt;
             ddl_Asset_type_ad.DataTextField = "type_name";
             ddl_Asset_type_ad.DataValueField = "type_id";
-            ddl_Asset_type_ad.DataBind();          
+            ddl_Asset_type_ad.DataBind(); 
+            if(dt.Rows.Count > 0)
+            {
+                foreach(DataRow row in dt.Rows)
+                {
+                    dektop_hidden_value.Value = dt.Rows[0]["type_id"].ToString();
+                }
+            }
+
         }
         protected void btn_assetNew_Num_Save_Click(object sender, EventArgs e)
         {

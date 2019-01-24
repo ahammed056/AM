@@ -370,11 +370,12 @@ namespace AM
 
          }
 
-         public DataTable loaddesktopdataddl()
+         public DataTable loaddesktopdataddl(int i)
          {
              try
              {
                  SqlCommand cmd = new SqlCommand("pro_view_desktop_ddl", amons);
+                 cmd.Parameters.Add(new SqlParameter("@bm_type", i));
                  cmd.CommandType = CommandType.StoredProcedure;
                  SqlDataAdapter da = new SqlDataAdapter(cmd);
                  DataTable dt = new DataTable();
