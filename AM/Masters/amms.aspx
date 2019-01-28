@@ -25,7 +25,7 @@
                                         <div class="col-md-12">
                                             <div class="box box-primary">
                                                 <div class="box-body">
-                                                    <h4 class="box-title">Add Asset Types</h4>
+                                                    <h4 class="box-title">Add Products</h4>
                                                     <div class="row" style="padding: 0em 3em 2em 0em;">
                                                         <div class="col-md-5">
                                                             <div class="form-group">
@@ -35,13 +35,13 @@
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <asp:TextBox ID="txt_Asset_type_amms" runat="server" class="form-control select2"></asp:TextBox>
+                                                                <asp:TextBox ID="txt_product_amms" runat="server" class="form-control select2"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
                                                                 <asp:UpdatePanel ID="UpdatePanel6" runat="server"><ContentTemplate>
-                                                                <asp:Button ID="btn_Asset_type_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" OnClick="btn_Asset_type_save_amms_Click" />
+                                                                <asp:Button ID="btn_product_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" OnClick="btn_product_save_amms_Click" />
                                                            </ContentTemplate></asp:UpdatePanel>
                                                            </div>
                                                         </div>
@@ -75,7 +75,7 @@
                                                             </asp:TemplateField>
                                                             <asp:TemplateField HeaderText="">
                                                                 <ItemTemplate>
-                                                                    <asp:ImageButton ID="ibtn_asttype_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" OnClick="ibtn_asttype_asm_Click" />
+                                                                    <asp:ImageButton ID="ibtn_products_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" OnClick="ibtn_products_asm_Click" />
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
                                                         </Columns>
@@ -147,12 +147,12 @@
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <asp:TextBox ID="txt_Brand_Name_amms" runat="server" class="form-control select2" ValidationGroup="barnd"></asp:TextBox>
+                                                                <asp:TextBox ID="txt_product_type_amms" runat="server" class="form-control select2" ValidationGroup="type"></asp:TextBox>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
-                                                                <asp:Button ID="btn_Brand_Save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="barnd" Width="56px" OnClick="btn_Brand_Save_Click" />
+                                                                <asp:Button ID="btn_product_type_Save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="type" Width="56px" OnClick="btn_product_type_Save_amms_Click" />
                                                             </div>
                                                         </div>
 
