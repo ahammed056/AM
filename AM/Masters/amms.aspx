@@ -68,8 +68,9 @@
                                                             </asp:TemplateField>
                                                             <asp:TemplateField HeaderText="Asset Brand">
                                                                 <ItemTemplate>
-                                                                    <asp:Label ID="lbl_asttype_asm" runat="server" Text='<%#Eval("type_name") %>'></asp:Label>
-                                                                    <asp:HiddenField ID="hf_type_name" runat="server" Value='<%#Eval("type_name") %>' />
+                                                                    <asp:Label ID="lbl_asttype_id" runat="server" Text='<%#Eval("pr_id") %>'></asp:Label>
+                                                                    <asp:Label ID="lbl_asttype_asm" runat="server" Text='<%#Eval("pr_Name") %>'></asp:Label>
+                                                                    <asp:HiddenField ID="hf_type_name" runat="server" Value='<%#Eval("pr_Name") %>' />
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
                                                             <asp:TemplateField HeaderText="">
@@ -132,7 +133,7 @@
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <asp:DropDownList ID="ddl_brands_asm" runat="server" class="form-control select2" AutoPostBack="true" OnSelectedIndexChanged="ddl_brands_asm_SelectedIndexChanged">
+                                                                <asp:DropDownList ID="ddl_products_asm" runat="server" class="form-control select2" AutoPostBack="true" OnSelectedIndexChanged="ddl_brands_asm_SelectedIndexChanged">
                                                                    
                                                                 </asp:DropDownList>
                                                             </div>
@@ -173,6 +174,7 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Brand">
                                                         <ItemTemplate>
+                                                            <asp:Label ID="lbl_brand_asm_id" runat="server" Text='<%#Eval("bm_id") %>'></asp:Label>
                                                             <asp:Label ID="lbl_brand_asm" runat="server" Text='<%#Eval("bm_brand") %>'></asp:Label>
                                                             <asp:HiddenField ID="hf_brand_id" runat="server" Value='<%#Eval("bm_id") %>' />
                                                         </ItemTemplate>

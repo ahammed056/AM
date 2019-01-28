@@ -23,8 +23,8 @@ namespace AM.Desktop
 
         protected void Page_PreLoad(object sender, EventArgs e)
         {
-
-
+          ///  ViewState hfcpu = new HiddenField();
+            ViewState["cpu"] = Request.QueryString["cpu"].ToString();
 
         }
 
@@ -269,7 +269,7 @@ namespace AM.Desktop
 
         public int _load_view_desktop_ddl()
         {
-            int ji = 105;
+            int ji = Convert.ToInt32(ViewState["cpu"]);
             DataTable dt = cui.loaddesktopdataddl(ji);
             ddl_desktop.DataSource = dt;
             ddl_desktop.DataTextField = "bm_brand";

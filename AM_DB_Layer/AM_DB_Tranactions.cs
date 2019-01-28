@@ -470,19 +470,20 @@ namespace AM_DB_Layer
                 throw;
             }
         }
-        public String insert_barnd_Model_cpu(CPU_Details cu)
+        public int insert_barnd_Model_cpu(CPU_Details cu)
         {
 
             try
             {
                 SqlCommand cmd = new SqlCommand("pro_insert_Brand_Model_Master", amon);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@bm_brand_id", cu.Cpu_brand_id));
+                cmd.Parameters.Add(new SqlParameter("@bm_brand_id", cu.Cpu_am_id2));
+               // cmd.Parameters.Add(new SqlParameter("@bbm_type",cu.Cpu_am_id3));
                 cmd.Parameters.Add(new SqlParameter("@bm_model", cu.CPU_BRAND_MAKE));
                 cmd.Parameters.Add(new SqlParameter("@cdby", cu.CPU_ITEM_CREATEDBY));
                 cmd.Parameters.Add(new SqlParameter("@brandninc", cu.Brandidinc));
                 amon.Open();
-                return cmd.ExecuteScalar().ToString();
+                return (int)cmd.ExecuteScalar();
             }
             catch (Exception)
             {

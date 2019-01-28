@@ -45,6 +45,9 @@
       <HintPath>..\AM_EntityLayer\bin\Debug\AM_EntityLayer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data">
+      <HintPath>MY SQL DLL\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -7282,6 +7285,8 @@
     <Compile Include="Masters\amms.aspx.designer.cs">
       <DependentUpon>amms.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MysqlAsMDBCS.cs" />
+    <Compile Include="MySqlAsmObjs.cs" />
     <Compile Include="printers.aspx.cs">
       <DependentUpon>printers.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

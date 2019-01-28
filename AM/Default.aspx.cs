@@ -73,5 +73,11 @@ namespace AM
             }
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Desktop/AddDesktop.aspx?cpu=" + dektop_hidden_value.Value);
+      
+        }
+
     }
 }

@@ -27,12 +27,12 @@
         <div class="col-md-3 col-sm-6 col-xs-12">
            
           <div class="info-box">
-               <a href="Desktop/AddDesktop.aspx"
-            <span class="info-box-icon bg-aqua"><i class="fa fa-television"></i></span></a>
-
+              <span class="info-box-icon bg-aqua">
+            <asp:LinkButton ID="LinkButton1" runat="server" Text="<i class='fa fa-television'></i>" OnClick="Button1_Click"  />            
+             </span>
             <div class="info-box-content">
               <span class="info-box-text">Desktop</span>
-              <span class="info-box-number">700</span>
+              <span class="info-box-number">700</span>                
                 <asp:HiddenField ID="dektop_hidden_value" runat="server" />
             </div>
                     
