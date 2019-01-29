@@ -22,6 +22,7 @@ namespace AM.Masters
                 
                 _load_products_grid();
                 _load_products_ddl();
+                _load_products_types_grid();
 
 
 
@@ -53,12 +54,11 @@ namespace AM.Masters
         /// This is to get the products on Grid
         /// </summary>
         /// 
-
         public void _load_products_grid()
         {
             DataTable dt = amdb._load_Asset_Products();
-            gv_view_Assettype_grid.DataSource = dt;
-            gv_view_Assettype_grid.DataBind();
+            gv_products_grid.DataSource = dt;
+            gv_products_grid.DataBind();
         }
         /// <summary>
         /// This code is used for Loading the product into dropdown
@@ -72,12 +72,32 @@ namespace AM.Masters
             ddl_products_asm.DataBind();
             ddl_products_asm.Items.Insert(0, new ListItem("-- Select One --", "0"));
         }
-        
-
         /// <summary>
         /// This code is used for the loading the grid for the product Types
         /// </summary>
-        
+        /// 
+
+        public void _load_products_types_grid()
+        {
+            DataTable dt = amdb._load_Asset_Products_types();
+            gv_products_type_info.DataSource = dt;
+            gv_products_type_info.DataBind();
+        }
+        /// <summary>
+        /// This code is used for the loading the grid for the product Types by prfks       --- nouse
+        /// </summary>
+        /// 
+        public void _load_products_types_byid()
+        {
+            objs.Prfk_id = Convert.ToInt32(ddl_products_asm.SelectedItem.Value);
+            DataTable dt = amdb._load_Asset_Products_types_byid(objs);
+            gv_products_type_info.DataSource = dt;
+            gv_products_type_info.DataBind();
+            ddl_product_type_asm.DataSource = dt;
+            ddl_product_type_asm.DataTextField = "pr_type_name";
+            ddl_product_type_asm.DataValueField = "pr_type_id";
+            ddl_product_type_asm.DataBind();
+        }
 
 
         #endregion
@@ -96,10 +116,10 @@ namespace AM.Masters
             CPU_Details cu1 = new CPU_Details();
             cu1.Brandidinc = ddl_products_asm.SelectedItem.Value;
             DataTable dt = adt.view_brands_byid(cu1);
-            ddl_brand_model_asm.DataSource = dt;
-            ddl_brand_model_asm.DataTextField = "bm_brand";
-            ddl_brand_model_asm.DataValueField = "type_id";
-            ddl_brand_model_asm.DataBind();
+            ddl_product_type_asm.DataSource = dt;
+            ddl_product_type_asm.DataTextField = "bm_brand";
+            ddl_product_type_asm.DataValueField = "type_id";
+            ddl_product_type_asm.DataBind();
         
         }
         public void _load_brand_grid()
@@ -107,8 +127,8 @@ namespace AM.Masters
             CPU_Details cu1 = new CPU_Details();
             cu1.Brandidinc = ddl_products_asm.SelectedItem.Value;
             DataTable dt = adt.view_brands_byid(cu1);
-            gv_cpu_brand_info.DataSource = dt;
-            gv_cpu_brand_info.DataBind();
+            gv_products_type_info.DataSource = dt;
+            gv_products_type_info.DataBind();
         }
         public void _load_brand_model_grid()
         {
@@ -141,8 +161,8 @@ namespace AM.Masters
         public void _load_astype_grid()
         {
             DataTable dt = adt.view_Asset_type_grid();
-            gv_view_Assettype_grid.DataSource = dt;
-            gv_view_Assettype_grid.DataBind();
+            gv_products_grid.DataSource = dt;
+            gv_products_grid.DataBind();
         }
 
         public void _load_Monitor_brand()
@@ -194,26 +214,24 @@ namespace AM.Masters
                         strmessage = "New  " + txt_product_amms.Text + "     Was Inserted";
                         ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
                         txt_product_amms.Text = string.Empty;
-                      ///  _load_astype_grid();
-                      //  _load_brand_ddl();
-
+                        _load_products_grid();
+                        _load_products_ddl();
+                        
                     }
                     else if (i == 0)
                     {
                         strmessage = txt_product_amms.Text + "  " + "  ---- Already we have -- Try a New One";
                         ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
-                     //   _load_astype_grid();
+                        _load_products_grid();
+                        _load_products_ddl();
                        txt_product_amms.Text = string.Empty;
-                     //   _load_brand_ddl();
-                     //   _load_astype_grid();
                     }
                     else
                     {
-                        ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Some Thing Went Wrong');</script>", false);
-                     //   _load_astype_grid();
+                        ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Some Thing Went Wrong');</script>", false);                     
                         txt_product_amms.Text = string.Empty;
-                     //   _load_brand_ddl();
-                     //   _load_astype_grid();
+                        _load_products_grid();
+                        _load_products_ddl();
                     }
                 }
                 else
@@ -238,16 +256,16 @@ namespace AM.Masters
                         string str1message = "New  " + txt_product_amms.Text + "     Was Updated";
                         ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + str1message + "');</script>", false);
                         btn_product_save_amms.Text = "Save";
-                        _load_astype_grid();
-                        _load_brand_ddl();
+                        _load_products_grid();
+                        _load_products_ddl();
                     }
                     else
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
                         btn_product_save_amms.Text = "Save";
                         txt_product_amms.Text = string.Empty;
-                        _load_astype_grid();
-                        _load_brand_ddl();
+                        _load_products_grid();
+                        _load_products_ddl();
                     }
                 }
                 else
@@ -279,21 +297,22 @@ namespace AM.Masters
                         strbrandmessage = "Brand Name  " + txt_product_type_amms.Text + "  Inserted Sucessfully";
                         ScriptManager.RegisterClientScriptBlock(btn_product_type_Save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strbrandmessage + "');</script>", false);
                         txt_product_type_amms.Text = string.Empty;
-                       // _load_brand_ddl();
-                       // _load_brand_grid();
+                        _load_products_types_grid();
+                    
                     }
                     else if (i == 0)
                     {
 
                         ScriptManager.RegisterClientScriptBlock(btn_product_type_Save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('!---!-----Try Again-----');</script>", false);
                       //  _load_brand_ddl();
-                       // _load_brand_grid();
+                        _load_products_types_grid();
                         txt_product_type_amms.Text = string.Empty;
                     }
                      else
                     {
                         ScriptManager.RegisterClientScriptBlock(btn_product_type_Save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Some Thing was Wrong');</script>", false);
                        // _load_brand_ddl();
+                        _load_products_types_grid();
                         txt_product_type_amms.Text = string.Empty;
                     }
                 }
@@ -347,11 +366,11 @@ namespace AM.Masters
 
         protected void btn_Brand_Model_save_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txt_Brand_Model.Text.ToString()))
+            if (!string.IsNullOrWhiteSpace(txt_Brand_asm.Text.ToString()))
             {
                 CPU_Details cd = new CPU_Details();
-                cd.Cpu_am_id2 = ddl_brand_model_asm.SelectedItem.Value;
-                cd.CPU_BRAND_MAKE = txt_Brand_Model.Text.ToString();
+                cd.Cpu_am_id2 = ddl_product_type_asm.SelectedItem.Value;
+                cd.CPU_BRAND_MAKE = txt_Brand_asm.Text.ToString();
                 cd.Brandidinc = ddl_products_asm.SelectedValue;
                 cd.CPU_ITEM_CREATEDBY = "ahammed";
                 int i = adt.insert_barnd_Model_cpu(cd);
@@ -365,7 +384,7 @@ namespace AM.Masters
                 {
                    // ScriptManager.RegisterClientScriptBlock(btn_product_type_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Insertion Fail bro ask revathi....');</script>", false);
                     _load_brand_model_grid();
-                    txt_Brand_Model.Text = string.Empty;
+                    txt_Brand_asm.Text = string.Empty;
                 }
             }
             else
@@ -448,12 +467,12 @@ namespace AM.Masters
             DataTable dt = ad.view_Cpu_brand_model_edit_dispaly(cds);
             if (dt.Rows.Count > 0)
             {
-                ddl_brand_model_asm.SelectedItem.Value = dt.Rows[0]["bbm_brand_id"].ToString();
-                txt_Brand_Model.Text = dt.Rows[0]["bbm_model"].ToString();
+                ddl_product_type_asm.SelectedItem.Value = dt.Rows[0]["bbm_brand_id"].ToString();
+                txt_Brand_asm.Text = dt.Rows[0]["bbm_model"].ToString();
             }
             else
             {
-                txt_Brand_Model.Text = string.Empty;
+                txt_Brand_asm.Text = string.Empty;
             }
 
            
@@ -461,14 +480,14 @@ namespace AM.Masters
             
         }
 
-        protected void gv_view_Assettype_grid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gv_products_grid_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gv_view_Assettype_grid.PageIndex = e.NewPageIndex;
+            gv_products_grid.PageIndex = e.NewPageIndex;
             _load_astype_grid();
         }
-        protected void gv_cpu_brand_info_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gv_products_type_info_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gv_cpu_brand_info.PageIndex = e.NewPageIndex;
+            gv_products_type_info.PageIndex = e.NewPageIndex;
             _load_brand_grid();
         }
         protected void gv_cpu_brand_Model_info_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -673,13 +692,20 @@ namespace AM.Masters
         {
 
         }
-     
-        protected void ddl_brands_asm_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            _load_brand_grid();
-           _load_brand_model_ddl();
-            _load_brand_model_grid();
-            
+
+        protected void ddl_products_asm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _load_products_grid();
+            _load_products_types_byid();
+
+
+            //objs.Prfk_id = Convert.ToInt32(ddl_products_asm.SelectedItem.Value);
+            //DataTable dt = amdb._load_Asset_Products_types_byid(objs);
+            //if (dt.Rows.Count > 0)
+            //{
+            //    gv_products_type_info.DataSource = dt;
+            //    gv_products_type_info.DataBind();
+            //}
         }
     }
 }

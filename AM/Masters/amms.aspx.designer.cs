@@ -67,13 +67,13 @@ namespace AM.Masters {
         protected global::System.Web.UI.WebControls.Button btn_product_save_amms;
         
         /// <summary>
-        /// gv_view_Assettype_grid control.
+        /// gv_products_grid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_view_Assettype_grid;
+        protected global::System.Web.UI.WebControls.GridView gv_products_grid;
         
         /// <summary>
         /// UpdatePanel2 control.
@@ -139,13 +139,13 @@ namespace AM.Masters {
         protected global::System.Web.UI.WebControls.Button btn_product_type_Save_amms;
         
         /// <summary>
-        /// gv_cpu_brand_info control.
+        /// gv_products_type_info control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_cpu_brand_info;
+        protected global::System.Web.UI.WebControls.GridView gv_products_type_info;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -157,22 +157,22 @@ namespace AM.Masters {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// ddl_brand_model_asm control.
+        /// ddl_product_type_asm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_brand_model_asm;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_product_type_asm;
         
         /// <summary>
-        /// txt_Brand_Model control.
+        /// txt_Brand_asm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Brand_Model;
+        protected global::System.Web.UI.WebControls.TextBox txt_Brand_asm;
         
         /// <summary>
         /// btn_Brand_Model_save control.

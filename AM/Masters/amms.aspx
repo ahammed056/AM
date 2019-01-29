@@ -29,7 +29,7 @@
                                                     <div class="row" style="padding: 0em 3em 2em 0em;">
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Asset Type:</h5>
+                                                                <h5 style="margin-top: 4px; margin-left: 10px;">Asset:</h5>
                                                                 <asp:Label ID="lbl_id" runat="server" Text="" Visible="false"></asp:Label>
                                                             </div>
                                                         </div>
@@ -59,7 +59,7 @@
 
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <asp:GridView ID="gv_view_Assettype_grid" GridLines="None" runat="server" AutoGenerateColumns="false" Height="175PX" Width="100%" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_view_Assettype_grid_PageIndexChanging">
+                                                    <asp:GridView ID="gv_products_grid" GridLines="None" runat="server" AutoGenerateColumns="false" Height="175PX" Width="100%" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_products_grid_PageIndexChanging">
                                                         <Columns>
                                                             <asp:TemplateField HeaderText="S.No">
                                                                 <ItemTemplate>
@@ -133,7 +133,7 @@
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <asp:DropDownList ID="ddl_products_asm" runat="server" class="form-control select2" AutoPostBack="true" OnSelectedIndexChanged="ddl_brands_asm_SelectedIndexChanged">
+                                                                <asp:DropDownList ID="ddl_products_asm" runat="server" class="form-control select2" AutoPostBack="true" OnSelectedIndexChanged="ddl_products_asm_SelectedIndexChanged">
                                                                    
                                                                 </asp:DropDownList>
                                                             </div>
@@ -165,7 +165,7 @@
 
                                     <div class="col-sm-6">
                                         <div class="box box-primary">
-                                            <asp:GridView ID="gv_cpu_brand_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_cpu_brand_info_PageIndexChanging">
+                                            <asp:GridView ID="gv_products_type_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" AllowPaging="true" PageSize="5" OnPageIndexChanging="gv_products_type_info_PageIndexChanging">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="S.No">
                                                         <ItemTemplate>
@@ -174,9 +174,9 @@
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="Brand">
                                                         <ItemTemplate>
-                                                            <asp:Label ID="lbl_brand_asm_id" runat="server" Text='<%#Eval("bm_id") %>'></asp:Label>
-                                                            <asp:Label ID="lbl_brand_asm" runat="server" Text='<%#Eval("bm_brand") %>'></asp:Label>
-                                                            <asp:HiddenField ID="hf_brand_id" runat="server" Value='<%#Eval("bm_id") %>' />
+                                                            <asp:Label ID="lbl_brand_asm_id" runat="server" Text='<%#Eval("pr_type_id") %>'></asp:Label>
+                                                            <asp:Label ID="lbl_brand_asm" runat="server" Text='<%#Eval("pr_type_name") %>'></asp:Label>
+                                                            <asp:HiddenField ID="hf_brand_id" runat="server" Value='<%#Eval("pr_type_id") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField HeaderText="">
@@ -215,20 +215,20 @@
                                                 <div class="row" style="padding: 0em 3em 2em 0em;">
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <h5 style="margin-top: 14px; margin-left: 10px;">Choose Brand :</h5>
+                                                            <h5 style="margin-top: 14px; margin-left: 10px;">Choose Type :</h5>
                                                         </div>
                                                         <div class="form-group">
 
-                                                            <h5 style="margin-top: 28px; margin-left: 10px;">Model Name :</h5>
+                                                            <h5 style="margin-top: 28px; margin-left: 10px;">Add Brand :</h5>
 
                                                         </div>
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <asp:DropDownList ID="ddl_brand_model_asm" runat="server" class="form-control select2" ValidationGroup="model" ></asp:DropDownList>
+                                                            <asp:DropDownList ID="ddl_product_type_asm" runat="server" class="form-control select2" ValidationGroup="model" ></asp:DropDownList>
                                                         </div>
                                                         <div class="form-group">
-                                                            <asp:TextBox ID="txt_Brand_Model" runat="server" class="form-control select2" ValidationGroup="model"></asp:TextBox>
+                                                            <asp:TextBox ID="txt_Brand_asm" runat="server" class="form-control select2" ValidationGroup="model"></asp:TextBox>
                                                         </div>
                                                     </div>
 
