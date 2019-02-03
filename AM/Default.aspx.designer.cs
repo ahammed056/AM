@@ -22,13 +22,13 @@ namespace AM {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
         
         /// <summary>
-        /// dektop_hidden_value control.
+        /// desktop_hidden_value control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField dektop_hidden_value;
+        protected global::System.Web.UI.WebControls.HiddenField desktop_hidden_value;
         
         /// <summary>
         /// Laptop_hidden_value control.
@@ -58,6 +58,15 @@ namespace AM {
         protected global::System.Web.UI.WebControls.HiddenField Scanner_hidden_value;
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,24 @@ namespace AM {
         protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
+        /// ddl_Asset_product_ad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Asset_product_ad;
+        
+        /// <summary>
+        /// ddl_Asset_product_type_ad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_Asset_product_type_ad;
+        
+        /// <summary>
         /// txt_assetNew_Number control.
         /// </summary>
         /// <remarks>
@@ -74,15 +101,6 @@ namespace AM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_assetNew_Number;
-        
-        /// <summary>
-        /// ddl_Asset_type_ad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_Asset_type_ad;
         
         /// <summary>
         /// btn_assetNew_Num_Save control.
@@ -103,12 +121,12 @@ namespace AM {
         protected global::System.Web.UI.WebControls.Panel panel_cpu_grid;
         
         /// <summary>
-        /// gv_Asset_aa control.
+        /// gv_Asset_df control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_Asset_aa;
+        protected global::System.Web.UI.WebControls.GridView gv_Asset_df;
     }
 }

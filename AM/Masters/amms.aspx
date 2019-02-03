@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="Asset Master" Language="C#" MasterPageFile="~/AssetManage.Master" AutoEventWireup="true" CodeBehind="amms.aspx.cs" Inherits="AM.Masters.amms" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Panel ID="Panel1" runat="server">
         <section class="content">
             <div class="box">
-                <div class="box-header with-border">                    
-                    <h3 class="box-title"><img src="../../dist/ahaimages/9.png" alt="Processor" style="width:29px;height:20px;margin-top:-4px;" />&nbsp;&nbsp;Asset Brands</h3>
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        <img src="../../dist/ahaimages/9.png" alt="Processor" style="width: 29px; height: 20px; margin-top: -4px;" />&nbsp;&nbsp;Asset Brands</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i>
@@ -40,10 +40,12 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
-                                                                <asp:UpdatePanel ID="UpdatePanel6" runat="server"><ContentTemplate>
-                                                                <asp:Button ID="btn_product_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" OnClick="btn_product_save_amms_Click" />
-                                                           </ContentTemplate></asp:UpdatePanel>
-                                                           </div>
+                                                                <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                                                                    <ContentTemplate>
+                                                                        <asp:Button ID="btn_product_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" OnClick="btn_product_save_amms_Click" />
+                                                                    </ContentTemplate>
+                                                                </asp:UpdatePanel>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -66,7 +68,7 @@
                                                                     <%# Container.DataItemIndex + 1 %>
                                                                 </ItemTemplate>
                                                             </asp:TemplateField>
-                                                            <asp:TemplateField HeaderText="Asset Brand">
+                                                            <asp:TemplateField HeaderText="Asset">
                                                                 <ItemTemplate>
                                                                     <asp:Label ID="lbl_asttype_id" runat="server" Text='<%#Eval("pr_id") %>'></asp:Label>
                                                                     <asp:Label ID="lbl_asttype_asm" runat="server" Text='<%#Eval("pr_Name") %>'></asp:Label>
@@ -102,7 +104,8 @@
 
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><img src="../../dist/ahaimages/9.png" alt="Processor" style="width:29px;height:20px;margin-top:-4px;" />&nbsp;&nbsp;Asset Types and Properties</h3>
+                    <h3 class="box-title">
+                        <img src="../../dist/ahaimages/9.png" alt="Processor" style="width: 29px; height: 20px; margin-top: -4px;" />&nbsp;&nbsp;Asset Types and Properties</h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -134,14 +137,15 @@
                                                         <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <asp:DropDownList ID="ddl_products_asm" runat="server" class="form-control select2" AutoPostBack="true" OnSelectedIndexChanged="ddl_products_asm_SelectedIndexChanged">
-                                                                   
                                                                 </asp:DropDownList>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-md-5">
                                                             <div class="form-group">
-                                                                <h5 style="margin-top: 4px; margin-left: 10px;"><label runat="server" id="lbl_brand_Name" title="Name"></label> Name :</h5>
+                                                                <h5 style="margin-top: 4px; margin-left: 10px;">
+                                                                    <label runat="server" id="lbl_brand_Name" title="Name"></label>
+                                                                    Name :</h5>
                                                                 <asp:Label ID="lbl_brand_id" runat="server" Text="" Visible="false"></asp:Label>
                                                             </div>
                                                         </div>
@@ -172,7 +176,7 @@
                                                             <%# Container.DataItemIndex + 1 %>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Brand">
+                                                    <asp:TemplateField HeaderText="Type">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lbl_brand_asm_id" runat="server" Text='<%#Eval("pr_type_id") %>'></asp:Label>
                                                             <asp:Label ID="lbl_brand_asm" runat="server" Text='<%#Eval("pr_type_name") %>'></asp:Label>
@@ -211,7 +215,7 @@
                                     <div class="col-md-12">
                                         <div class="box box-primary">
                                             <div class="box-body">
-                                                <h3 class="box-title">Add Properties</h3>
+                                                <h3 class="box-title">Add Brands</h3>
                                                 <div class="row" style="padding: 0em 3em 2em 0em;">
                                                     <div class="col-md-5">
                                                         <div class="form-group">
@@ -225,17 +229,17 @@
                                                     </div>
                                                     <div class="col-md-5">
                                                         <div class="form-group">
-                                                            <asp:DropDownList ID="ddl_product_type_asm" runat="server" class="form-control select2" ValidationGroup="model" ></asp:DropDownList>
+                                                            <asp:DropDownList ID="ddl_product_type_amms" runat="server" class="form-control select2" ValidationGroup="model" OnSelectedIndexChanged="ddl_product_type_amms_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                                                         </div>
                                                         <div class="form-group">
-                                                            <asp:TextBox ID="txt_Brand_asm" runat="server" class="form-control select2" ValidationGroup="model"></asp:TextBox>
+                                                            <asp:TextBox ID="txt_Brand_amms" runat="server" class="form-control select2" ValidationGroup="model"></asp:TextBox>
                                                         </div>
                                                     </div>
 
 
                                                     <div class="col-md-2">
                                                         <div class="form-group" style="margin-top: 50px;">
-                                                            <asp:Button ID="btn_Brand_Model_save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" ValidationGroup="model" OnClick="btn_Brand_Model_save_Click" />
+                                                            <asp:Button ID="btn_Brand_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" ValidationGroup="model" OnClick="btn_Brand_save_amms_Click" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -246,17 +250,18 @@
 
                                 <div class="col-sm-6">
                                     <div class="box box-primary">
-                                        <asp:GridView ID="gv_cpu_brand_Model_info" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_cpu_brand_Model_info_PageIndexChanging" AllowPaging="true">
+                                        <asp:GridView ID="gv_brand_info_amms" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_cpu_brand_info_amms_PageIndexChanging" AllowPaging="true">
                                             <Columns>
                                                 <asp:TemplateField HeaderText="S.No">
                                                     <ItemTemplate>
                                                         <%# Container.DataItemIndex + 1 %>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField HeaderText="Model Number">
+                                                <asp:TemplateField HeaderText="Brands">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="lbl_brand_model_asm" runat="server" Text='<%#Eval("bbm_model") %>'></asp:Label>
-                                                        <asp:HiddenField ID="hf_brand_model_name" runat="server" Value='<%#Eval("bbm_model") %>' />
+                                                        <asp:Label ID="lbl_brand_id_amms" runat="server" Text='<%#Eval("br_id") %>'></asp:Label>
+                                                        <asp:Label ID="lbl_brand_amms" runat="server" Text='<%#Eval("br_name") %>'></asp:Label>
+                                                        <asp:HiddenField ID="hf_brand_model_name" runat="server" Value='<%#Eval("br_id") %>' />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="">
@@ -280,12 +285,88 @@
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
+
+                    <div class="row">
+                        <asp:UpdatePanel ID="UpdatePanel111" runat="server">
+                            <ContentTemplate>
+                                <div class="col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="box box-primary">
+                                            <div class="box-body">
+                                                <h3 class="box-title">Add Models</h3>
+                                                <div class="row" style="padding: 0em 3em 2em 0em;">
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <h5 style="margin-top: 14px; margin-left: 10px;">Choose Brand :</h5>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <h5 style="margin-top: 28px; margin-left: 10px;">Add Model :</h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group">
+                                                            <asp:DropDownList ID="ddl_brands_amms" runat="server" class="form-control select2" ValidationGroup="model1"  OnSelectedIndexChanged="ddl_brands_amms_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <asp:TextBox ID="txt_Model_amms" runat="server" class="form-control select2" ValidationGroup="model1"></asp:TextBox>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-2">
+                                                        <div class="form-group" style="margin-top: 50px;">
+                                                            <asp:Button ID="btn_model_save_amms" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" Width="56px" ValidationGroup="model1" OnClick="btn_model_save_amms_Click" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="box box-primary">
+                                        <asp:GridView ID="gv_model_info_amms" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" AllowPaging="true">
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="S.No">
+                                                    <ItemTemplate>
+                                                        <%# Container.DataItemIndex + 1 %>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="Model Number">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lbl_brand_id_amms" runat="server" Text='<%#Eval("mo_id") %>'></asp:Label>
+                                                        <asp:Label ID="lbl_brand_amms" runat="server" Text='<%#Eval("mo_name") %>'></asp:Label>
+                                                        <asp:HiddenField ID="hf_brand_model_name" runat="server" Value='<%#Eval("mo_id") %>' />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField HeaderText="">
+                                                    <ItemTemplate>
+                                                        <asp:ImageButton ID="ibtn_brand_model_asm" runat="server" ImageUrl="../dist/img/edit.png" Height="20px" Width="20px" OnClick="ibtn_brand_model_asm_Click" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <HeaderStyle CssClass="dataTables_info" />
+                                            <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                            <PagerStyle Height="8px" HorizontalAlign="Center" />
+
+                                            <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Left" VerticalAlign="Middle" />
+                                            <EmptyDataTemplate>
+                                                <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
+                                            </EmptyDataTemplate>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
             </div>
 
             <div class="box">
-                <div class="box-header with-border">                    
-                    <h3 class="box-title"><img src="../../dist/img/processor_icon.png" alt="Processor" style="width:20px;height:20px;margin-top:-4px;" />&nbsp;&nbsp;<b>Processor</b></h3>
+                <div class="box-header with-border">
+                    <h3 class="box-title">
+                        <img src="../../dist/img/processor_icon.png" alt="Processor" style="width: 20px; height: 20px; margin-top: -4px;" />&nbsp;&nbsp;<b>Processor</b></h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -295,7 +376,8 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="row"><%--style="background-image:url(../dist/img/CPU-Intel-icon.png);background-repeat: no-repeat;    background-size: 412px 259px;"--%>
+                    <div class="row">
+                        <%--style="background-image:url(../dist/img/CPU-Intel-icon.png);background-repeat: no-repeat;    background-size: 412px 259px;"--%>
 
                         <div class="col-md-12">
                             <asp:UpdatePanel ID="UpdatePanel3" runat="server">
@@ -307,9 +389,9 @@
                                                     <h3 class="box-title">Add Processor</h3>
                                                     <div class="row" style="padding: 0em 3em 2em 0em;">
 
-                                                        <div class="col-md-4" style="background-image:url(../dist/img/CPU-Intel-icon.png)">
-                                                            <div class="form-group" >
-                                                                
+                                                        <div class="col-md-4" style="background-image: url(../dist/img/CPU-Intel-icon.png)">
+                                                            <div class="form-group">
+
                                                                 <h5 style="margin-top: 4px; margin-left: 10px;">Name :</h5>
 
                                                             </div>
@@ -405,7 +487,7 @@
 
                                                         <div class="col-md-2">
                                                             <div class="form-group" style="margin-top: 50px;">
-                                                                <asp:Button ID="btn_processor_speed_asm" runat="server"  Width="56px" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_processor_speed_asm_Click" />
+                                                                <asp:Button ID="btn_processor_speed_asm" runat="server" Width="56px" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_processor_speed_asm_Click" />
                                                             </div>
                                                         </div>
 
@@ -417,7 +499,7 @@
                                     <div class="col-sm-6">
                                         <div class="box box-primary">
 
-                                            <asp:GridView ID="gv_processor_speed_asm" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" OnPageIndexChanging="gv_cpu_brand_Model_info_PageIndexChanging" AllowPaging="true">
+                                            <asp:GridView ID="gv_processor_speed_asm" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Height="175PX" PageSize="5" AllowPaging="true">
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="S.No">
                                                         <ItemTemplate>
@@ -453,7 +535,7 @@
                     </div>
                 </div>
             </div>
-              <div class="box">
+            <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">Monitor</h3>
 
@@ -490,7 +572,7 @@
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="form-group">
-                                                                <asp:Button ID="btn_Monitor_asm" runat="server" Text="Save" Width="56px" class="btn btn-block btn-info btn-sm" OnClick="btn_Monitor_asm_Click"   />
+                                                                <asp:Button ID="btn_Monitor_asm" runat="server" Text="Save" Width="56px" class="btn btn-block btn-info btn-sm" OnClick="btn_Monitor_asm_Click" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -646,5 +728,5 @@
 
 
 
-   <%--<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+<%--<button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
               <i class="fa fa-times"></i></button>--%>

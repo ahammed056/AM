@@ -7,11 +7,15 @@ using System.Web.UI.WebControls;
 using AM_EntityLayer;
 using AM_DB_Layer;
 using System.Data;
-       
+
 namespace AM
 {
     public partial class Default : System.Web.UI.Page
     {
+        MySqlAsmObjs objs = new MySqlAsmObjs();
+        MysqlAsMDBCS amdb = new MysqlAsMDBCS();
+
+
         asset_info ai = new asset_info();
         AM_DB_Tranactions adt = new AM_DB_Tranactions();
         protected void Page_Load(object sender, EventArgs e)
@@ -19,52 +23,53 @@ namespace AM
             if (!IsPostBack)
             {
                 Page.Title = "Ahammed";
-                _load_astype_ddl();
+                _load_products_ddl();
                 _load_assets_grid();
-               
+
             }
         }
         public void _load_assets_grid()
         {
-            DataTable dt = adt.view_Asset_grid();
-            gv_Asset_aa.DataSource = dt;
-            gv_Asset_aa.DataBind();
+            DataTable dt = amdb._load_Asset_Codes1();
+            gv_Asset_df.DataSource = dt;
+            gv_Asset_df.DataBind();
         }
-        public void _load_astype_ddl()
+        public void _load_products_ddl()
         {
-            DataTable dt = adt.view_Asset_type_grid();
-            ddl_Asset_type_ad.DataSource = dt;
-            ddl_Asset_type_ad.DataTextField = "type_name";
-            ddl_Asset_type_ad.DataValueField = "type_id";
-            ddl_Asset_type_ad.DataBind(); 
-            if(dt.Rows.Count > 0)
+            MysqlAsMDBCS ABC = new MysqlAsMDBCS();
+            DataTable dt = ABC._load_Asset_Products();
+            ddl_Asset_product_ad.DataSource = dt;
+            ddl_Asset_product_ad.DataTextField = "pr_Name";
+            ddl_Asset_product_ad.DataValueField = "pr_id";
+            ddl_Asset_product_ad.DataBind();
+            ddl_Asset_product_ad.Items.Insert(0, new ListItem("Select One", "0"));
+            if (dt.Rows.Count > 0)
             {
-                foreach(DataRow row in dt.Rows)
+                foreach (DataRow row in dt.Rows)
                 {
-                    dektop_hidden_value.Value = dt.Rows[0]["type_id"].ToString();
+                    desktop_hidden_value.Value = dt.Rows[0]["pr_id"].ToString();
                 }
             }
-
         }
         protected void btn_assetNew_Num_Save_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(txt_assetNew_Number.Text.ToString()))
-            {
-               // asset_info ai = new asset_info();
-                ai.AS_ASSETCODE = txt_assetNew_Number.Text.ToString();
-                ai.AS_TYPE = ddl_Asset_type_ad.SelectedItem.Text;
-                String i = adt.insertAssertid(ai);
-
-                if (i == "Asset Code already exists")
+            {                                
+                objs.AS_AssetCode  = txt_assetNew_Number.Text.ToString();                
+                objs.Pr_type_id = Convert.ToInt32(ddl_Asset_product_type_ad.SelectedItem.Value);
+                objs.Prfk_id = Convert.ToInt32(ddl_Asset_product_ad.SelectedValue);
+                objs.As_CreatedBy = "Ahammed";
+                int i = amdb._insert_Asset_Code_info(objs);
+                if (i == 1)
                 {
-                    //    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Cpuview();", true);
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "AssetCodeUsed();", true);
+                    _load_assets_grid();  
+                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "AssetRecinserted();", true);
+                    txt_assetNew_Number.Text = string.Empty;
+                                     
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "AssetRecinserted();", true);
-                    txt_assetNew_Number.Text = string.Empty;
-                    _load_assets_grid();
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "AssetCodeUsed();", true);                   
                 }
             }
             else
@@ -75,9 +80,35 @@ namespace AM
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Desktop/AddDesktop.aspx?cpu=" + dektop_hidden_value.Value);
-      
+            Response.Redirect("~/Desktop/AddDesktop.aspx?cpu=" + desktop_hidden_value.Value);
         }
 
+        protected void ddl_Asset_product_ad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            objs.Prfk_id = Convert.ToInt32(ddl_Asset_product_ad.SelectedItem.Value);
+            DataTable dt = amdb._load_Asset_Products_types_byid(objs);          
+            ddl_Asset_product_type_ad.DataSource = dt;
+            ddl_Asset_product_type_ad.DataTextField = "pr_type_name";
+            ddl_Asset_product_type_ad.DataValueField = "pr_type_id";
+            ddl_Asset_product_type_ad.DataBind();
+            ddl_Asset_product_type_ad.Items.Insert(0, new ListItem("-- Select One --", "0"));        
+           
+        }
+
+        protected void ddl_Asset_product_type_ad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MySqlAsmObjs obj = new MySqlAsmObjs();
+            obj.Pr_sh_name = ddl_Asset_product_type_ad.SelectedItem.Value;
+            MysqlAsMDBCS ABC = new MysqlAsMDBCS();
+            DataTable dt = ABC._load_Asset_Short_name(obj);
+            if (dt.Rows.Count > 0)
+            {
+                txt_assetNew_Number.Text = "KPCL/" + dt.Rows[0]["pr_type_sh_Name"].ToString() + "/";
+            }
+        }
+
+      
     }
 }
+

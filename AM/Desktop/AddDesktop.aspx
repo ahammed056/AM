@@ -47,14 +47,7 @@
                     Add &nbsp;&nbsp;
            
             <asp:DropDownList ID="ddl_desktop" runat="server" OnSelectedIndexChanged="ddl_desktop_SelectedIndexChanged" AutoPostBack="true" Width="200px">
-             <%--   <asp:ListItem Value="0">New Asset</asp:ListItem>
-                <asp:ListItem Value="1">C P U</asp:ListItem>
-                <asp:ListItem Value="2">Monitor</asp:ListItem>
-                <asp:ListItem Value="3">Mouse</asp:ListItem>
-                <asp:ListItem Value="4">Key Board</asp:ListItem>
-                <asp:ListItem Value="5">R A M</asp:ListItem>
-                <asp:ListItem Value="6">H D D</asp:ListItem>
-                <asp:ListItem Value="7">O S</asp:ListItem>--%>
+            
             </asp:DropDownList>
                 </p>
                 <%--  <asp:LinkButton ID="lbtn_Add_viewPanel" runat="server" CssClass="fa fa-plus-circle" aria-hidden="true" OnClick="lbtn_Add_viewPanel_OnClick" style="float:right;height:20px;width:20px;margin-top:-1em;font-size: 20px;"  />--%>
@@ -144,11 +137,9 @@
                                             <div class="form-group">
                                                 <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">
                                                     Asset Number</label>
-                                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                                    <ContentTemplate>
+                                              
                                                         <asp:DropDownList ID="ddl_new_Asset_id" class="form-control select2" runat="server" Style="height: 23px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px;"></asp:DropDownList>
-                                                    </ContentTemplate>
-                                                </asp:UpdatePanel>
+                                                  
                                             </div> 
                                             <div class="form-group">
                                                   <label style="height: 25px; font-size: 12px; padding: 0 0 0 0; margin-top: -10px; margin-top: -10px;">Purchase Number</label>

@@ -33,7 +33,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Desktop</span>
               <span class="info-box-number">700</span>                
-                <asp:HiddenField ID="dektop_hidden_value" runat="server" />
+                <asp:HiddenField ID="desktop_hidden_value" runat="server" />
             </div>
                     
             <!-- /.info-box-content -->
@@ -101,106 +101,125 @@
           </div>
         </div>
         <div class="box-body">
-              <div class="container-fluid">
-            <asp:Panel ID="Panel1" runat="server">
+            <div class="container-fluid">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:Panel ID="Panel1" runat="server">
 
-                <div class="row">
+                            <div class="row">
 
-                    <div class="col-md-12">
+                                <div class="col-md-12">
 
-                        <div class="box box-primary">
-                            <div class="box-body">
-                                <div class="row" style="padding: 4em 3em 2em 0em;">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <h3 style="margin-top: 4px; margin-left: 60px;">Asset Code:</h3>
+                                    <div class="box box-primary">
+                                        <div class="box-body">
 
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="row">
+                                            <div class="row" style="padding: 4em 3em 2em 0em;">
+
+
+
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <h3 style="margin-top: 4px;">Asset Code:</h3>
+
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-8">
-                                                    <asp:TextBox ID="txt_assetNew_Number" runat="server" class="form-control select2"></asp:TextBox>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+
+                                                                    <asp:DropDownList ID="ddl_Asset_product_ad" runat="server" class="form-control select2" ValidationGroup="assno" OnSelectedIndexChanged="ddl_Asset_product_ad_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+
+                                                                </div>
+
+                                                                <div class="col-md-4">
+                                                                    <asp:DropDownList ID="ddl_Asset_product_type_ad" runat="server" class="form-control select2" ValidationGroup="assno" AutoPostBack="true" OnSelectedIndexChanged="ddl_Asset_product_type_ad_SelectedIndexChanged"></asp:DropDownList>
+
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <asp:TextBox ID="txt_assetNew_Number" runat="server" class="form-control select2" ValidationGroup="assno"></asp:TextBox>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <asp:DropDownList ID="ddl_Asset_type_ad" runat="server" class="form-control select2"></asp:DropDownList>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+
+                                                        <asp:Button ID="btn_assetNew_Num_Save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" ValidationGroup="assno" OnClick="btn_assetNew_Num_Save_Click" />
+
+                                                    </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-
-                                            <asp:Button ID="btn_assetNew_Num_Save" runat="server" Text="Save" class="btn btn-block btn-info btn-sm" OnClick="btn_assetNew_Num_Save_Click" />
-
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </asp:Panel>
-            <div class="row">
-                <div class="col-md-12">
-                    <asp:Panel ID="panel_cpu_grid" runat="server" Visible="true">
-                        <div class="col-md-6">
-                            <div class="box box-primary">
-                                <asp:GridView ID="gv_Asset_aa" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Style="margin-left: 10px;">
-                                    <Columns>
-                                        <asp:TemplateField HeaderText="S.No">
-                                            <ItemTemplate>
-                                                <%# Container.DataItemIndex + 1 %>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Asset Code">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_em_requested_by" runat="server" Text='<%#Eval("As_AssetCode") %>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Asset Type">
-                                            <ItemTemplate>
-                                                <asp:Label ID="lbl_ad_Product_Number" runat="server" Text='<%#Eval("As_Type") %>'></asp:Label>
+                        </asp:Panel>
 
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Created On">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:Panel ID="panel_cpu_grid" runat="server" Visible="true">
+                                    <div class="col-md-6">
+                                        <div class="box box-primary">
+                                            <asp:GridView ID="gv_Asset_df" GridLines="None" runat="server" AutoGenerateColumns="false" Width="100%" Style="margin-left: 10px;">
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="S.No">
+                                                        <ItemTemplate>
+                                                            <%# Container.DataItemIndex + 1 %>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Asset Code">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="lbl_em_requested_by" runat="server" Text='<%#Eval("as_assetcode") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Asset Type">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="lbl_ad_Product_Number" runat="server" Text='<%#Eval("pr_name") %>'></asp:Label>
+
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <%-- <asp:TemplateField HeaderText="Created On">
                                             <ItemTemplate>
                                                 <asp:Label ID="lbl_ad_PR_Number" runat="server" Text='<%#Eval("As_CreatedTime") %>'></asp:Label>
 
                                             </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="">
-                                            <ItemTemplate>
-                                                <asp:ImageButton ID="ibtn_Asset_view_aa" runat="server" ImageUrl="../dist/img/view5.png" Height="20px" Width="25px" ToolTip="View Asset" />
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <HeaderStyle CssClass="dataTables_info" />
-                                    <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                    <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                    <EmptyDataTemplate>
-                                        <img src="../dist/img/view.png" />
-                                        <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
-                                    </EmptyDataTemplate>
+                                        </asp:TemplateField>--%>
+                                                    <asp:TemplateField HeaderText="">
+                                                        <ItemTemplate>
+                                                            <asp:ImageButton ID="ibtn_Asset_view_aa" runat="server" ImageUrl="../dist/img/view5.png" Height="20px" Width="25px" ToolTip="View Asset" />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                                <HeaderStyle CssClass="dataTables_info" />
+                                                <PagerStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <FooterStyle Wrap="False" CssClass="GridPager" HorizontalAlign="Center" VerticalAlign="Middle" />
+                                                <EmptyDataTemplate>
+                                                    <img src="../dist/img/view.png" />
+                                                    <asp:Label ID="lblNoRecsearch" runat="server" CssClass="no_rec_style" Text="No Records found" Width="100%" />
+                                                </EmptyDataTemplate>
 
-                                </asp:GridView>
+                                            </asp:GridView>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="box box-primary">
+                                        </div>
+                                    </div>
+                                </asp:Panel>
                             </div>
+
                         </div>
-                        <div class="col-md-6">
-                            <div class="box box-primary">
-                            </div>
-                        </div>
-                    </asp:Panel>
-                </div>
+
+                    </ContentTemplate>
+                </asp:UpdatePanel>
 
             </div>
-
-
-
-        </div>
         </div>
         <!-- /.box-body -->
       

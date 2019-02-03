@@ -9,7 +9,10 @@ using AM_DB_Layer;
 using System.Data;
 
 namespace AM.Masters
-{
+{   
+    /// <summary>
+    ///     // string te = String.IsNullOrEmpty(ddl_brands_amms.SelectedValue) ? null : ddl_brands_amms.SelectedValue;  passing a null value in ddl
+    /// </summary>
     public partial class amms : System.Web.UI.Page
     {
         MysqlAsMDBCS amdb = new MysqlAsMDBCS();
@@ -22,28 +25,7 @@ namespace AM.Masters
                 
                 _load_products_grid();
                 _load_products_ddl();
-                _load_products_types_grid();
-
-
-
-               // _load_brand_ddl();            
-               // _load_brand_grid();
-               // _load_astype_grid();
-
-
-               // _load_brand_model_grid();
-               //// _load_brand_model_ddl();
-
-               // _load_processorName_grid();
-               // _load_processorName_ddl();
-               // _load_processor_speed_grid();
-
-
-
-               // _load_Monitor_brand();
-               // _ddl_load_Monitor_brand();
-               // _load_Monitor_brand_Model_grid();
-               // _load_Monitor_brand_Model_ddl();
+                _load_products_types_grid();           
             }
         }
 
@@ -93,11 +75,44 @@ namespace AM.Masters
             DataTable dt = amdb._load_Asset_Products_types_byid(objs);
             gv_products_type_info.DataSource = dt;
             gv_products_type_info.DataBind();
-            ddl_product_type_asm.DataSource = dt;
-            ddl_product_type_asm.DataTextField = "pr_type_name";
-            ddl_product_type_asm.DataValueField = "pr_type_id";
-            ddl_product_type_asm.DataBind();
+            ddl_product_type_amms.DataSource = dt;
+            ddl_product_type_amms.DataTextField = "pr_type_name";
+            ddl_product_type_amms.DataValueField = "pr_type_id";
+            ddl_product_type_amms.DataBind();
+            ddl_product_type_amms.Items.Insert(0, new ListItem("-- Select One --", "0"));
         }
+
+        /// <summary>
+        /// This code is used for the loading the grid for the brands by prfks and prids      
+        /// </summary>
+        /// 
+        public void _load_brands_byids()
+        {
+            objs.Pr_id = Convert.ToInt32(ddl_products_asm.SelectedItem.Value);
+            objs.Prfk_id = Convert.ToInt32(ddl_product_type_amms.SelectedItem.Value);
+            DataTable dt = amdb._load_Asset_brands_byid(objs);
+            gv_brand_info_amms.DataSource = dt;
+            gv_brand_info_amms.DataBind();
+            ddl_brands_amms.DataSource = dt;
+            ddl_brands_amms.DataTextField = "br_name";
+            ddl_brands_amms.DataValueField = "br_id";
+            ddl_brands_amms.DataBind();
+            ddl_brands_amms.Items.Insert(0, new ListItem("-- Select One --", "0"));
+        }
+
+
+        public void _load_model_byids()
+        {
+            objs.Mo_br_id = Convert.ToInt32(ddl_brands_amms.SelectedItem.Value);          
+            DataTable dt = amdb._load_Asset_models_byid(objs);
+            gv_model_info_amms.DataSource = dt;
+            gv_model_info_amms.DataBind();
+           // gv_model_info_amms.Items.Insert(0, new ListItem("-- Select One --", "0"));
+        }
+
+
+
+
 
 
         #endregion
@@ -116,10 +131,10 @@ namespace AM.Masters
             CPU_Details cu1 = new CPU_Details();
             cu1.Brandidinc = ddl_products_asm.SelectedItem.Value;
             DataTable dt = adt.view_brands_byid(cu1);
-            ddl_product_type_asm.DataSource = dt;
-            ddl_product_type_asm.DataTextField = "bm_brand";
-            ddl_product_type_asm.DataValueField = "type_id";
-            ddl_product_type_asm.DataBind();
+            ddl_product_type_amms.DataSource = dt;
+            ddl_product_type_amms.DataTextField = "bm_brand";
+            ddl_product_type_amms.DataValueField = "type_id";
+            ddl_product_type_amms.DataBind();
         
         }
         public void _load_brand_grid()
@@ -135,9 +150,9 @@ namespace AM.Masters
             CPU_Details cu1 = new CPU_Details();
             cu1.Cpu_am_id3 = ddl_products_asm.SelectedItem.Value;
             DataTable dt = adt.view_brand_model(cu1);
-            gv_cpu_brand_Model_info.DataSource = dt;
-            gv_cpu_brand_Model_info.DataBind();
-        }    
+            gv_brand_info_amms.DataSource = dt;
+            gv_brand_info_amms.DataBind();
+        }  
         public void _load_processorName_grid()
         {
             DataTable dt = adt.view_processorModel_name();
@@ -211,7 +226,7 @@ namespace AM.Masters
                     string strmessage = "";
                     if (i == 1)
                     {
-                        strmessage = "New  " + txt_product_amms.Text + "     Was Inserted";
+                        strmessage = "New Asset  " + txt_product_amms.Text + "     Was Inserted";
                         ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
                         txt_product_amms.Text = string.Empty;
                         _load_products_grid();
@@ -282,7 +297,7 @@ namespace AM.Masters
         /// <param name="e"></param>
         protected void btn_product_type_Save_amms_Click(object sender, EventArgs e)
         {
-             string strbrandmessage = "";
+             string strptymessage = "";
              if (btn_product_type_Save_amms.Text == "Save")
             {
                 if (!string.IsNullOrWhiteSpace(txt_product_type_amms.Text.ToString()))
@@ -290,14 +305,17 @@ namespace AM.Masters
                     
                     objs.Prfk_id = Convert.ToInt32(ddl_products_asm.SelectedItem.Value);
                     objs.Pr_type_Name = txt_product_type_amms.Text.ToString();
+                    string shname = txt_product_type_amms.Text.ToString();
+                   // shname.Substring(0, 2);
+                    objs.Pr_type_SH_name = shname.Substring(0, 3).ToString();
                     objs.Pr_type_created_by = "ahammed";
                     int i = amdb._insert_product_type_info(objs);
                     if (i == 1)
                     {
-                        strbrandmessage = "Brand Name  " + txt_product_type_amms.Text + "  Inserted Sucessfully";
-                        ScriptManager.RegisterClientScriptBlock(btn_product_type_Save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strbrandmessage + "');</script>", false);
+                        strptymessage = "Product Type  " + txt_product_type_amms.Text + "  Inserted Sucessfully";
+                        ScriptManager.RegisterClientScriptBlock(btn_product_type_Save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strptymessage + "');</script>", false);
                         txt_product_type_amms.Text = string.Empty;
-                        _load_products_types_grid();
+                        _load_products_types_byid();
                     
                     }
                     else if (i == 0)
@@ -334,8 +352,8 @@ namespace AM.Masters
                     
                     if (i == "1")
                     {
-                        strbrandmessage = "Brand Name  " + txt_product_type_amms.Text + "  Updated Sucessfully";
-                        ScriptManager.RegisterClientScriptBlock(btn_product_type_Save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strbrandmessage + "');</script>", false);
+                        strptymessage = "Brand Name  " + txt_product_type_amms.Text + "  Updated Sucessfully";
+                        ScriptManager.RegisterClientScriptBlock(btn_product_type_Save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strptymessage + "');</script>", false);
                         txt_product_type_amms.Text = string.Empty;
                         btn_product_type_Save_amms.Text = "Save";
                         _load_brand_ddl();
@@ -364,27 +382,32 @@ namespace AM.Masters
 
         }
 
-        protected void btn_Brand_Model_save_Click(object sender, EventArgs e)
+        protected void btn_Brand_save_amms_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txt_Brand_asm.Text.ToString()))
+            string strbrandmessage = "";
+            if (!string.IsNullOrWhiteSpace(txt_Brand_amms.Text.ToString()))
             {
-                CPU_Details cd = new CPU_Details();
-                cd.Cpu_am_id2 = ddl_product_type_asm.SelectedItem.Value;
-                cd.CPU_BRAND_MAKE = txt_Brand_asm.Text.ToString();
-                cd.Brandidinc = ddl_products_asm.SelectedValue;
-                cd.CPU_ITEM_CREATEDBY = "ahammed";
-                int i = adt.insert_barnd_Model_cpu(cd);
+                objs.Br_name = txt_Brand_amms.Text.ToString().TrimEnd().TrimStart();
+                objs.Pr_id = Convert.ToInt32(ddl_products_asm.SelectedItem.Value);
+                objs.Prfk_id = Convert.ToInt32(ddl_product_type_amms.SelectedItem.Value);
+                objs.Br_createdBy = "Syed ahammed";
+                int i = amdb._insert_brands_info(objs);
                 if (i == 1)
                 {
-                   // ScriptManager.RegisterClientScriptBlock(btn_product_type_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Model Inserted');</script>", false);
-                    txt_product_amms.Text = string.Empty;
-                    _load_brand_model_grid();
+                    strbrandmessage = "Brand Name  " + txt_product_type_amms.Text + "  Inserted Sucessfully";
+                    ScriptManager.RegisterClientScriptBlock(btn_product_type_Save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strbrandmessage + "');</script>", false);
+
+                  
+                    txt_Brand_amms.Text = string.Empty;
+                    _load_brands_byids();
+
+                   // _load_brand_model_grid();
                 }
                 else
                 {
-                   // ScriptManager.RegisterClientScriptBlock(btn_product_type_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Insertion Fail bro ask revathi....');</script>", false);
-                    _load_brand_model_grid();
-                    txt_Brand_asm.Text = string.Empty;
+                    ScriptManager.RegisterClientScriptBlock(btn_Brand_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Insertion Fail bro ask revathi....');</script>", false);
+                    _load_brands_byids();
+                    txt_Brand_amms.Text = string.Empty;
                 }
             }
             else
@@ -445,39 +468,26 @@ namespace AM.Masters
         protected void ibtn_brand_model_asm_Click(object sender, ImageClickEventArgs e)
         {
             _load_brand_model_grid();
-            btn_Brand_Model_save.Text = "Update";
+            btn_Brand_save_amms.Text = "Update";
             ImageButton btn1 = (ImageButton)sender;
             GridViewRow gvr1 = (GridViewRow)btn1.NamingContainer;
-
             HiddenField hf_brand_model = (HiddenField)gvr1.FindControl("hf_brand_model_name");
-
          //   Label lb1 = (Label)gvr1.FindControl("lbl_brand_model_asm");
-
-
-
             HiddenField hf_model = new HiddenField();
-
-
              hf_model.Value = hf_brand_model.Value;
-
-
             CPU_Details cds = new CPU_Details();
             cds.Cpu_model_make = hf_model.Value;
             AM_DB_Tranactions ad = new AM_DB_Tranactions();
             DataTable dt = ad.view_Cpu_brand_model_edit_dispaly(cds);
             if (dt.Rows.Count > 0)
             {
-                ddl_product_type_asm.SelectedItem.Value = dt.Rows[0]["bbm_brand_id"].ToString();
-                txt_Brand_asm.Text = dt.Rows[0]["bbm_model"].ToString();
+                ddl_product_type_amms.SelectedItem.Value = dt.Rows[0]["bbm_brand_id"].ToString();
+                txt_Brand_amms.Text = dt.Rows[0]["bbm_model"].ToString();
             }
             else
             {
-                txt_Brand_asm.Text = string.Empty;
+                txt_Brand_amms.Text = string.Empty;
             }
-
-           
-
-            
         }
 
         protected void gv_products_grid_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -490,10 +500,10 @@ namespace AM.Masters
             gv_products_type_info.PageIndex = e.NewPageIndex;
             _load_brand_grid();
         }
-        protected void gv_cpu_brand_Model_info_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void gv_cpu_brand_info_amms_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            gv_cpu_brand_Model_info.PageIndex = e.NewPageIndex;
-            _load_brand_model_grid();
+            gv_brand_info_amms.PageIndex = e.NewPageIndex;
+           // _load_brand_model_grid();
         }
 
         protected void btn_processor_asm_Click(object sender, EventArgs e)
@@ -706,6 +716,94 @@ namespace AM.Masters
             //    gv_products_type_info.DataSource = dt;
             //    gv_products_type_info.DataBind();
             //}
+        }
+
+        protected void ddl_product_type_amms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _load_brands_byids();
+        }
+
+        protected void btn_model_save_amms_Click(object sender, EventArgs e)
+        {
+            if (btn_model_save_amms.Text == "Save")
+            {
+                if (!string.IsNullOrWhiteSpace(txt_Model_amms.Text.ToString()))
+                {
+                    objs.Mo_Name = txt_Model_amms.Text.ToString().TrimEnd().TrimStart();
+                    objs.Mo_br_id = Convert.ToInt32(ddl_brands_amms.SelectedItem.Value);
+                    objs.Mo_created_by = "Ahammed syed";
+                    int i = amdb._insert_model_info(objs);
+                    string strmessage = "";
+                    if (i == 1)
+                    {
+                        strmessage = "New Model  " + txt_Model_amms.Text + "     Was Inserted";
+                        ScriptManager.RegisterClientScriptBlock(btn_model_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
+                        txt_Model_amms.Text = string.Empty;
+                     //   _load_products_grid();
+                     //   _load_products_ddl();
+
+                    }
+                    else if (i == 0)
+                    {
+                        strmessage = txt_Model_amms.Text + "  " + "  ---- Already we have -- Try a New One";
+                        ScriptManager.RegisterClientScriptBlock(btn_model_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
+                      //  _load_products_grid();
+                      //  _load_products_ddl();
+                        txt_Model_amms.Text = string.Empty;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_model_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Some Thing Went Wrong');</script>", false);
+                        txt_Model_amms.Text = string.Empty;
+                      //  _load_products_grid();
+                      //  _load_products_ddl();
+                    }
+                }
+                else
+                {
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_model_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
+                }
+            }
+            if (btn_model_save_amms.Text == "Update")
+            {
+                if (!string.IsNullOrWhiteSpace(txt_Model_amms.Text.ToString()))
+                {
+                    asset_info ais = new asset_info();
+                    ais.Asset_id = Convert.ToInt32(lbl_id.Text);
+                    ais.AS_TYPE = txt_Model_amms.Text.TrimEnd(' ');
+
+
+                    String i = adt.Upadte_AssetType(ais);
+                    if (i == "1")
+                    {
+
+                        string str1message = "New  " + txt_Model_amms.Text + "     Was Updated";
+                        ScriptManager.RegisterClientScriptBlock(btn_model_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + str1message + "');</script>", false);
+                        btn_model_save_amms.Text = "Save";
+                        //_load_products_grid();
+                      //  _load_products_ddl();
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterClientScriptBlock(btn_model_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + i + "');</script>", false);
+                        btn_model_save_amms.Text = "Save";
+                        txt_Model_amms.Text = string.Empty;
+                   //     _load_products_grid();
+                    //    _load_products_ddl();
+                    }
+                }
+                else
+                {
+                    string textmess = "Please Enter Text";
+                    ScriptManager.RegisterClientScriptBlock(btn_model_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
+                }
+            }
+        }
+
+        protected void ddl_brands_amms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _load_model_byids();
         }
     }
 }

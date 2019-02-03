@@ -157,40 +157,85 @@ namespace AM.Masters {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// ddl_product_type_asm control.
+        /// ddl_product_type_amms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_product_type_asm;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_product_type_amms;
         
         /// <summary>
-        /// txt_Brand_asm control.
+        /// txt_Brand_amms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Brand_asm;
+        protected global::System.Web.UI.WebControls.TextBox txt_Brand_amms;
         
         /// <summary>
-        /// btn_Brand_Model_save control.
+        /// btn_Brand_save_amms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Brand_Model_save;
+        protected global::System.Web.UI.WebControls.Button btn_Brand_save_amms;
         
         /// <summary>
-        /// gv_cpu_brand_Model_info control.
+        /// gv_brand_info_amms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_cpu_brand_Model_info;
+        protected global::System.Web.UI.WebControls.GridView gv_brand_info_amms;
+        
+        /// <summary>
+        /// UpdatePanel111 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel111;
+        
+        /// <summary>
+        /// ddl_brands_amms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_brands_amms;
+        
+        /// <summary>
+        /// txt_Model_amms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_Model_amms;
+        
+        /// <summary>
+        /// btn_model_save_amms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_model_save_amms;
+        
+        /// <summary>
+        /// gv_model_info_amms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_model_info_amms;
         
         /// <summary>
         /// UpdatePanel3 control.
