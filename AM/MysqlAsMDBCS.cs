@@ -186,7 +186,111 @@ namespace AM
 
         }
 
+        /// <summary>
+        /// to insert the full Asset INformation       
+        /// </summary>
+        /// <returns></returns>
+        /// 
 
+        public int _insert_Asset_full_info(MySqlAsmObjs mso_products)
+        {
+            try
+            {
+                int result = 0;
+                {
+                    MySqlCommand cmd = new MySqlCommand("Pro_insert_Asset_full_info", acon);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("@at_type1", mso_products.At_type_id));
+                    cmd.Parameters.Add(new MySqlParameter("@at_subtype1", mso_products.At_subtype_id));
+                    cmd.Parameters.Add(new MySqlParameter("@at_brandMake1", mso_products.At_brandMake_id));
+                    cmd.Parameters.Add(new MySqlParameter("@at_model1",mso_products.At_model_id));
+                    cmd.Parameters.Add(new MySqlParameter("@at_aseet_code_id1", mso_products.At_aseet_code_id));
+                    cmd.Parameters.Add(new MySqlParameter("@at_Assetcode1", mso_products.At_Assetcode));
+                    cmd.Parameters.Add(new MySqlParameter("@at_productNumber1", mso_products.At_productNumber));
+                    cmd.Parameters.Add(new MySqlParameter("@at_purchaseNumber1", mso_products.At_purchaseNumber));
+                    cmd.Parameters.Add(new MySqlParameter("@at_SerialNumber1", mso_products.At_SerialNumber));
+                    cmd.Parameters.Add(new MySqlParameter("@at_voucherNumber1", mso_products.At_voucherNumber));
+                    cmd.Parameters.Add(new MySqlParameter("@at_receivedDate1", mso_products.At_receivedDate));
+                    cmd.Parameters.Add(new MySqlParameter("@at_wsd1", mso_products.At_wsd));
+                    cmd.Parameters.Add(new MySqlParameter("@at_wed1", mso_products.At_wed));
+                    cmd.Parameters.Add(new MySqlParameter("@at_cby1", mso_products.At_cby));
+                    
+                    acon.Open();
+                    result = cmd.ExecuteNonQuery();
+                    acon.Close();
+                }
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                acon.Close();
+            }
+
+
+        }
+
+       /// <summary>
+       /// to insert the cartrige model
+       /// </summary>
+       /// <param name="mso_products"></param>
+       /// <returns></returns>
+
+        public int _insert_asset_cartridge(MySqlAsmObjs mso_products)
+        {
+            try
+            {
+                int result = 0;
+                {
+                    MySqlCommand cmd = new MySqlCommand("pro_insert_asset_cartridge", acon);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("@Catri_Model1", mso_products.Cat_Model));
+                    cmd.Parameters.Add(new MySqlParameter("@catri_createdby1", mso_products.Cat_AssetcodeID));
+
+                     acon.Open();
+                    result = cmd.ExecuteNonQuery();
+                    acon.Close();
+                }
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                acon.Close();
+            }
+
+
+        }
+      
+        
+        
+        public DataTable _load_Asset_cartridge()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                acon.Open();
+                MySqlCommand msc = new MySqlCommand("pro_view_asset_cartridge", acon);
+                msc.CommandType = CommandType.StoredProcedure;
+                MySqlDataAdapter da = new MySqlDataAdapter(msc);
+                da.Fill(dt);
+            }
+            catch (Exception)
+            {
+                throw new Exception("who knows ahammed");
+            }
+            finally
+            {
+                acon.Close();
+            }
+            return dt;
+        }
         public DataTable _load_Asset_Products()
         {
             DataTable dt = new DataTable();
@@ -195,6 +299,28 @@ namespace AM
                 acon.Open();
                 MySqlCommand msc = new MySqlCommand("pro_view_products", acon);
                 msc.CommandType = CommandType.StoredProcedure;
+                MySqlDataAdapter da = new MySqlDataAdapter(msc);
+                da.Fill(dt);
+            }
+            catch (Exception)
+            {
+                throw new Exception("who knows ahammed");
+            }
+            finally
+            {
+                acon.Close();
+            }
+            return dt;
+        }
+
+        public DataTable _load_Asset_Fullinfo()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                acon.Open();
+                MySqlCommand msc = new MySqlCommand("SELECT * FROM tbl_assets_info", acon);
+                msc.CommandType = CommandType.Text;
                 MySqlDataAdapter da = new MySqlDataAdapter(msc);
                 da.Fill(dt);
             }
@@ -308,7 +434,7 @@ namespace AM
                 acon.Open();
                 MySqlCommand msc = new MySqlCommand("pro_view_brands_byids", acon);
                 msc.Parameters.Add(new MySqlParameter("prid", mys.Pr_id));
-                msc.Parameters.Add(new MySqlParameter("prtid", mys.Prfk_id));
+                msc.Parameters.Add(new MySqlParameter("prtid", mys.Pr_type_id));
                 msc.CommandType = CommandType.StoredProcedure;
                 MySqlDataAdapter da = new MySqlDataAdapter(msc);
                 da.Fill(dt);
@@ -323,6 +449,33 @@ namespace AM
             }
             return dt;
         }
+
+        //pro_view_brands_by_prptr_ids
+        public DataTable _load_Asset_brands_byprptrid(MySqlAsmObjs mys)
+        {
+            DataTable dt1 = new DataTable();
+            try
+            {
+                acon.Open();
+                MySqlCommand msc = new MySqlCommand("pro_view_brands_by_prptr_ids", acon);
+                msc.Parameters.Add(new MySqlParameter("prid", mys.Pr_id));
+                msc.Parameters.Add(new MySqlParameter("prtid", mys.Pr_type_id));
+                msc.CommandType = CommandType.StoredProcedure;
+                MySqlDataAdapter da = new MySqlDataAdapter(msc);
+                da.Fill(dt1);
+            }
+            catch
+            {
+                throw new Exception("who knows ahammed");
+            }
+            finally
+            {
+                acon.Close();
+            }
+            return dt1;
+        }
+
+
         public DataTable _load_Asset_models_byid(MySqlAsmObjs mys)
         {
             DataTable dt = new DataTable();

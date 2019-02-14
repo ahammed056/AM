@@ -12,6 +12,9 @@ using System.Management.Instrumentation;
 using Microsoft.Win32;
 using System.Net.NetworkInformation;
 using System.Collections;
+using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace AM.Desktop
 {
@@ -20,16 +23,6 @@ namespace AM.Desktop
         MySqlAsmObjs objs = new MySqlAsmObjs();
         MysqlAsMDBCS amdb = new MysqlAsMDBCS();
         cpu_insertions cui = new cpu_insertions();
-        protected void Page_PreLoad(object sender, EventArgs e)
-        {
-          ///  ViewState hfcpu = new HiddenField();
-            ViewState["cpu"] = Request.QueryString["cpu"].ToString();
-
-
-
-
-        }
-
 
         public void loaddates()
         {
@@ -39,43 +32,45 @@ namespace AM.Desktop
             txt_ad_Warranty_End_Date.Text = dts.ToString("yyyy-MM-ddThh:mm");
         }
         protected void Page_Load(object sender, EventArgs e)
-        {            
+        {
+            ViewState["ids"] = Request.QueryString["key"].ToString();
             if (!IsPostBack)
             {
-                _load_view_desktop_ddl();
-                _load_view_brands_ddl();
                
+               //int IDSSS = Convert.ToInt32(ViewState["ids"]); 
+                _load_view_desktop_ddl();
+                _load_Asset_info();
+            
             }
         }
 
-        public void _load_brand()
-        {
-            AM_DB_Tranactions adt = new AM_DB_Tranactions();
-            CPU_Details cu = new CPU_Details();
-            DataTable dt = adt.view_brands_by_grids();
-            ddl_ad_brand.DataSource = dt;
-            ddl_ad_brand.DataTextField = "bm_brand";
-            ddl_ad_brand.DataValueField = "bm_id";
-            ddl_ad_brand.DataBind();
-        }
+
         protected void ddl_ad_brand_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AM_DB_Tranactions adt = new AM_DB_Tranactions();
-            DataTable dt = adt.view_Cpu_model(ddl_ad_brand.SelectedItem.Value);
+            objs.Mo_br_id = Convert.ToInt32(ddl_ad_brand.SelectedItem.Value);
+            DataTable dt = amdb._load_Asset_models_byid(objs);
             ddl_ad_brand_model.DataSource = dt;
-            ddl_ad_brand_model.DataTextField = "bbm_model";
-            ddl_ad_brand_model.DataValueField = "bbm_brand_id";
+            ddl_ad_brand_model.DataTextField = "mo_Name";
+            ddl_ad_brand_model.DataValueField = "mo_id";
             ddl_ad_brand_model.DataBind();
+
         }
 
         protected void ddl_desktop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (IsPostBack)
-            //{
-            //    _load_view_brands_ddl();
-            //}
+
             try
             {
+                if (ddl_desktop.SelectedItem.Text.ToString() == "CPU")
+                {
+                    p123.Visible = true; P124.Visible = false;
+                }
+                if (ddl_desktop.SelectedItem.Text.ToString() == "printer1")
+                {
+                    P124.Visible = true; p123.Visible = false;
+                }
+
+                
                 loaddates();
                 if (ddl_desktop.SelectedIndex == 0)
                 {
@@ -98,9 +93,9 @@ namespace AM.Desktop
                         ScriptManager.RegisterStartupScript(this, GetType(), "alert", "Cpuview();", true);
                         Label1.Text = ddl_desktop.SelectedItem.Text;
                         PanMain.Visible = true;
-                        if(ddl_desktop.SelectedItem.Text.ToString() == "CPU")
+                        if (ddl_desktop.SelectedItem.Text.ToString() == "CPU")
                         {
-                        p123.Visible = true;
+                            p123.Visible = true;
                         }
                         // Panel1.Visible = false;
                         PanelOs.Visible = false;
@@ -115,6 +110,7 @@ namespace AM.Desktop
                             if (ddl_desktop.SelectedIndex != 0)
                             {
                                 _load_Asset_code();
+                                _load_view_brands_ddl();
                             }
 
                             //// txt_ad_mac_address.Text = String.IsNullOrEmpty(txt_ad_mac_address.Text) ? cpu_transactions.getIP() : "";
@@ -159,6 +155,7 @@ namespace AM.Desktop
                         if (ddl_desktop.SelectedIndex != 0)
                         {
                             _load_Asset_code();
+                            _load_view_brands_ddl();
                         }
                     }
                     catch (Exception)
@@ -190,7 +187,7 @@ namespace AM.Desktop
                         // Panel1.Visible = false;
                         PanMain.Visible = true;
                         p123.Visible = false; PanelOs.Visible = false;
-                        Label1.Text = "KeyBoard";
+                        Label1.Text = "Hard disk";
 
                     }
                     catch (Exception)
@@ -276,14 +273,14 @@ namespace AM.Desktop
 
         public void _load_view_brands_ddl()
         {
-
-            objs.Pr_id = Convert.ToInt32(ViewState["cpu"]);
-            objs.Prfk_id = Convert.ToInt32(ddl_desktop.SelectedValue);
-            DataTable dt = amdb._load_Asset_brands_byid(objs);
+            objs.Pr_id = Convert.ToInt32(ViewState["ids"]);
+            objs.Pr_type_id = Convert.ToInt32(ddl_desktop.SelectedValue);
+            DataTable dt = amdb._load_Asset_brands_byprptrid(objs);
+            ddl_ad_brand.DataSource = dt;
             ddl_ad_brand.DataTextField = "br_name";
             ddl_ad_brand.DataValueField = "br_id";
             ddl_ad_brand.DataBind();
-            ddl_ad_brand.Items.Insert(0, new ListItem("Select BRNAD", "0"));
+            ddl_ad_brand.Items.Insert(0, new ListItem("Select", "0"));
         }
 
         public void _load_view_desktop_ddl()
@@ -293,20 +290,20 @@ namespace AM.Desktop
             ddl_desktop.DataTextField = "pr_type_name";
             ddl_desktop.DataValueField = "pr_type_id";
             ddl_desktop.DataBind();
-            ddl_desktop.Items.Insert(0, new ListItem("-- Select type --", "0"));                 
+            ddl_desktop.Items.Insert(0, new ListItem("-- Select type --", "0"));
         }
 
         public DataTable loadpagedata()
         {
-            int ji = Convert.ToInt32(ViewState["cpu"]);
-            objs.Prfk_id = Convert.ToInt32(ViewState["cpu"]);
+            int ji = Convert.ToInt32(ViewState["ids"]);
+            objs.Prfk_id = Convert.ToInt32(ViewState["ids"]);
             DataTable dt = amdb._load_Asset_Products_types_byid(objs);
             return dt;
         }
 
         public void _load_Asset_code()
         {
-            objs.Pr_id = Convert.ToInt32(ViewState["cpu"]);
+            objs.Pr_id = Convert.ToInt32(ViewState["ids"]);
             objs.Pr_type_id = Convert.ToInt32(ddl_desktop.SelectedValue);
             DataTable dt = amdb._view_assetCode_info_by_pr_and_prt_id(objs);
             ddl_new_Asset_id.DataSource = dt;
@@ -315,99 +312,186 @@ namespace AM.Desktop
             ddl_new_Asset_id.DataBind();
             ddl_new_Asset_id.Items.Insert(0, new ListItem("Asset Code", "0"));
         }
-   
 
         protected void btn_ad_save_Click(object sender, EventArgs e)
         {
-            if (ddl_desktop.SelectedIndex == 1)
-            {
-                _load_brand();
-                if (ddl_new_Asset_id.SelectedIndex == 0)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething()();", true);
 
+
+            if (ddl_desktop.SelectedItem.Text == "printer1")
+            {
+                objs.At_type_id = Convert.ToInt32(ViewState["ids"]);
+                objs.At_subtype_id = Convert.ToInt32(ddl_desktop.SelectedValue);
+                objs.At_model_id = Convert.ToInt32(ddl_ad_brand_model.SelectedValue);
+                objs.At_aseet_code_id = Convert.ToInt32(ddl_new_Asset_id.SelectedValue);
+                objs.At_Assetcode = ddl_new_Asset_id.SelectedItem.Text.ToString();
+                objs.At_productNumber = txt_ad_Product_Number.Text.ToString().Trim();
+                objs.At_purchaseNumber = txt_ad_PR_Number.Text.ToString().Trim();
+                objs.At_SerialNumber = txt_ad_Serial_Number.Text.ToString().Trim();
+                objs.At_voucherNumber = txt_ad_Voucher_Number.Text.ToString().Trim();
+                objs.At_receivedDate = Convert.ToDateTime(txt_ad_Receive_Date.Text.ToString());
+                objs.At_wsd = Convert.ToDateTime(txt_ad_Warranty_Start_Date.ToString());
+                objs.At_wed = Convert.ToDateTime(txt_ad_Warranty_End_Date.ToString());
+                objs.At_cby = "1595";
+
+
+
+                // objs.At_brandMake_id=Convert.ToInt32(ddl_ad_brand.SelectedValue);
+                // objs.at
+                                objs.Pr_createdby = "Ahammed syed";
+                int i = amdb._insert_Asset_full_info(objs);
+                //string strmessage = "";
+                if (i == 1)
+                {
+                    //        strmessage = "New Asset  " + txt_product_amms.Text + "     Was Inserted";
+                    //      ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
+
+
+                }
+                else if (i == 0)
+                {
+                    //strmessage = txt_product_amms.Text + "  " + "  ---- Already we have -- Try a New One";
+                    //ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
+                    //_load_products_grid();
+                    //_load_products_ddl();
+                    //txt_product_amms.Text = string.Empty;
                 }
                 else
                 {
-                    
-                    amcpu amct = new amcpu();
-                    amct.CU_ASSETCODE = ddl_new_Asset_id.SelectedItem.Text.ToString();
-                    amct.CU_MAKE = ddl_ad_brand.SelectedValue;
-                    amct.CU_MODEL = ddl_ad_brand_model.SelectedValue;
-                    amct.CU_SERVICETAG = txt_ad_Product_Number.Text.ToString();
-                    amct.CU_EXPRESS_SERVICETAG = txt_ad_Serial_Number.Text.ToString();
-                    amct.CU_PURCHASE_NUMBER = txt_ad_PR_Number.Text.ToString();
-                    amct.CU_VOUCHER_NUMBER = txt_ad_Voucher_Number.Text.ToString();
-                    amct.CU_RECIEVED_DATE = Convert.ToDateTime(txt_ad_Receive_Date.Text);
-                    amct.CU_WARRANTY_STARTDATE = Convert.ToDateTime(txt_ad_Warranty_Start_Date.Text);
-                    amct.CU_WARRANTY_ENDDATE = Convert.ToDateTime(txt_ad_Warranty_End_Date.Text);
-
-                    // below transaction differ to different load options
-                    amct.CU_PROCESSOR = txt_ad_processor.Text;
-                    amct.CU_IPADDRESS = txt_ad_ip_address.Text;
-                    amct.CU_MAC = txt_ad_mac_address.Text;
-                    amct.CU_HOST = txt_ad_HostName.Text;
-                    amct.CU_HDD_MODEL = txt_ad_hdd_model.Text;
-                    amct.CU_HDD_SERIAL = txt_ad_hdd_serial.Text;
-                    amct.CU_HDD_SIZE = txt_ad_hdd_size.Text;
-                    amct.Createdby = "";
-                    amct.Createdtime = DateTime.Now;
-                    cpu_insertions ci = new cpu_insertions();
-
-                    int cpu = ci.insertCpuDetails(amct);
-                    if (cpu == 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "Messagefor();", true);
-                    }
-                    else if (cpu == 1)
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecninserted();", true);
-                    }
+                    //ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('Some Thing Went Wrong');</script>", false);
+                    //txt_product_amms.Text = string.Empty;
+                    //_load_products_grid();
+                    //_load_products_ddl();
                 }
-            }
-            else if (ddl_desktop.SelectedIndex == 2)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);
             }
             else
             {
+                //string textmess = "Please Enter Text";
+                //ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
             }
 
+
+            if (ddl_desktop.SelectedItem.Text == "cpu")
+            {
+
+                //  objs.Pr_Name = txt_product_amms.Text.ToString().TrimEnd().TrimStart();
+                objs.Pr_createdby = "Ahammed syed";
+                int i = amdb._insert_product_info(objs);
+                string strmessage1 = "";
+                if (i == 1)
+                {
+                    // strmessage = "New Asset  " + txt_product_amms.Text + "     Was Inserted";
+                    //  ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
+                }
+
+                else
+                {
+                    string textmessage1 = "Please Enter Text";
+                    //   ScriptManager.RegisterClientScriptBlock(btn_product_save_amms, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + textmess + "');</script>", false);
+                }
+            }
+        }
+        /// <summary>
+        /// insert in to printer///
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btn_ad1_save_Click(object sender, EventArgs e)
+        {
+            if (ddl_desktop.SelectedItem.Text == "printer1")
+            {
+                int ids = 0;
+                ids = Convert.ToInt32(ViewState["ids"]);
+                objs.At_type_id = ids;
+                objs.At_subtype_id = Convert.ToInt32(ddl_desktop.SelectedValue);
+                objs.At_model_id = 1;
+                objs.At_aseet_code_id = Convert.ToInt32(ddl_new_Asset_id.SelectedValue);
+                objs.At_Assetcode = ddl_new_Asset_id.SelectedItem.Text.ToString();
+                objs.At_productNumber = txt_ad_Product_Number.Text.ToString().Trim();
+                objs.At_purchaseNumber = txt_ad_PR_Number.Text.ToString().Trim();
+                objs.At_SerialNumber = txt_ad_Serial_Number.Text.ToString().Trim();
+                objs.At_voucherNumber = txt_ad_Voucher_Number.Text.ToString().Trim();
+                objs.At_receivedDate = Convert.ToDateTime(txt_ad_Receive_Date.Text.ToString());
+                objs.At_wsd = Convert.ToDateTime(txt_ad_Warranty_Start_Date.Text);
+                objs.At_wed = Convert.ToDateTime(txt_ad_Warranty_End_Date.Text);
+                objs.At_cby = "1595";
+                
+                //objs.Pr_createdby = "Ahammed syed";
+                int i = amdb._insert_Asset_full_info(objs);
+                //string strmessage = "New Asset Was Inserted";
+                strmessage = "New Asset Was Inserted";
+                if (i == 1)
+                {
+                    //int i = amdb._insert_Asset_printer_info(objs);
+                    //string strmessage = "";
+                    strmessage = "New Asset Was Inserted";
+                    _load_Asset_info();
+                   // ScriptManager.RegisterClientScriptBlock(btn_ad1_save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('" + strmessage + "');</script>", false);
+
+
+                }
+            }
+        }
+        
+        public void _load_Asset_info()
+        {
+            DataTable dt = amdb._load_Asset_Fullinfo();
+            gv_Assetinfo_ad.DataSource = dt;
+            gv_Assetinfo_ad.DataBind();  
+        }
+        
+        public void cleardetails()
+        {
+            txt_ad_hdd_model.Text = string.Empty;
+            txt_ad_PR_Number.Text = string.Empty;
+            txt_ad_Product_Number.Text = string.Empty;
+            txt_ad_Serial_Number.Text = string.Empty;
+            txt_ad_Voucher_Number.Text = string.Empty;
+           
+        }
+        public bool CheckValidations()
+        {
+            if(txt_ad_PR_Number.Text.ToString().Trim().Replace("'","")=="")
+            {
+
+                strmessage = "Purchase Number Can't be Empty.";
+                txt_ad_PR_Number.Focus();
+                return false;
+            }
+            else if (txt_ad_PR_Number.Text.ToString().Trim().Replace("'", "") == "")
+            {
+                strmessage = "Enter Purchase Number.";
+                txt_ad_PR_Number.Focus();
+                return false;
+            }
+            else if (txt_ad_Product_Number.Text == "")
+            {
+                strmessage= "Enter Product Number.";
+                txt_ad_Product_Number.Focus();
+                return false;
+            }
+            else if (txt_ad_Serial_Number.Text.ToString().Trim().Replace("'", "") == "")
+            {
+                strmessage="Enter Serial No.";
+                txt_ad_Serial_Number.Focus();
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txt_ad_Voucher_Number.Text))
+            {
+                
+                strmessage= "Enter Voucher No.";
+                txt_ad_Voucher_Number.Focus();
+                return false;
+            }
+            
+
+            return true;
         }
 
-     
 
-
-        #region Monitor_Details_laoads
-
-       // void load_monitor_brands()
-       // {
-           // DataTable dt = adt.view_dng_details();
-          //  ddl_ad_DNG.DataSource = dt;
-          //  ddl_ad_DNG.DataTextField = "dng_name";
-          //  ddl_ad_DNG.DataValueField = "dng_id";
-         //   ddl_ad_DNG.DataBind();
-      //  }
-
-
-	    #endregion
+        public string strmessage { get; set; }
     }
-
-  
+    
 }
-
-//protected void ddl_ad_barnd_SelectedIndexChanged(object sender, EventArgs e)
-//{
-//    DataTable dt = adt.view_Cpu_model(ddl_ad_barnd.SelectedItem.Value);
-//    ddl_ad_brandmodel.DataSource = dt;
-//    ddl_ad_brandmodel.DataTextField = "bbm_model";
-//    ddl_ad_brandmodel.DataValueField = "bbm_brand_id";
-//    ddl_ad_brandmodel.DataBind();
-//}
 
 
 
@@ -453,11 +537,80 @@ namespace AM.Desktop
 
         
 
-    //    public void _load_dng()
-    //    {
-    //        DataTable dt = adt.view_dng_details();
-    //        ddl_ad_DNG.DataSource = dt;
-    //        ddl_ad_DNG.DataTextField = "dng_name";
-    //        ddl_ad_DNG.DataValueField = "dng_id";
-    //        ddl_ad_DNG.DataBind();
+    ////    public void _load_dng()
+    ////    {
+    ////        DataTable dt = adt.view_dng_details();
+    ////        ddl_ad_DNG.DataSource = dt;
+    ////        ddl_ad_DNG.DataTextField = "dng_name";
+    ////        ddl_ad_DNG.DataValueField = "dng_id";
+    ////        ddl_ad_DNG.DataBind();
+    ////    }
+
+
+
+
+            
+    //        if (ddl_desktop.SelectedIndex == 1)
+    //        {
+    //          //  _load_brand();
+    //            if (ddl_new_Asset_id.SelectedIndex == 0)
+    //            {
+    //                ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "typething()();", true);
+
+    //            }
+    //            else
+    //            {
+                    
+    //                //amcpu amct = new amcpu();
+    //                //amct.CU_ASSETCODE = ddl_new_Asset_id.SelectedItem.Text.ToString();
+    //                //amct.CU_MAKE = ddl_ad_brand.SelectedValue;
+    //                //amct.CU_MODEL = ddl_ad_brand_model.SelectedValue;
+    //                //amct.CU_SERVICETAG = txt_ad_Product_Number.Text.ToString();
+    //                //amct.CU_EXPRESS_SERVICETAG = txt_ad_Serial_Number.Text.ToString();
+    //                //amct.CU_PURCHASE_NUMBER = txt_ad_PR_Number.Text.ToString();
+    //                //amct.CU_VOUCHER_NUMBER = txt_ad_Voucher_Number.Text.ToString();
+    //                //amct.CU_RECIEVED_DATE = Convert.ToDateTime(txt_ad_Receive_Date.Text);
+    //                //amct.CU_WARRANTY_STARTDATE = Convert.ToDateTime(txt_ad_Warranty_Start_Date.Text);
+    //                //amct.CU_WARRANTY_ENDDATE = Convert.ToDateTime(txt_ad_Warranty_End_Date.Text);
+
+    //                // below transaction differ to different load options
+    //                //amct.CU_PROCESSOR = txt_ad_processor.Text;
+    //                //amct.CU_IPADDRESS = txt_ad_ip_address.Text;
+    //                //amct.CU_MAC = txt_ad_mac_address.Text;
+    //                //amct.CU_HOST = txt_ad_HostName.Text;
+    //                //amct.CU_HDD_MODEL = txt_ad_hdd_model.Text;
+    //                //amct.CU_HDD_SERIAL = txt_ad_hdd_serial.Text;
+    //                //amct.CU_HDD_SIZE = txt_ad_hdd_size.Text;
+    //                //amct.Createdby = "";
+    //                //amct.Createdtime = DateTime.Now;
+    //                //cpu_insertions ci = new cpu_insertions();
+
+    //                //int cpu = ci.insertCpuDetails(amct);
+    //                //if (cpu == 0)
+    //                //{
+    //                //    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "Messagefor();", true);
+    //                //}
+    //                //else if (cpu == 1)
+    //                //{
+    //                //    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);
+    //                //}
+    //                //else
+    //                //{
+    //                //    ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecninserted();", true);
+    //                //}
+    //            }
+    //        }
+    //        else if (ddl_desktop.SelectedIndex == 2)
+    //        {
+    //            ScriptManager.RegisterStartupScript(this, GetType(), "msgbox", "cpuRecinserted();", true);
+    //        }
+    //        else
+    //        {
+    //        }
+
     //    }
+
+     
+
+
+    //}
