@@ -560,6 +560,7 @@ namespace AM.Masters
                    // ScriptManager.RegisterClientScriptBlock(btn_product_type_Save, this.GetType(), "AlertMsg", "<script language='javascript'>alert('processor Name Saved Sucessfully');</script>", false);
                     txt_processor_name_asm.Text = string.Empty;
                     _load_processorName_grid();
+                    string a = "hi";
                 }
                 else
                 {
@@ -724,8 +725,7 @@ namespace AM.Masters
         }
 
         protected void ddl_product_type_amms_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
+        {           
             _load_products_types_byid();          
         }
         protected void btn_model_save_amms_Click(object sender, EventArgs e)
