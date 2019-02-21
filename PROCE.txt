@@ -1,0 +1,4 @@
+DROP PROCEDURE `pro_insert_cartridge_model`; CREATE DEFINER=`root`@`localhost` PROCEDURE `pro_insert_cartridge_model`(IN `Cat_Model1` VARCHAR(200), IN `Cat_AssetcodeID1` INT(20), IN `Cat_Assetcode1` VARCHAR(200), IN `Cat_Createdby1` VARCHAR(200), IN `Cat_IP1` VARCHAR(200)) COMMENT 'insert cartridge model' NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER INSERT INTO `tbl_cartridge_models`(`Cat_Model`, `Cat_AssetcodeID`, `Cat_Assetcode`, `Cat_IP`, `Cat_Isactive`, `Cat_Createdtime`, `Cat_Createdby`)VALUES (Cat_Model1, Cat_AssetcodeID1, Cat_Assetcode1, 1,Cat_IP1,1,sysdate(), Cat_Createdby1);
+
+
+HI REV
