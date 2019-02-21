@@ -79,6 +79,7 @@ namespace AM.Masters
         /// 
         public void _load_products_types_byid()
         {
+
             objs.Prfk_id = Convert.ToInt32(ddl_products_asm.SelectedItem.Value);
             DataTable dt = amdb._load_Asset_Products_types_byid(objs);
             gv_products_type_info.DataSource = dt;
